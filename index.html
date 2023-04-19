@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OhMeChu</title>
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer src="index.js"></script>
+    <script defer type="module" src="./List-Slider/listSlider.js"></script>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header class="header layout-body">header</header>
+
+    <!-- 슬라이더 추천상품 오메추 신상품 -->
+    <main role="main" class="main" id="main-page">
+      <div class="main__slider" id="slider">
+        slider
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <article id="recommended-list-slider" class="list-slider layout-body">
+        <div class="list-title-box">
+          <h2 class="list-title">추천 상품</h2>
+        </div>
+        <div class="list-slides-box">
+          <img
+            class="list-left-arrow"
+            id="list-left-arrow"
+            src="src/left-arrow.jpg"
+          />
+          <img
+            class="list-right-arrow"
+            id="list-left-arrow"
+            src="src/right-arrow.jpg"
+          />
+          <ul class="list-slides" id="list-slides">
+            <!-- JS를 통해 li가 구현될 것임 -->
+            <!-- <li class="list-slide">
+              <div class="list-slide-image-box">
+                <img class="list-slide-image" />
+              </div>
+              <div>
+                <a href="" class="list-slide-name">제품명</a>
+                <p class="list-slide-price">가격</p>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </article>
+      <article class="main__recommended-today layout-body">오메츄</article>
+      <article class="main__new-list layout-body">신상품</article>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer"></footer>
+  </body>
+</html>

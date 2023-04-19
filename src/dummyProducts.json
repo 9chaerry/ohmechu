@@ -1,0 +1,12 @@
+[
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명1",
+    "price": "가격2"
+  },
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명1",
+    "price": "가격2"
+  }
+]

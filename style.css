@@ -1,0 +1,150 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header {
+  background-color: red;
+  height: 160px;
+}
+
+.layout-body {
+  margin: 0 15vw;
+  padding: 0 30px;
+}
+
+.main .main__slider {
+  background-color: purple;
+  height: 300px;
+}
+
+.list-slider {
+  /* background-color: green; */
+  height: 600px;
+  overflow: hidden;
+}
+
+.list-slider .list-title-box {
+  /* background-color: rgb(66, 192, 66); */
+  align-items: center;
+  height: 150px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-slider .list-title-box .list-title {
+  font-size: 32px;
+}
+
+.list-slider .list-slides-box {
+  /* background-color: greenyellow; */
+  position: relative;
+  height: 450px;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.list-slider .list-slides-box .list-left-arrow {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  transform: translate(0, -50%);
+
+  cursor: pointer;
+}
+
+.list-slider .list-slides-box .list-right-arrow {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+
+  transform: translate(-100%, -50%);
+
+  cursor: pointer;
+}
+
+.list-slider .list-slides-box .list-slides {
+  /* background-color: aqua; */
+  overflow: hidden;
+
+  width: 1100px;
+  display: flex;
+  align-items: center;
+}
+
+.list-slider .list-slides-box .list-slides .list-slide {
+  /* background-color: antiquewhite; */
+  width: 255px;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 10px;
+}
+
+.list-slider .list-slides .list-slide .list-slide-image-box {
+  width: 255px;
+  height: 255px;
+  overflow: hidden;
+
+  border-radius: 30px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.list-slider .list-slides .list-slide .list-slide-image-box .list-slide-image {
+  background-image: url(src/slide_image.jpg);
+  background-size: cover;
+  width: 255px;
+  height: 255px;
+
+  transform: scale(1.01, 1.01);
+  transition-property: transform;
+  transition-duration: 500ms;
+}
+
+.list-slider .list-slides .list-slide .list-slide-image:hover {
+  transform: scale(1.05, 1.05);
+  transition-duration: 300ms;
+}
+
+.list-slider .list-slides .list-slide .list-slide-name {
+  color: black;
+  text-decoration-line: none;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.list-slider .list-slides .list-slide .list-slide-price {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 15px 0;
+}
+
+.main .main__recommended-today {
+  background-color: yellow;
+  height: 300px;
+}
+
+.main .main__new-list {
+  background-color: indigo;
+  height: 300px;
+}
+
+.footer {
+  display: flex;
+  background-color: black;
+  height: 150px;
+}
