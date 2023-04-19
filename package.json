@@ -1,7 +1,6 @@
 {
   "name": "ohmechu",
   "version": "1.0.0",
-  "type": "module",
   "description": "1차 프로젝트",
   "main": "index.js",
   "scripts": {

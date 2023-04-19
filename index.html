@@ -7,8 +7,7 @@
     <title>OhMeChu</title>
     <link rel="stylesheet" type="text/css" href="reset.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script defer src="index.js"></script>
-    <script defer type="module" src="./List-Slider/listSlider.js"></script>
+    <script defer type="module" src="index.js"></script>
   </head>
   <body>
     <!-- 헤더 -->
@@ -32,17 +31,18 @@
         <div class="list-slides-box">
           <img
             class="list-left-arrow"
-            id="list-left-arrow"
+            id="rec-list-left-arrow"
             src="src/left-arrow.jpg"
           />
           <img
             class="list-right-arrow"
-            id="list-left-arrow"
+            id="rec-list-right-arrow"
             src="src/right-arrow.jpg"
           />
-          <ul class="list-slides" id="list-slides">
-            <!-- JS를 통해 li가 구현될 것임 -->
-            <!-- <li class="list-slide">
+          <div class="list-wrap">
+            <ul class="list-slides" id="rec-list-slides">
+              <!-- JS를 통해 li가 구현될 것임 -->
+              <!-- <li class="list-slide">
               <div class="list-slide-image-box">
                 <img class="list-slide-image" />
               </div>
@@ -51,11 +51,44 @@
                 <p class="list-slide-price">가격</p>
               </div>
             </li> -->
-          </ul>
+            </ul>
+          </div>
         </div>
       </article>
+
       <article class="main__recommended-today layout-body">오메츄</article>
-      <article class="main__new-list layout-body">신상품</article>
+
+      <article id="new-list-slider" class="list-slider layout-body">
+        <div class="list-title-box">
+          <h2 class="list-title">NEW 상품</h2>
+        </div>
+        <div class="list-slides-box">
+          <img
+            class="list-left-arrow"
+            id="new-list-left-arrow"
+            src="src/left-arrow.jpg"
+          />
+          <img
+            class="list-right-arrow"
+            id="new-list-right-arrow"
+            src="src/right-arrow.jpg"
+          />
+          <div class="list-wrap">
+            <ul class="list-slides" id="new-list-slides">
+              <!-- JS를 통해 li가 구현될 것임 -->
+              <!-- <li class="list-slide">
+              <div class="list-slide-image-box">
+                <img class="list-slide-image" />
+              </div>
+              <div>
+                <a href="" class="list-slide-name">제품명</a>
+                <p class="list-slide-price">가격</p>
+              </div>
+            </li> -->
+            </ul>
+          </div>
+        </div>
+      </article>
     </main>
 
     <!-- 푸터 -->

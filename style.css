@@ -27,7 +27,7 @@ a {
 .list-slider .list-title-box {
   /* background-color: rgb(66, 192, 66); */
   align-items: center;
-  height: 150px;
+  height: 200px;
 
   display: flex;
   flex-direction: column;
@@ -41,10 +41,11 @@ a {
 .list-slider .list-slides-box {
   /* background-color: greenyellow; */
   position: relative;
-  height: 450px;
+  height: 400px;
 
   display: flex;
 
+  align-items: start;
   justify-content: center;
 }
 
@@ -74,7 +75,7 @@ a {
   cursor: pointer;
 }
 
-.list-slider .list-slides-box .list-slides {
+.list-slider .list-slides-box .list-wrap {
   /* background-color: aqua; */
   overflow: hidden;
 
@@ -83,7 +84,15 @@ a {
   align-items: center;
 }
 
-.list-slider .list-slides-box .list-slides .list-slide {
+.list-slider .list-slides-box .list-wrap .list-slides {
+  width: inherit;
+  display: flex;
+  align-items: center;
+
+  margin-left: 0px;
+}
+
+.list-slider .list-slides-box .list-wrap .list-slides .list-slide {
   /* background-color: antiquewhite; */
   width: 255px;
   flex-shrink: 0;
