@@ -1,0 +1,35 @@
+.header {
+  background-color: red;
+  height: 160px;
+}
+
+.layout-body {
+  margin: 0 15vw;
+  padding: 0 30px;
+}
+
+.main .main__slider {
+  background-color: purple;
+  height: 300px;
+}
+
+.main .main__recommended-list {
+  background-color: green;
+  height: 300px;
+}
+
+.main .main__recommended-today {
+  background-color: yellow;
+  height: 300px;
+}
+
+.main .main__new-list {
+  background-color: indigo;
+  height: 300px;
+}
+
+.footer {
+  display: flex;
+  background-color: black;
+  height: 150px;
+}
