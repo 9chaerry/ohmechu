@@ -5,13 +5,20 @@ const newListLeftArrow = document.querySelector('#new-list-left-arrow');
 const newListRightArrow = document.querySelector('#new-list-right-arrow');
 const newListSlides = document.querySelector('#new-list-slides');
 
+const PER_SLIDE_PAGE = 4;
+const WRAP_SIZE = 1100;
+
+// 슬라이더 넘기는 횟수를 제한하기 위해 슬라이드 개수를 카운트합니다.
+let recCount = 0;
+let newCount = 0;
+
 /**
  * 서버에서 상품 정보를 받아오고, 슬라이드를 초기화합니다.
  */
 function slideSetting() {
   // !!! 더미 url이 들어가있음! 추후 변경 필요 !!!
-  recListGenerator('../src/dummyProducts.json');
-  newListGenerator('../src/dummyProducts.json');
+  recListGenerator('./src/dummyProducts.json');
+  newListGenerator('./src/dummyProducts.json');
 
   // 슬라이더를 움직일 좌우 버튼에 대한 리스너를 등록합니다.
   recListLeftArrow.addEventListener('click', recListLeftSlide);
@@ -41,15 +48,40 @@ function recListGenerator(url) {
         const p = document.createElement('p');
 
         // 요소 클래스 설정
-        li.classList.add('list-slide');
-        imgDiv.classList.add('list-slide-image-box');
-        img.classList.add('list-slide-image');
-        a.classList.add('list-slide-name');
-        p.classList.add('list-slide-price');
+        li.classList.add(
+          'w-[255px]',
+          'flex-shrink-0',
+          'flex',
+          'flex-col',
+          'mx-[10px]'
+        );
+        imgDiv.classList.add(
+          'w-[255px]',
+          'h-[255px]',
+          'overflow-hidden',
+          'rounded-3xl',
+          'mb-4',
+          'cursor-pointer'
+        );
+        img.classList.add(
+          'w-[255px]',
+          'h-[255px]',
+          'bg-cover',
+          'scale-105',
+          'transition-transform',
+          'duration-300',
+          'ease-in-out',
+          'transform',
+          'hover:scale-110',
+          'transition-duration-300',
+          'hover:duration-300'
+        );
+        a.classList.add('no-underline', 'text-xl', 'font-semibold');
+        p.classList.add('text-base', 'font-normal');
 
         // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
         // 슬라이드에 데이터 삽입
-        img.src = data.image;
+        img.src = data.img_url;
         a.innerText = data.name;
         a.href = '';
         p.innerText = data.price;
@@ -61,8 +93,9 @@ function recListGenerator(url) {
         li.appendChild(imgDiv);
         li.appendChild(textDiv);
 
-        // listSlideWrap에 위에서 만든 슬라이드 추가
+        // listSlideWrap에 위에서 만든 슬라이드 추가;
         recListSlides.appendChild(li);
+        recCount++;
       }
     });
   // 슬라이더에 대한 기본 설정을 초기화합니다.
@@ -73,16 +106,23 @@ function recListLeftSlide(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  recListSlides.style.marginLeft =
-    parseInt(recListSlides.style.marginLeft) + 1100 + 'px';
+  const marginLeftValue = parseInt(recListSlides.style.marginLeft);
+
+  if (marginLeftValue < 0)
+    recListSlides.style.marginLeft =
+      parseInt(recListSlides.style.marginLeft) + WRAP_SIZE + 'px';
 }
 
 function recListRightSlide(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  recListSlides.style.marginLeft =
-    parseInt(recListSlides.style.marginLeft) - 1100 + 'px';
+  const marginLeftValue = parseInt(recListSlides.style.marginLeft);
+  const totalPage = Math.ceil(recCount / PER_SLIDE_PAGE);
+
+  if (marginLeftValue > (totalPage - 1) * WRAP_SIZE * -1)
+    recListSlides.style.marginLeft =
+      parseInt(recListSlides.style.marginLeft) - WRAP_SIZE + 'px';
 }
 
 /**
@@ -105,15 +145,40 @@ function newListGenerator(url) {
         const p = document.createElement('p');
 
         // 요소 클래스 설정
-        li.classList.add('list-slide');
-        imgDiv.classList.add('list-slide-image-box');
-        img.classList.add('list-slide-image');
-        a.classList.add('list-slide-name');
-        p.classList.add('list-slide-price');
+        li.classList.add(
+          'w-[255px]',
+          'flex-shrink-0',
+          'flex',
+          'flex-col',
+          'mx-[10px]'
+        );
+        imgDiv.classList.add(
+          'w-[255px]',
+          'h-[255px]',
+          'overflow-hidden',
+          'rounded-3xl',
+          'mb-4',
+          'cursor-pointer'
+        );
+        img.classList.add(
+          'w-[255px]',
+          'h-[255px]',
+          'bg-cover',
+          'scale-105',
+          'transition-transform',
+          'duration-300',
+          'ease-in-out',
+          'transform',
+          'hover:scale-110',
+          'transition-duration-300',
+          'hover:duration-300'
+        );
+        a.classList.add('no-underline', 'text-xl', 'font-semibold');
+        p.classList.add('text-base', 'font-normal');
 
         // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
         // 슬라이드에 데이터 삽입
-        img.src = data.image;
+        img.src = data.img_url;
         a.innerText = data.name;
         a.href = '';
         p.innerText = data.price;
@@ -125,8 +190,9 @@ function newListGenerator(url) {
         li.appendChild(imgDiv);
         li.appendChild(textDiv);
 
-        // listSlideWrap에 위에서 만든 슬라이드 추가
+        // listSlideWrap에 위에서 만든 슬라이드 추가;
         newListSlides.appendChild(li);
+        newCount++;
       }
     });
   // 슬라이더에 대한 기본 설정을 초기화합니다.
@@ -137,16 +203,23 @@ function newListLeftSlide(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  newListSlides.style.marginLeft =
-    parseInt(newListSlides.style.marginLeft) + 1100 + 'px';
+  const marginLeftValue = parseInt(newListSlides.style.marginLeft);
+
+  if (marginLeftValue < 0)
+    newListSlides.style.marginLeft =
+      parseInt(newListSlides.style.marginLeft) + WRAP_SIZE + 'px';
 }
 
 function newListRightSlide(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  newListSlides.style.marginLeft =
-    parseInt(newListSlides.style.marginLeft) - 1100 + 'px';
+  const marginLeftValue = parseInt(newListSlides.style.marginLeft);
+  const totalPage = Math.ceil(newCount / PER_SLIDE_PAGE);
+
+  if (marginLeftValue > (totalPage - 1) * WRAP_SIZE * -1)
+    newListSlides.style.marginLeft =
+      parseInt(newListSlides.style.marginLeft) - WRAP_SIZE + 'px';
 }
 
 export { slideSetting };
