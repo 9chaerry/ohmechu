@@ -1,0 +1,53 @@
+/* header
+  nav
+  id='slider'
+  class='recommended-list'
+  class='recommended-today'
+  class='new-list'
+  footer
+   */
+
+* {
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+header {
+  background-color: red;
+  height: 100px;
+}
+
+nav {
+  background-color: blue;
+  height: 70px;
+}
+
+#slider {
+  background-color: purple;
+  height: 50px;
+}
+
+.recommended-list {
+  background-color: green;
+  height: 60px;
+}
+
+.recommended-today {
+  background-color: yellow;
+  height: 60px;
+}
+
+.new-list {
+  background-color: indigo;
+  height: 60px;
+}
+
+footer {
+  background-color: black;
+  height: 80px;
+}
