@@ -1,0 +1,28 @@
+[
+  {
+    "img_url": "/img/slide_image.jpg",
+    "name": "제품명1",
+    "price": "가격1"
+  },
+  {
+    "img_url": "/img/slide_image.jpg",
+    "name": "제품명2",
+    "price": "가격2"
+  },
+  {
+    "img_url": "/img/slide_image.jpg",
+    "name": "제품명3",
+    "price": "가격3"
+  },
+  {
+    "img_url": "/img/slide_image.jpg",
+    "name": "제품명4",
+    "price": "가격4"
+  },
+  {
+    "img_url": "/img/slide_image.jpg",
+    "name": "제품명5",
+    "price": "가격5",
+    "sub_description": ["3인분, 30분, 매운맛"]
+  }
+]
