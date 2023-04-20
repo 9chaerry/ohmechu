@@ -1,3 +1,5 @@
+import { cartSetting } from './cartSetting.js';
+
 const productBox = document.getElementById('productBox');
 
 /**
@@ -9,8 +11,9 @@ function listSetting() {
 }
 
 /**
- * 상품 리스트 Url
- * @param {상품 리스트 Url을 받아와 fetch후 list를 작성합니다.} url
+ * 상품 리스트 Url을 받아와 fetch후 list를 작성합니다.
+ * 그 후 cartSetting()을 불러와 장바구니 버튼도 활성화합니다.
+ * @param {Url} url
  */
 function listGeneration(url) {
   fetch(url)
@@ -18,13 +21,15 @@ function listGeneration(url) {
     .then((datas) => {
       for (let data of datas) {
         productBox.innerHTML += listTemplate(
+          data._id,
           data.img_url,
           data.name,
           data.price,
           data?.sub_description
         );
       }
-    });
+    })
+    .then(() => cartSetting());
 }
 
 /**
@@ -35,7 +40,7 @@ function listGeneration(url) {
  * @param {String[]} subDescription
  * @returns
  */
-function listTemplate(imgUrl, name, price, subDescription = '　') {
+function listTemplate(id, imgUrl, name, price, subDescription = '　') {
   return `<li class="w-1/4 h-1/4 p-3 my-3">
             <img
               class="w-full object-cover object-center cursor-pointer"
@@ -46,7 +51,7 @@ function listTemplate(imgUrl, name, price, subDescription = '　') {
                 class="absolute left-[98%] top-2/4 -translate-x-full -translate-y-2/4 z-10 cursor-pointer"
               >
                 <svg
-                  class="w-12 h-12"
+                  class="cart-in-button w-12 h-12"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
@@ -54,6 +59,7 @@ function listTemplate(imgUrl, name, price, subDescription = '　') {
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
+                  id="${id}"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <polyline points="7 10 12 4 17 10" />
