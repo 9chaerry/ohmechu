@@ -20,7 +20,7 @@ function cartIn(e) {
   e.stopPropagation();
 
   // 장바구니 애니메이션을 작동시킵니다.
-  cartInAnimation(this);
+  cartInConfirm(this);
 
   // 버튼에서 id를 받아옵니다.
   const _id = this.id;
@@ -49,7 +49,9 @@ function cartIn(e) {
   window.localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function cartInAnimation(svg) {
+function cartInConfirm(svg) {
+  setTimeout(() => window.alert('장바구니에 추가 되었습니다.'), 0);
+
   svg.classList.add('animate-[cartIn_0.5s_ease-in-out_1]');
   setTimeout(
     () => svg.classList.remove('animate-[cartIn_0.5s_ease-in-out_1]'),
