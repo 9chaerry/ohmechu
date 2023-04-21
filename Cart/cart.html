@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="./tailwind.config.js"></script>
-    <script defer type="module" src="index.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script src="/tailwind.config.js"></script>
+    <script defer type="module" src="cart.js"></script>
   </head>
   <body>
     <!-- 헤더 -->
@@ -51,7 +50,7 @@
         <h1 class="inline-block">
           <a href="index.html"
             ><img
-              src="img/ohmechu_logo.png"
+              src="/img/ohmechu_logo.png"
               alt="오늘의 메뉴 추천"
               class="scale-75 inline-block align-middle"
           /></a>
@@ -136,181 +135,168 @@
     </header>
     <!-- 헤더 끝 -->
     <!-- 메인 페이지 -->
-    <main role="main" class="mt-1" id="main-page">
-      <!-- 메인 이벤트 슬라이더 -->
-      <div class="w-full h-[360px] overflow-hidden bg-neutral-100" id="slider">
-        <ul class="list-none">
-          <li class="w-max h-max float-left">
-            <img src="img/달래된장전골.png" alt="item1" class="align-middle" />
-          </li>
-          <li class="w-max h-max float-left">
-            <img src="img/동태탕.png" alt="item1" class="align-middle" />
-          </li>
-          <li class="w-max h-max float-left">
-            <img src="img/찹스테이크.png" alt="item1" class="align-middle" />
-          </li>
-          <li class="w-max h-max float-left">
-            <img src="img/전복미역국.png" alt="item1" class="align-middle" />
-          </li>
-          <li class="w-max h-max float-left">
-            <img src="img/부대찌개.png" alt="item1" class="align-middle" />
-          </li>
-        </ul>
-      </div>
-      <!-- 추천 상품 리스트 -->
-      <article id="recommended-list-slider" class="h-[600px] overflow-hidden">
-        <div class="mx-auto w-3/5 bg-white">
-          <div class="flex flex-col justify-center items-center h-[200px]">
-            <h2 class="text-3xl font-medium">추천 상품</h2>
-          </div>
-          <div class="relative h-96 flex items-start justify-center">
-            <div class="absolute left-0 top-1/2 transform -translate-y-1/2">
-              <svg
-                id="rec-list-left-arrow"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-12 h-12 z-10 cursor-pointer"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </div>
-            <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
-              <svg
-                id="rec-list-right-arrow"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-12 h-12 z-10 cursor-pointer"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </div>
-
-            <div class="overflow-hidden w-[1100px] flex items-center">
-              <ul class="flex items-center" id="rec-list-slides">
-                <!-- JS를 통해 li가 구현될 것임 -->
-                <!-- <li class="h-[255px] flex-shrink-0 flex flex-col mx-[10px]">
-                    <div class="w-[255px] h-[255px] overflow-hidden rounded-3xl mb-4 cursor-pointer">
-                      url image를 class 속성이 아닌 다른 방법을 알아봐야 할 것 같아용
-                      <img class="w-[255px] h-[255px] bg-cover scale-105 transition-transform duration-300 ease-in-out transform hover:scale-110 transition-duration-300 hover:duration-300" />
-
-                    </div>
-                    <div>
-                      <a href="" class="no-underline text-xl font-semibold">제품명</a>
-                      <p class="text-base font-normal">가격</p>
-                    </div>
-                  </li> -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-      <!-- 오메추! -->
-      <article
-        class="h-72 relative flex flex-wrap justify-around text-4xl font-bold shadow-xl mt-16"
+    <main role="main" class="w-3/5 mx-auto mt-1 bg-white" id="cartpage__main">
+      <!--페이지 상단-->
+      <div
+        class="about-order flex justify-between items-end pt-14 whitespace-nowrap"
       >
-        <div class="text-left">
-          <span class="text-4xl text-red-500">오</span><span>늘의</span
-          ><span class="text-red-500">메</span><span>뉴</span>
-          <span class="text-red-500">추</span><span>천</span
-          ><span class="text-base text-red-500 align-text-bottom font-semibold"
-            >OHMECHU PICK</span
+        <h2 class="text-4xl font-bold tracking-wider align-middle">장바구니</h2>
+        <div class="text-xl">
+          <span class="inline-block align-middle">01 장바구니</span>
+          <p class="inline-block align-middle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-5 h-6 align-middle mx-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </p>
+          <span class="inline-block align-middle text-stone-400"
+            >02 주문·결제</span
           >
-          <div class="my-5 text-4xl text-red-500 tracking-wide text-left">
-            부대찌개
-          </div>
-          <div class="font-normal text-2xl my-5 text-stone-700 text-left">
-            스팸과 각종 채소, 사골국물로 만든 맛있는 부대찌개
-          </div>
-          <div class="font-semibold text-lg text-left">3~4인분</div>
-          <div class="price text-left tracking-normal">23000 원</div>
+          <p class="inline-block align-middle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-5 h-6 align-middle mx-1 stroke-stone-400"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </p>
+          <span class="inline-block align-middle text-stone-400"
+            >03 주문완료</span
+          >
         </div>
-        <div class="flex h-max">
-          <img
-            src="./img/부대찌개.png"
-            class="scale-125 drop-shadow-lg"
-            alt="오늘의 메뉴"
-          />
-        </div>
-      </article>
-      <!-- 새로운 상품 리스트 -->
-      <article
-        id="recommended-list-slider"
-        class="h-[600px] overflow-hidden mt-12"
+      </div>
+      <!-- 로그인이 되지 않았을 때 -->
+      <div
+        class="flex justify-between items-center border border-solid px-3 py-5 my-12 whitespace-nowrap"
       >
-        <div class="mx-auto w-3/5 bg-white">
-          <div class="flex flex-col justify-center items-center h-[200px]">
-            <h2 class="text-3xl font-medium">새로운 상품</h2>
+        <p class="inline-block ml-6 text-base">
+          지금 로그인하여 다양한 혜택을 즐겨보세요.
+        </p>
+        <button
+          type="button"
+          class="inline-block py-3 px-12 mr-6 bg-green-600 hover:bg-green-700 text-white transition ease-in duration-200 text-center text-base font-medium focus:outline-none focus:bg-green-700"
+        >
+          로그인
+        </button>
+      </div>
+      <!-- 장바구니에 담긴 상품 목록 -->
+      <div class="whitespace-nowrap">
+        <div>
+          <!-- 전체 선택, 상품 목록 수 -->
+          <div class="flex items-center pb-4">
+            <input
+              type="checkbox"
+              name="cartProducts"
+              id="all-products-select"
+              value="all"
+              class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600"
+              checked
+            />
+            <label class="text-[18pt] font-medium ml-2"
+              >총 <span id="cart-amount">0</span>개</label
+            >
           </div>
-          <div class="relative h-96 flex items-start justify-center">
-            <div class="absolute left-0 top-1/2 transform -translate-y-1/2">
-              <svg
-                id="new-list-left-arrow"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-12 h-12 z-10 cursor-pointer"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </div>
-            <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
-              <svg
-                id="new-list-right-arrow"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-12 h-12 z-10 cursor-pointer"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </div>
-
-            <div class="overflow-hidden w-[1100px] flex items-center">
-              <ul class="flex items-center" id="new-list-slides">
-                <!-- JS를 통해 li가 구현될 것임 -->
-                <!-- <li class="h-[255px] flex-shrink-0 flex flex-col mx-[10px]">
-                  <div class="w-[255px] h-[255px] overflow-hidden rounded-3xl mb-4 cursor-pointer">
-                    url image를 class 속성이 아닌 다른 방법을 알아봐야 할 것 같아용
-                    <img class="w-[255px] h-[255px] bg-cover scale-105 transition-transform duration-300 ease-in-out transform hover:scale-110 transition-duration-300 hover:duration-300" />
-
-                  </div>
-                  <div>
-                    <a href="" class="no-underline text-xl font-semibold">제품명</a>
-                    <p class="text-base font-normal">가격</p>
-                  </div>
-                </li> -->
-              </ul>
-            </div>
+          <!-- 장바구니 상품 리스트 -->
+          <div class="pt-8 border-solid border-t-2 border-black">
+            <ul id="cart-list">
+              <!-- JS를 통해 li가 입력 될 예정-->
+            </ul>
           </div>
         </div>
-      </article>
-      <!-- 메인 페이지 끝 -->
+        <!-- 상품 삭제 & 상품 금액 -->
+        <div
+          id="delete-and-bill"
+          class="flex justify-between items-center pb-6 border-b"
+        >
+          <div>
+            <button
+              type="button"
+              class="inline-block mr-1 py-2 px-5 bg-green-600 hover:bg-green-700 text-white transition ease-in duration-100 text-center text-base font-medium focus:outline-none"
+            >
+              전체삭제
+            </button>
+            <button
+              type="button"
+              class="inline-block py-2 px-5 bg-green-600 hover:bg-green-700 text-white transition ease-in duration-100 text-center text-base font-medium focus:outline-none"
+            >
+              선택삭제
+            </button>
+          </div>
+          <div class="inline-block text-xl">
+            <span>상품구매금액</span
+            ><span class="mx-1 ml-3 font-bold">6000</span
+            ><span class="font-bold">원</span><span class="mx-2">&#43;</span
+            ><span>배송비</span><span class="mx-1 ml-3 font-bold">3000 원</span
+            ><span class="mx-2">&#61;</span><span>합계</span
+            ><span class="mx-1 ml-3 font-bold">5000000</span
+            ><span class="font-bold">원</span>
+          </div>
+        </div>
+        <!-- 상품 주문 버튼 -->
+        <div id="order-buttons" class="mt-16">
+          <button
+            type="button"
+            class="inline-block py-3 px-12 mr-6 border border-green-600 hover:bg-green-600 hover:text-white text-green-600 transition ease-in duration-100 text-center text-base font-medium focus:outline-none"
+          >
+            선택상품주문</button
+          ><button
+            type="button"
+            class="inline-block py-3 px-12 mr-6 border border-green-600 hover:bg-green-600 hover:text-white text-green-600 transition ease-in duration-100 text-center text-base font-medium focus:outline-none"
+          >
+            전체상품주문
+          </button>
+        </div>
+      </div>
+      <!-- 장바구니에 상품이 없을 때 -->
+      <div
+        id="empty-cart-notice"
+        class="hidden whitespace-nowrap flex flex-col justify-center items-center mt-8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pl-2"
+          width="300"
+          height="300"
+          viewBox="0 0 24 24"
+          stroke-width="0.5"
+          stroke="#9e9e9e"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="9" />
+          <line x1="12" y1="8" x2="12" y2="13.5" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        <p class="text-2xl font-bold mb-5 mt-4">
+          장바구니에 담긴 상품이 없습니다.
+        </p>
+        <button
+          type="button"
+          class="inline-block py-3 px-12 border border-green-600 hover:bg-green-600 hover:text-white text-green-600 transition ease-in duration-100 text-center text-base font-medium focus:outline-none"
+        >
+          OHMECHU 인기상품 보러가기
+        </button>
+      </div>
     </main>
     <!-- 바닥글 -->
     <footer class="footer">
@@ -325,7 +311,7 @@
               <a
                 class="flex items-center justify-center font-medium text-neutral-900 title-font md:justify-start"
               >
-                <img src="./img/ohmechu_logo.png" alt="ohmechu-logo" />
+                <img src="/img/ohmechu_logo.png" alt="ohmechu-logo" />
               </a>
               <p class="mt-2 text-xs text-neutral-600">
                 Design, Code and Ship!
@@ -385,3 +371,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>
+
+<!-- https://tailwindcomponents.com/component/shopping-cart-responsive -->
+<!-- https://tailwindcomponents.com/component/manage-product-cart -->
