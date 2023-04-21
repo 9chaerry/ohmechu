@@ -19,7 +19,8 @@ function cartIn(e) {
   e.preventDefault();
   e.stopPropagation();
 
-  this.classList.toggle('animate-intro');
+  // 장바구니 애니메이션을 작동시킵니다.
+  cartInAnimation(this);
 
   // 버튼에서 id를 받아옵니다.
   const _id = this.id;
@@ -46,6 +47,14 @@ function cartIn(e) {
 
   // JSON 형태로 localStorage에 넘겨줍니다.
   window.localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function cartInAnimation(svg) {
+  svg.classList.add('animate-[cartIn_0.5s_ease-in-out_1]');
+  setTimeout(
+    () => svg.classList.remove('animate-[cartIn_0.5s_ease-in-out_1]'),
+    500
+  );
 }
 
 export { cartSetting };
