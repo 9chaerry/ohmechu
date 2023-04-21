@@ -59,7 +59,7 @@ function listTemplate(id, imgUrl, name, price, subDescription = '　') {
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  id="${id}"
+                  data-id="${id}"
                 >
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <polyline points="7 10 12 4 17 10" />

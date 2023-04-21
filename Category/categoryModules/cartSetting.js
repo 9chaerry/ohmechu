@@ -23,7 +23,7 @@ function cartIn(e) {
   cartInConfirm(this);
 
   // 버튼에서 id를 받아옵니다.
-  const _id = this.id;
+  const _id = this.dataset.id;
   const product = {
     _id: _id,
     amount: AMOUNT_INIT,
