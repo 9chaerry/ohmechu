@@ -6,3 +6,21 @@
   letter-spacing: -0.04em;
   box-sizing: border-box;
 }
+
+@keyframes cartIn {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -10px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
