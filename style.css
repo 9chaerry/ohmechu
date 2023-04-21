@@ -1,35 +1,8 @@
-.header {
-  background-color: red;
-  height: 160px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-.layout-body {
-  margin: 0 15vw;
-  padding: 0 30px;
-}
-
-.main .main__slider {
-  background-color: purple;
-  height: 300px;
-}
-
-.main .main__recommended-list {
-  background-color: green;
-  height: 300px;
-}
-
-.main .main__recommended-today {
-  background-color: yellow;
-  height: 300px;
-}
-
-.main .main__new-list {
-  background-color: indigo;
-  height: 300px;
-}
-
-.footer {
-  display: flex;
-  background-color: black;
-  height: 150px;
+* {
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  letter-spacing: -0.04em;
+  box-sizing: border-box;
 }
