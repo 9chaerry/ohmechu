@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
     <script src="/tailwind.config.js"></script>
   </head>
   <body>
@@ -136,9 +136,7 @@
     <!-- 메인 페이지 -->
     <main role="main" class="w-3/5 mx-auto mt-1 bg-white" id="cartpage__main">
       <!--페이지 상단-->
-      <div
-        class="about-order flex justify-between items-end pt-14 whitespace-nowrap"
-      >
+      <div class="flex justify-between items-end pt-14 whitespace-nowrap">
         <h2 class="text-4xl font-bold tracking-wider align-middle">장바구니</h2>
         <div class="text-xl">
           <span class="inline-block align-middle">01 장바구니</span>
@@ -159,7 +157,7 @@
             </svg>
           </p>
           <span class="inline-block align-middle text-stone-400"
-            >02 주문·결제</span
+            >02 주문결제</span
           >
           <p class="inline-block align-middle">
             <svg
@@ -200,16 +198,16 @@
       <div class="whitespace-nowrap">
         <div>
           <!-- 전체 선택, 상품 목록 수 -->
-          <div class="flex items-center pb-4">
+          <div class="flex items-center pb-3">
             <input
               type="checkbox"
               name="cartProducts"
               id="all-products-select"
               value="all"
-              class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600"
+              class="appearance-none w-5 h-5 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600"
               checked
             />
-            <label class="text-[18pt] font-medium ml-2">총 3/3개</label>
+            <label class="text-[18pt] font-medium ml-2">총 3/3건</label>
           </div>
           <!-- 장바구니 상품 리스트 -->
           <div class="pt-8 border-solid border-t-2 border-black">
@@ -224,7 +222,7 @@
                     name="cartProduct-1"
                     id="product-1"
                     value="product-1"
-                    class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600 inline-block mr-7"
+                    class="appearance-none w-5 h-5 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600 inline-block mr-7"
                     checked
                   />
                   <img
@@ -306,7 +304,7 @@
                     name="cartProduct-1"
                     id="product-1"
                     value="product-1"
-                    class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600 inline-block mr-7"
+                    class="appearance-none w-5 h-5 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600 inline-block mr-7"
                     checked
                   />
                   <img
