@@ -139,78 +139,154 @@
     <!-- 메인 페이지 -->
     <main role="main" class="mt-1" id="main-page">
       <article>
-        <div class="flex flex-col h-56 justify-center items-center">
-          <h2 class="text-3xl mb-10">전체 상품</h2>
-          <div class="flex w-3/5 mx-auto h-12 justify-center items-center">
-            <a
-              href=""
-              class="inline-block whitespace-nowrap w-28 h-8 mx-10 border-b border-black"
-              >전체 상품</a
+        <div class="flex flex-col h-80 justify-center items-center">
+          <h2 class="text-2xl mb-10">주문 / 배송 조회</h2>
+          <div
+            class="flex w-1/2 h-3/5 mx-auto justify-evenly items-center rounded-lg border-neutral-300 border"
+          >
+            <div class="w-32 h-32">
+              <div
+                class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+              >
+                배송준비중
+              </div>
+              <div
+                id="ready-order-amount"
+                class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+              >
+                0
+              </div>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="rgb(82,82,82)"
+              class="w-12 h-12"
             >
-            <a
-              href=""
-              class="inline-block whitespace-nowrap w-28 h-8 mx-10 border-b border-black"
-              >한식</a
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+            <div class="w-32 h-32">
+              <div
+                class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+              >
+                배송중
+              </div>
+              <div
+                id="delivery-order-amount"
+                class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+              >
+                0
+              </div>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="rgb(82,82,82)"
+              class="w-12 h-12"
             >
-            <a
-              href=""
-              class="inline-block whitespace-nowrap w-28 h-8 mx-10 border-b border-black"
-              >중식</a
-            >
-            <a
-              href=""
-              class="inline-block whitespace-nowrap w-28 h-8 mx-10 border-b border-black"
-              >일식</a
-            >
-            <a
-              href=""
-              class="inline-block whitespace-nowrap w-28 h-8 mx-10 border-b border-black"
-              >양식</a
-            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+            <div class="w-32 h-32">
+              <div
+                class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+              >
+                배송완료
+              </div>
+              <div
+                id="complete-order-amount"
+                class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+              >
+                0
+              </div>
+            </div>
           </div>
         </div>
         <div class="w-3/5 mx-auto p-2 text-left border-b-2 border-black">
-          <span class="mx-2">총 <span id="product-amount">__</span>건</span>
+          <span class="mx-2">총 <span id="order-amount">__</span>건</span>
         </div>
       </article>
-      <article>
-        <ul id="product-box" class="flex flex-wrap flex-shrink-0 w-3/5 mx-auto">
-          <!-- JS를 통해 li가 구현될 것임 -->
-          <li class="w-1/4 h-1/4 p-3 my-3">
-            <img
-              class="w-full object-cover object-center cursor-pointer"
-              src="../img/slide_image.jpg"
-            />
-            <div class="relative p-1">
-              <div
-                class="absolute left-[98%] top-2/4 -translate-x-full -translate-y-2/4 z-10 cursor-pointer"
+      <article
+        id="order-list-box"
+        class="flex flex-col flex-shrink-0 w-3/5 mx-auto"
+      >
+        <!-- JS를 통해 div가 구현될 것임 -->
+        <div>
+          <div class="flex justify-start p-4">
+            <span class="flex items-center text-2xl mr-4">주문번호</span>
+            <span class="inline-block flex items-center text-neutral-600"
+              >1q2w3e4r!</span
+            >
+            <div class="flex items-center text-neutral-600 ml-auto">
+              <span class="inline-block flex items-center text-neutral-600 mx-2"
+                >배송준비중</span
               >
-                <svg
-                  class="w-12 h-12"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <polyline points="7 10 12 4 17 10" />
-                  <path
-                    d="M21 10l-2 8a2 2.5 0 0 1 -2 2h-10a2 2.5 0 0 1 -2 -2l-2 -8z"
-                  />
-                  <circle cx="12" cy="15" r="2" />
-                </svg>
-              </div>
-              <a href="" class="block mt-2 text-left text-xl font-bold"
-                >상품명</a
+              <button
+                id="order-number-modify-{orderNumber}"
+                class="inline-block flex items-center text-xl text-neutral-600 p-2 mx-2 rounded border-neutral-300 border"
               >
-              <div class="text-left text-sm font-light">간단한 설명</div>
-              <div class="mt-3 text-left text-lg">금액 (원)</div>
+                주문수정
+              </button>
+              <button
+                id="order-number-cancel-{orderNumber}"
+                class="inline-block flex items-center text-xl text-rose-500 p-2 mx-2 rounded border-rose-500 border"
+              >
+                주문취소
+              </button>
             </div>
-          </li>
-        </ul>
+          </div>
+          <div class="flex flex-shrink-0">
+            <div
+              class="w-4/6 mx-4 py-2 text-neutral-600 border-neutral-300 border-b border-t"
+            >
+              상품목록
+            </div>
+            <div
+              class="w-1/6 mx-4 py-2 text-neutral-600 border-neutral-300 border-b border-t"
+            >
+              판매가
+            </div>
+            <div
+              class="w-1/6 mx-4 py-2 text-neutral-600 border-neutral-300 border-b border-t"
+            >
+              수량
+            </div>
+          </div>
+          <ul id="order-products" class="my-4">
+            <!-- JS를 통해 li가 구현될 것임 -->
+            <li class="flex">
+              <div class="flex w-4/6 mx-4 py-2 text-neutral-600">
+                <img
+                  class="block w-1/5 mx-16 object-cover object-center"
+                  src="../img/slide_image.jpg"
+                />
+                <div class="flex justify-center items-center">상품명</div>
+              </div>
+              <div
+                class="flex justify-center items-center w-1/6 mx-4 py-2 text-neutral-600"
+              >
+                판매가
+              </div>
+              <div
+                class="flex justify-center items-center w-1/6 mx-4 py-2 text-neutral-600"
+              >
+                수량
+              </div>
+            </li>
+          </ul>
+          <div class="mx-4 border-neutral-300 border-t mb-4"></div>
+        </div>
       </article>
     </main>
 

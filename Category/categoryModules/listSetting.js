@@ -1,6 +1,6 @@
 import { cartSetting } from './cartSetting.js';
 
-const productBox = document.getElementById('productBox');
+const productBox = document.getElementById('product-box');
 
 /**
  * list의 아이템들의 전반적인 세팅을 담당합니다.
