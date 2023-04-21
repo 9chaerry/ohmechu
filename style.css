@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+* {
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  letter-spacing: -0.04em;
+  box-sizing: border-box;
+}
+
+@keyframes cartIn {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -10px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
