@@ -123,13 +123,6 @@
                 class="w-1/2 mr-4 text-base border-b-2 transform ease-in duration-300 bg-transparent outline-none text-left placeholder:text-left focus-within:border-[#22392a]"
                 placeholder="도로명주소"
               />
-              <input
-                type="text"
-                id="jibunAddress"
-                class="w-1/2 mr-4 text-base border-b-2 transform ease-in duration-300 bg-transparent outline-none text-left placeholder:text-left focus-within:border-[#22392a]"
-                placeholder="지번주소"
-              />
-              <span id="guide" style="color: #999; display: none"></span>
             </td>
           </tr>
           <tr>
@@ -159,5 +152,7 @@
       </form>
     </main>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="module" src="/order/indexForAddress.js"></script>
   </body>
 </html>
