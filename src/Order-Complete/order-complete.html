@@ -5,165 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
-
-    <link rel="stylesheet" type="text/css" href="../../style.css" />
-    <script src="./tailwind.config.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script defer type="module" src="/index.js"></script>
   </head>
   <body>
-    <!-- 헤더 -->
-    <header class="w-full bg-white">
-      <!-- 헤더 상단 -->
-      <div class="mx-auto bg-white px-4 w-3/5">
-        <div class="w-full h-9 flex items-center hidden sm:flex justify-end">
-          <ul class="text-center">
-            <li
-              class="inline-block font-normal text-xs text-neutral-500 pr-3 border-r border-neutral-300 align-middle"
-            >
-              로그인
-            </li>
-            <li
-              class="inline-block font-normal text-xs text-neutral-500 px-3 border-r border-neutral-300 align-middle"
-            >
-              회원가입
-            </li>
-            <li
-              class="inline-block font-normal text-xs text-neutral-500 px-3 border-r border-neutral-300 align-middle"
-            >
-              마이페이지
-            </li>
-            <li
-              class="inline-block font-normal text-xs text-neutral-500 px-3 border-r border-neutral-300 align-middle"
-            >
-              주문조회
-            </li>
-            <li
-              class="inline-block font-normal text-xs text-neutral-500 pl-3 align-middle"
-            >
-              고객센터
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 헤더 중앙 -->
-      <div class="flex items-center justify-center flex-grow h-34">
-        <h1 class="inline-block">
-          <a href="../../index.html"
-            ><img
-              src="../../img/ohmechu_logo.png"
-              alt="오늘의 메뉴 추천"
-              class="scale-75 inline-block align-middle"
-          /></a>
-        </h1>
-      </div>
-      <!-- 헤더 하단 -->
-      <div
-        class="mx-auto w-3/5 h-16 bg-white flex flex-nowrap justify-between items-center text-center text-xl font-medium text-neutral-800"
-      >
-        <div class="flex-shrink-0 flex justify-center items-center">
-          <div class="inline-block">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-7"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-          </div>
-          <div class="inline-block pl-1">
-            <a href="">전체상품</a>
-          </div>
-        </div>
-
-        <div>
-          <ul
-            class="flex-shrink-0 flex flex-nowrap justify-between break-all w-2/6"
-          >
-            <li class="flex-shrink-0 mr-12">
-              <span><a href="">신상품</a></span>
-            </li>
-            <li class="flex-shrink-0 mx-12">
-              <span><a href="">인기상품</a></span>
-            </li>
-            <li class="flex-shrink-0 ml-12">
-              <span><a href="">이벤트</a></span>
-            </li>
-          </ul>
-        </div>
-        <div class="flex-shrink-0 flex flex-nowrap justify-between break-all">
-          <a href="환장하겟네" class="mr-5"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.3"
-              stroke="currentColor"
-              class="w-8 h-8"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-          </a>
-          <a href="별게다유료" class="ml-5"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.3"
-              stroke="currentColor"
-              class="w-8 h-8"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </header>
-    <!-- 헤더 끝 -->
     <!-- 주문 완료 페이지 -->
-    <main role="main" class="mt-1" id="main-page">
+    <main role="main" class="w-3/5 mx-auto mt-1 bg-white" id="main-page">
       <article>
-        <!-- <div class="text-3xl mt-12 font-bold">주문 완료</div> -->
-        <div
-          class="about-order flex justify-between items-end pt-14 whitespace-nowrap"
-        >
-          <h2 class="text-4xl font-bold tracking-wider align-middle">
-            장바구니
-          </h2>
+        <!-- 결제 헤드라인 -->
+        <div class="flex justify-between items-end py-14 whitespace-nowrap">
+          <h2 class="text-4xl font-medium text-left align-left">주문결제</h2>
           <div class="text-xl">
-            <span class="inline-block align-middle">01 장바구니</span>
-            <p class="inline-block align-middle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="w-5 h-6 align-middle mx-1"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </p>
             <span class="inline-block align-middle text-stone-400"
-              >02 주문·결제</span
+              >01 장바구니</span
             >
             <p class="inline-block align-middle">
               <svg
@@ -182,21 +36,39 @@
               </svg>
             </p>
             <span class="inline-block align-middle text-stone-400"
-              >03 주문완료</span
+              >02 주문결제</span
             >
+            <p class="inline-block align-middle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-6 align-middle mx-1 stroke-stone-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </p>
+            <span class="inline-block align-middle">03 주문완료</span>
           </div>
         </div>
-        <div class="border-2 mx-9 mt-12 border-gray-300"></div>
-        <div class="text-4xl mt-12 font-bold">
-          주문이 성공적으로 완료되었습니다!
+        <div class="pt-8 border-solid border-t-2 border-color-ter">
+          <p class="text-2xl font-bold mt-12">
+            주문이 성공적으로 완료되었습니다!
+          </p>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-circle-check mx-auto mt-20"
+          class="icon icon-tabler icon-tabler-circle-check mx-auto my-8"
           height="350"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="#009988"
+          stroke-width="0.5"
+          stroke="#607c5f"
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -206,123 +78,81 @@
           <path d="M9 12l2 2l4 -4" />
         </svg>
 
-        <div class="text-2xl mt-12 font-bold">
-          고객님의 주문번호는 15524564 입니다.
+        <div class="text-2xl font-bold">
+          <span class="font-medium mr-3">고객님의 주문번호는</span
+          ><span>12341234</span><span class="font-medium ml-3">입니다.</span>
         </div>
 
-        <div class="mt-16 text-left ml-10 text-2xl font-bold">주문 정보</div>
-        <div class="border-2 mx-9 mt-2 border-gray-300"></div>
-        <div class="name flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">이름</p>
-          <p>김토끼</p>
-        </div>
-        <div class="phone flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">번호</p>
-          <p>010-1234-5678</p>
-        </div>
-        <div class="address flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">주소</p>
-          <p class="mr-2">[123-345]</p>
-          <p class="mr-2">서울시 행복구 희망동 10,</p>
-          <p>101동 101호</p>
-        </div>
-        <div class="request flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">요청사항</p>
-          <p>문 앞에 놓아주세요.</p>
-        </div>
-        <div class="mt-20 text-left ml-10 text-2xl font-bold">결제 정보</div>
-        <div class="border-2 mx-9 mt-2 border-gray-300"></div>
-        <div class="name flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">구매 금액</p>
-          <p>66,000원</p>
-        </div>
-        <div class="phone flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">배송비</p>
-          <p>무료</p>
-        </div>
-        <div class="address flex my-6 items-center">
-          <p class="w-1/6 text-xl font-bold">합계</p>
-          <p class="font-bold">66,000원</p>
-        </div>
-        <button
-          class="payBtn rounded-2xl my-20 py-5 w-28 mx-auto bg-black hover:bg-gray-500"
+        <div
+          class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
         >
-          <p class="checkBtn font-bold text-white text-2xl">확인</p>
-        </button>
+          주문자 정보
+        </div>
+        <div class="w-full py-4 w-3/5">
+          <div class="w-max my-5">
+            <p class="inline-block text-lg font-medium text-left mr-6">
+              받는사람
+            </p>
+            <p class="inline-block text-lg text-left">앨리수</p>
+          </div>
+          <div class="w-max mb-5">
+            <p class="inline-block text-lg font-medium text-left mr-10">
+              연락처
+            </p>
+            <p class="inline-block text-lg text-left">010-1234-5678</p>
+          </div>
+          <div class="w-3/5 flex flex-col mb-5">
+            <div class="w-[37px]">
+              <p class="inline-block text-lg font-medium text-left mr-[56px]">
+                주소
+              </p>
+              <p class="inline-block text-lg text-left">12341</p>
+            </div>
+            <p class="ml-[92px]">
+              <span class="text-lg text-left">서울 성동구 고산자로 313</span>
+              <span class="text-lg text-left">서울 성동구 고산자로 313</span>
+              <span class="text-lg text-left"
+                >오른쪽으로 꺾어서 앞으로 전진</span
+              >
+            </p>
+          </div>
+          <div class="w-max">
+            <p class="inline-block text-lg font-medium text-left mr-6">
+              요청사항
+            </p>
+            <p class="inline-block text-lg text-left">문 앞에 놓아주세용.</p>
+          </div>
+        </div>
+
+        <div
+          class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
+        >
+          결제 정보
+        </div>
+        <div class="name flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">구매 금액</p>
+          <p class="text-lg font-medium text-left">66,000원</p>
+        </div>
+        <div class="phone flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">배송비</p>
+          <p class="text-lg font-medium text-left">3,000원</p>
+        </div>
+        <div class="address flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">합계</p>
+          <p class="text-lg font-semibold text-left">69,000원</p>
+        </div>
+        <div class="mt-16">
+          <button
+            type="button"
+            onclick="location.href='/OrderList/orderList.html'"
+            class="inline-block py-4 px-14 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none"
+          >
+            주문확인
+          </button>
+        </div>
       </article>
     </main>
     <!-- 주문 완료 페이지 끝 -->
-
-    <!-- 바닥글 -->
-    <footer class="footer">
-      <div class="flex items-end w-full min-h-screen bg-white">
-        <footer class="w-full text-gray-50 bg-neutral-700 body-font">
-          <div
-            class="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap"
-          >
-            <div
-              class="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left"
-            >
-              <a
-                class="flex items-center justify-center font-medium text-neutral-900 title-font md:justify-start"
-              >
-                <img src="./img/ohmechu_logo.png" alt="ohmechu-logo" />
-              </a>
-              <p class="mt-2 text-xs text-neutral-600">
-                Design, Code and Ship!
-              </p>
-              <div class="mt-4">
-                <span
-                  class="inline-flex justify-center mt-2 sm:ml-auto sm:mt-0 sm:justify-start"
-                >
-                  <div class="text-zinc-400 cursor-pointer hover:text-zinc-100">
-                    <p class="text-zinc-400 cursor-pointer hover:text-zinc-100">
-                      Gitlab-FrontEnd :
-                      <a
-                        href="https://kdt-gitlab.elice.io/sw_track/class_04/web_project/team17/ohmechu"
-                        target="_blank"
-                        >🧑🏻‍💻</a
-                      >
-                    </p>
-                    <p class="text-zinc-400 cursor-pointer hover:text-zinc-100">
-                      Gitlab-BackEnd :
-                      <a
-                        href="https://kdt-gitlab.elice.io/sw_track/class_04/web_project/team17/ohmechu-be"
-                        target="_blank
-                      "
-                        >👩🏻‍💻</a
-                      >
-                    </p>
-                  </div>
-                </span>
-              </div>
-            </div>
-            <div class="flex flex-wrap flex-grow text-left">
-              <div class="w-full px-4">
-                <h2
-                  class="mb-3 text-sm font-medium tracking-widest text-zinc-400 uppercase title-font"
-                >
-                  About
-                </h2>
-                <div class="text-zinc-400">
-                  <p>오늘의 메뉴 추천(주)</p>
-                  <p>운영시간 : 평일 10:00 ~ 18:00(점심시간 12:00 ~ 13:00)</p>
-                  <p>Tel) 02-123-1234</p>
-                </div>
-                <div class="text-zinc-400 cursor-pointer hover:text-zinc-100">
-                  <p>조정현 alskdjfak@elice.io</p>
-                  <p>이주영 alskdjfak@elice.io</p>
-                  <p>이채연 alskdjfak@elice.io</p>
-                  <p>이정은 alskdjfak@elice.io</p>
-                  <p>장준희 alskdjfak@elice.io</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </footer>
-    <!-- 바닥글 끝 -->
     <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>
