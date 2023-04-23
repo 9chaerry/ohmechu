@@ -16,8 +16,8 @@ function createHeader() {
       </li>
       <li
         class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
-      >
-        마이페이지
+      ><a href="/mypage/mypage.html">
+        마이페이지</a>
       </li>
       <li
         class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
@@ -74,7 +74,7 @@ function createHeader() {
     </li>
   </ul>
   <div class="w-[13%] flex justify-between pr-[6%]">
-    <a href="환장하겟네" class="mr-[5%]"
+    <a href="/mypage/mypage.html" class="mr-[5%]"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

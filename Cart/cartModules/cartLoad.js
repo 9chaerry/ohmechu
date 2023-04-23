@@ -66,7 +66,7 @@ function listTemplate(_id, img_url, name, amount, price) {
       name="cartProduct-1"
       id="product-1"
       value="product-1"
-      class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-200 focus:outline-none checked:bg-green-600 inline-block mr-7"
+      class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-300 focus:outline-none checked:bg-[#607c5f] inline-block mr-7"
       checked
     />
     <img
@@ -75,7 +75,7 @@ function listTemplate(_id, img_url, name, amount, price) {
     />
     <div class="inline-block ml-6">
       <p class="flex-col">
-        <span class="block text-left text-[17px] font-medium"
+        <span class="block text-left text-[17px] font-semibold"
           >${name}</span
         ><span
           span
@@ -95,7 +95,7 @@ function listTemplate(_id, img_url, name, amount, price) {
         <button
           data-action="decrement"
           data-product-id="${_id}"
-          class="text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-l cursor-pointer outline-none"
+          class="text-gray-600 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-l cursor-pointer outline-none"
         >
           <span class="text-2xl">&#45;</span>
         </button>
@@ -108,7 +108,7 @@ function listTemplate(_id, img_url, name, amount, price) {
         <button
           data-action="increment"
           data-product-id="${_id}"
-          class="text-gray-600 hover:text-gray-700 hover:bg-gray-200 h-full w-20 rounded-r cursor-pointer outline-none"
+          class="text-gray-600 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-r cursor-pointer outline-none"
         >
           <span class="text-xl">&#43;</span>
         </button>
@@ -122,7 +122,7 @@ function listTemplate(_id, img_url, name, amount, price) {
       data-action="cancel"
       data-product-id="${_id}"
       type="button"
-      class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+      class="rounded-md p-2 inline-flex items-center justify-center text-color-ter hover:text-[#f7f3eb] hover:bg-[#607c5f] trans focus:outline-none"
     >
       <svg
         class="h-6 w-6"
