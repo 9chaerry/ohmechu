@@ -1,10 +1,11 @@
 import { createHeader } from '/src/default_layout/header.js';
 import { createFooter } from '/src/default_layout/footer.js';
-// import { slideSetting } from '/src/List-Slider/listSlider.js';
+import { slideSetting } from '/src/modules/list_sliderModules/listSlider.js';
 
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
+  // 헤더 푸터 세팅
   createHeader();
   createFooter();
-};
-
-// slideSetting();
+  // 슬라이더 세팅
+  slideSetting();
+});
