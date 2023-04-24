@@ -21,10 +21,12 @@
             class="w-full my-4 transform border-b-2 bg-transparent text-lg ease-in duration-300 focus-within:border-[#22392a]"
           >
             <input
-              type="text"
-              name="user_id"
-              placeholder="아이디를 입력해주세요."
+              type="email"
+              id="userId"
+              name="userId"
+              placeholder="아이디를 입력해주세요.(ohmechu@example.com)"
               class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
             />
           </div>
           <!-- 비밀번호 input -->
@@ -36,6 +38,8 @@
               name="password"
               placeholder="비밀번호를 입력해주세요."
               class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
+              minlength="6"
+              maxlength="20"
             />
           </div>
 

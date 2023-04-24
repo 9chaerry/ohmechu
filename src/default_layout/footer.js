@@ -5,7 +5,7 @@ function createFooter() {
     <div class="sm:flex sm:items-center sm:justify-between text-color-pri">
       <a href="/index.html" class="flex items-center mb-2 sm:mb-0">
         <img
-          src="/img/omc_logo_white.png"
+          src="/src/img/omc_logo_white.png"
           class="h-12 bg-tr"
           alt="ohmechu-logo"
         />

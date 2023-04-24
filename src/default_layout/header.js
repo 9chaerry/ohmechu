@@ -37,7 +37,7 @@ function createHeader() {
   <h1 class="inline-block bg-transparent pl-[6%] flex-shrink-0">
     <a href="/index.html"
       ><img
-        src="/img/omc_logo.png"
+        src="/src/img/omc_logo.png"
         class="max-h-[37.5px] bg-transparent"
         alt="오늘의메뉴추천"
     /></a>
