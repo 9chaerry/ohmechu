@@ -7,22 +7,22 @@ function createHeader() {
       <li
         class="inline-block font-normal text-xs pr-3 border-r border-color-sec align-middle"
       >
-      <a href="/login/login.html">로그인</a>
+      <a href="/src/pages/login/login.html">로그인</a>
       </li>
       <li
         class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
-      ><a href="/login/sign-up.html">
+      ><a href="/src/pages/sign_up/sign_up.html">
         회원가입</a>
       </li>
       <li
         class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
-      ><a href="/mypage/mypage.html">
+      ><a href="/src/pages/mypage/mypage.html">
         마이페이지</a>
       </li>
       <li
         class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
       >
-      <a href="/OrderList/orderList.html">주문조회</a>
+      <a href="/src/pages/order_list/order_list.html">주문조회</a>
       </li>
       <li class="inline-block font-normal text-xs pl-3 align-middle">
         고객센터
@@ -35,7 +35,7 @@ function createHeader() {
   id="header"
 >
   <h1 class="inline-block bg-transparent pl-[6%] flex-shrink-0">
-    <a href="/index.html"
+    <a href="/src/pages/main/index.html"
       ><img
         src="/src/img/omc_logo.png"
         class="max-h-[37.5px] bg-transparent"
@@ -61,7 +61,7 @@ function createHeader() {
           d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
         />
       </svg>
-      <a href="/Category/category.html" class="inline-block align-bottom">전체상품</a>
+      <a href="/src/pages/category/category.html" class="inline-block align-bottom">전체상품</a>
     </li>
     <li class="inline-block mr-[4%]">
       <span><a href="" class="">신상품</a></span>
@@ -74,7 +74,7 @@ function createHeader() {
     </li>
   </ul>
   <div class="w-[13%] flex justify-between pr-[6%]">
-    <a href="/mypage/mypage.html" class="mr-[5%]"
+    <a href="/src/pages/mypage/mypage.html" class="mr-[5%]"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -90,7 +90,7 @@ function createHeader() {
         />
       </svg>
     </a>
-    <a href="/Cart/cart.html" class=""
+    <a href="/src/pages/cart/cart.html" class=""
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
