@@ -5,6 +5,8 @@ const newListLeftArrow = document.querySelector('#new-list-left-arrow');
 const newListRightArrow = document.querySelector('#new-list-right-arrow');
 const newListSlides = document.querySelector('#new-list-slides');
 
+import { getApi } from '/src/modules/api_methodModules/Api.js';
+
 const PER_SLIDE_PAGE = 4;
 const WRAP_SIZE = 1100;
 
@@ -16,9 +18,10 @@ let newCount = 0;
  * 서버에서 상품 정보를 받아오고, 슬라이드를 초기화합니다.
  */
 function slideSetting() {
+  console.log('slideSetting 진입함');
   // !!! 더미 url이 들어가있음! 추후 변경 필요 !!!
-  recListGenerator('./src/dummyProducts.json');
-  newListGenerator('./src/dummyProducts.json');
+  recListGenerator('/src/dummyProducts.json');
+  newListGenerator('/src/dummyProducts.json');
 
   // 슬라이더를 움직일 좌우 버튼에 대한 리스너를 등록합니다.
   recListLeftArrow.addEventListener('click', recListLeftSlide);
@@ -32,72 +35,68 @@ function slideSetting() {
  * GET API를 통해 상품 리스트를 받아와서 슬라이드를 작성합니다.
  * @param {상품 리스트 GET} url
  */
-function recListGenerator(url) {
+async function recListGenerator(url) {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
-  fetch(url)
-    .then((response) => response.json())
-    .then((datas) => {
-      console.log(datas);
-      for (let data of datas) {
-        // 슬라이드 내부 요소
-        const li = document.createElement('li');
-        const imgDiv = document.createElement('div');
-        const textDiv = document.createElement('div');
-        const img = document.createElement('img');
-        const a = document.createElement('a');
-        const p = document.createElement('p');
+  const datas = await getApi(url);
+  for (let data of datas) {
+    // 슬라이드 내부 요소
+    const li = document.createElement('li');
+    const imgDiv = document.createElement('div');
+    const textDiv = document.createElement('div');
+    const img = document.createElement('img');
+    const a = document.createElement('a');
+    const p = document.createElement('p');
 
-        // 요소 클래스 설정
-        li.classList.add(
-          'w-[255px]',
-          'flex-shrink-0',
-          'flex',
-          'flex-col',
-          'mx-[10px]'
-        );
-        imgDiv.classList.add(
-          'w-[255px]',
-          'h-[255px]',
-          'overflow-hidden',
-          'rounded-3xl',
-          'mb-4',
-          'cursor-pointer'
-        );
-        img.classList.add(
-          'w-[255px]',
-          'h-[255px]',
-          'bg-cover',
-          'scale-105',
-          'transition-transform',
-          'duration-300',
-          'ease-in-out',
-          'transform',
-          'hover:scale-110',
-          'transition-duration-300',
-          'hover:duration-300'
-        );
-        a.classList.add('no-underline', 'text-xl', 'font-semibold');
-        p.classList.add('text-base', 'font-normal');
+    // 요소 클래스 설정
+    li.classList.add(
+      'w-[255px]',
+      'flex-shrink-0',
+      'flex',
+      'flex-col',
+      'mx-[10px]'
+    );
+    imgDiv.classList.add(
+      'w-[255px]',
+      'h-[255px]',
+      'overflow-hidden',
+      'rounded-3xl',
+      'mb-4',
+      'cursor-pointer'
+    );
+    img.classList.add(
+      'w-[255px]',
+      'h-[255px]',
+      'bg-cover',
+      'scale-105',
+      'transition-transform',
+      'duration-300',
+      'ease-in-out',
+      'transform',
+      'hover:scale-110',
+      'transition-duration-300',
+      'hover:duration-300'
+    );
+    a.classList.add('no-underline', 'text-xl', 'font-semibold');
+    p.classList.add('text-base', 'font-normal');
 
-        // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
-        // 슬라이드에 데이터 삽입
-        img.src = data.img_url;
-        a.innerText = data.name;
-        a.href = '';
-        p.innerText = data.price;
+    // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
+    // 슬라이드에 데이터 삽입
+    img.src = data.img_url;
+    a.innerText = data.name;
+    a.href = '';
+    p.innerText = data.price;
 
-        // 각 요소 합치기
-        textDiv.appendChild(a);
-        textDiv.appendChild(p);
-        imgDiv.appendChild(img);
-        li.appendChild(imgDiv);
-        li.appendChild(textDiv);
+    // 각 요소 합치기
+    textDiv.appendChild(a);
+    textDiv.appendChild(p);
+    imgDiv.appendChild(img);
+    li.appendChild(imgDiv);
+    li.appendChild(textDiv);
 
-        // listSlideWrap에 위에서 만든 슬라이드 추가;
-        recListSlides.appendChild(li);
-        recCount++;
-      }
-    });
+    // listSlideWrap에 위에서 만든 슬라이드 추가;
+    recListSlides.appendChild(li);
+    recCount++;
+  }
   // 슬라이더에 대한 기본 설정을 초기화합니다.
   recListSlides.style.marginLeft = 0 + 'px';
 }
@@ -129,72 +128,68 @@ function recListRightSlide(e) {
  * GET API를 통해 상품 리스트를 받아와서 슬라이드를 작성합니다.
  * @param {상품 리스트 GET} url
  */
-function newListGenerator(url) {
+async function newListGenerator(url) {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
-  fetch(url)
-    .then((response) => response.json())
-    .then((datas) => {
-      console.log(datas);
-      for (let data of datas) {
-        // 슬라이드 내부 요소
-        const li = document.createElement('li');
-        const imgDiv = document.createElement('div');
-        const textDiv = document.createElement('div');
-        const img = document.createElement('img');
-        const a = document.createElement('a');
-        const p = document.createElement('p');
+  const datas = await getApi(url);
+  for (let data of datas) {
+    // 슬라이드 내부 요소
+    const li = document.createElement('li');
+    const imgDiv = document.createElement('div');
+    const textDiv = document.createElement('div');
+    const img = document.createElement('img');
+    const a = document.createElement('a');
+    const p = document.createElement('p');
 
-        // 요소 클래스 설정
-        li.classList.add(
-          'w-[255px]',
-          'flex-shrink-0',
-          'flex',
-          'flex-col',
-          'mx-[10px]'
-        );
-        imgDiv.classList.add(
-          'w-[255px]',
-          'h-[255px]',
-          'overflow-hidden',
-          'rounded-3xl',
-          'mb-4',
-          'cursor-pointer'
-        );
-        img.classList.add(
-          'w-[255px]',
-          'h-[255px]',
-          'bg-cover',
-          'scale-105',
-          'transition-transform',
-          'duration-300',
-          'ease-in-out',
-          'transform',
-          'hover:scale-110',
-          'transition-duration-300',
-          'hover:duration-300'
-        );
-        a.classList.add('no-underline', 'text-xl', 'font-semibold');
-        p.classList.add('text-base', 'font-normal');
+    // 요소 클래스 설정
+    li.classList.add(
+      'w-[255px]',
+      'flex-shrink-0',
+      'flex',
+      'flex-col',
+      'mx-[10px]'
+    );
+    imgDiv.classList.add(
+      'w-[255px]',
+      'h-[255px]',
+      'overflow-hidden',
+      'rounded-3xl',
+      'mb-4',
+      'cursor-pointer'
+    );
+    img.classList.add(
+      'w-[255px]',
+      'h-[255px]',
+      'bg-cover',
+      'scale-105',
+      'transition-transform',
+      'duration-300',
+      'ease-in-out',
+      'transform',
+      'hover:scale-110',
+      'transition-duration-300',
+      'hover:duration-300'
+    );
+    a.classList.add('no-underline', 'text-xl', 'font-semibold');
+    p.classList.add('text-base', 'font-normal');
 
-        // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
-        // 슬라이드에 데이터 삽입
-        img.src = data.img_url;
-        a.innerText = data.name;
-        a.href = '';
-        p.innerText = data.price;
+    // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
+    // 슬라이드에 데이터 삽입
+    img.src = data.img_url;
+    a.innerText = data.name;
+    a.href = '';
+    p.innerText = data.price;
 
-        // 각 요소 합치기
-        textDiv.appendChild(a);
-        textDiv.appendChild(p);
-        imgDiv.appendChild(img);
-        li.appendChild(imgDiv);
-        li.appendChild(textDiv);
+    // 각 요소 합치기
+    textDiv.appendChild(a);
+    textDiv.appendChild(p);
+    imgDiv.appendChild(img);
+    li.appendChild(imgDiv);
+    li.appendChild(textDiv);
 
-        // listSlideWrap에 위에서 만든 슬라이드 추가;
-        newListSlides.appendChild(li);
-        newCount++;
-      }
-    });
+    // listSlideWrap에 위에서 만든 슬라이드 추가;
+    newListSlides.appendChild(li);
+    newCount++;
+  }
   // 슬라이더에 대한 기본 설정을 초기화합니다.
   newListSlides.style.marginLeft = 0 + 'px';
 }
