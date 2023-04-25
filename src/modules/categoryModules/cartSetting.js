@@ -31,7 +31,8 @@ function cartIn(e) {
 
   // 이미 존재하는 LocalStorage의 값을 받아와서 세팅합니다.
   // 원래 장바구니 값이 없었을 때, 배열 []로 초기화합니다.
-  const cart = JSON.parse(window.localStorage.getItem('cart')) ?? [];
+  let cart = window.localStorage.getItem('cart');
+  cart = cart ? JSON.parse(cart) : [];
 
   if (cart.length > 0)
     for (let i = 0; i < cart.length; i++) {

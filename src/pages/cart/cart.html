@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/cart/cart.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="cart.js"></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
@@ -105,12 +106,14 @@
         >
           <div>
             <button
+              id="delete-all"
               type="button"
               class="inline-block mr-1 py-2 px-5 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
             >
               전체삭제
             </button>
             <button
+              id="delete-select"
               type="button"
               class="inline-block py-2 px-5 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
             >
@@ -119,12 +122,13 @@
           </div>
           <div class="inline-block text-xl">
             <span class="text-color-sec">상품구매금액</span
-            ><span class="mx-1 ml-3 font-bold">6000</span
+            ><span id="purchase-price" class="mx-1 ml-3 font-bold">0</span
             ><span class="font-bold">원</span><span class="mx-2">&#43;</span
             ><span class="text-color-sec">배송비</span
-            ><span class="mx-1 ml-3 font-bold">3000 원</span
+            ><span id="delivery-price" class="mx-1 ml-3 font-bold">0</span
+            ><span class="mx-1 ml-3 font-bold">원</span
             ><span class="mx-2">&#61;</span><span>합계</span
-            ><span class="mx-1 ml-3 font-bold">5000000</span
+            ><span id="total-price" class="mx-1 ml-3 font-bold">0</span
             ><span class="font-bold">원</span>
           </div>
         </div>
