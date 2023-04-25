@@ -14,7 +14,7 @@ const orderListBox = document.getElementById('order-list-box');
  */
 async function orderListSetting() {
   // !!! --- 디버깅용 --- !!!
-  window.localStorage.setItem('orderId', 3);
+  window.localStorage.setItem('orderId', 1);
   // !!! --- 디버깅용 --- !!!
 
   // 주문 리스트를 작성하기 위해 주문번호 리스트를 정의합니다.
@@ -23,6 +23,12 @@ async function orderListSetting() {
   // 로그인 상태인지 판별합니다.
   if (false) {
     // !!! --- 로그인 상태 판별 코드 아직 구현 안됨 --- !!!
+    // JWT 토큰이 있는지 확인 후, 해당 토큰에 맞는 users DB 정보를 요청함.
+    const user = {
+      orderNumber: ['1', '2', '3'],
+    };
+    orderIdList = user.orderNumber;
+    // !!! --- 디버깅용 --- !!!
   } else {
     // 비회원일 경우에 LocalStorage의 orderId를 받아옵니다. (받아온 후 삭제)
     const orderId = window.localStorage.getItem('orderId');
@@ -34,7 +40,6 @@ async function orderListSetting() {
     alert('주문 정보가 없습니다.');
     return;
   }
-  console.log(orderIdList);
 
   // !!! --- 추후 백엔드 API로 수정 필요 --- !!!
   // orderIdList의 주문번호로 API와 통신하고, response를 토대로 리스트를 작성합니다.
@@ -46,6 +51,12 @@ async function orderListSetting() {
     const id = order._id;
     const state = order.orderState;
     orderListBox.innerHTML += divTemplate(id, state);
+
+    // 배송준비중이 아니면 주문수정 버튼을 숨깁니다.
+    if (state !== '배송준비중')
+      document
+        .querySelector(`button[data-order-id="${id}"]`)
+        .classList.add('hidden');
 
     // 리스트를 작성합니다.
     const orderList = document.querySelector(`ul[data-order-id="${id}"]`);
@@ -60,8 +71,6 @@ async function orderListSetting() {
         ...productList.find((product) => product._id === itemsList[i].id),
       };
     }
-
-    console.log(itemsList);
 
     // 주문 상품 별 리스트 작성
     for (let item of itemsList) {
@@ -78,6 +87,9 @@ async function orderListSetting() {
   }
 
   // 주문수정 버튼의 이벤트를 추가합니다.
+  const editButtons = document.getElementsByClassName('edit-button');
+  for (let editButton of editButtons)
+    editButton.addEventListener('click', editOrder);
 }
 
 /**
@@ -111,7 +123,7 @@ function divTemplate(id, orderState) {
           data-order-id="${id}"
           onclick="location.href
           ='/src/pages/order_edit/order_edit.html';"
-          class="inline-block py-1 px-3 mx-2 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+          class="edit-button inline-block py-1 px-3 mx-2 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
         >
           주문수정
         </button>
@@ -149,9 +161,14 @@ function listTemplate(img_url, name, amount, price) {
 /**
  * 주문수정 페이지에서 활용될 LocalStorage값 editOrderId를 등록합니다.
  */
-function editOrder() {
+function editOrder(e) {
+  // 기본 액션을 제거합니다.
+  e.preventDefault();
+  e.stopPropagation();
+
   // LocalStorage의 editOrderId에 수정할 주문번호를 명시합니다.
   // 이 editOrderId는 주문수정 페이지에서 활용됩니다.
+  window.localStorage.setItem('editOrderId', this.dataset.orderId);
 }
 
 export { orderListSetting };
