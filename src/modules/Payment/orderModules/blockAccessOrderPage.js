@@ -3,9 +3,11 @@ async function blockAccess(e) {
   if (!cartData || cartData.length === 0) {
     alert('결제하려는 상품이 없습니다.');
     e.preventDefault();
+    e.stopPropagation();
+    return false;
   } else {
     const orderAmount = document.getElementById('order-amount');
-    orderAmount.innerText = cartData.length;
+    orderAmount.innerText = `${cartData.length}`;
   }
 }
 

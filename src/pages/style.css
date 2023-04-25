@@ -83,8 +83,11 @@ svg {
 }
 
 table,
-tr,
-td {
+tr {
   text-align: left;
   padding: 0.7rem;
+  width: 100%;
+}
+td {
+  padding: 0.5rem;
 }

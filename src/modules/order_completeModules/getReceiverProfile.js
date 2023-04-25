@@ -1,4 +1,4 @@
-import { getApi } from '/src/modules/api_methodModules/Api.js';
+import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
 
 async function getReceiverProfile() {
   //   const receiverName = document.getElementById('receiver-name');
@@ -23,7 +23,7 @@ async function getReceiverProfile() {
     const order = JSON.parse(window.localStorage.getItem('order'));
     const params = { _id: order.id };
 
-    const response = await getApi('백엔드 get할 경로', params);
+    const response = await getData(order.id);
     const data = response.data;
 
     receiver.name.innerText = `${data.userName}`;
