@@ -2,14 +2,16 @@ import { cartLoad } from './cartLoad.js';
 // 체크 박스들
 const allProductsSelectBox = document.getElementById('all-products-select');
 const checkBoxes = document.getElementsByClassName('check-box');
-// 선택 삭제 버튼
+// 선택 삭제, 선택 주문 버튼
 const deleteSelectButton = document.getElementById('delete-select');
+const orderSelectButton = document.getElementById('order-select');
 
 function checkBoxSetting() {
   // 전체 선택 버튼에 대한 세팅을 진행합니다.
   allProductsSelectBox.addEventListener('change', allProductSelect);
-  // 선택 삭제 버튼에 대한 세팅을 진행합니다.
+  // 선택 삭제, 선택 주문 버튼에 대한 세팅을 진행합니다.
   deleteSelectButton.addEventListener('click', deleteSelect);
+  orderSelectButton.addEventListener('click', orderSelect);
 }
 
 function allProductSelect(e) {
@@ -46,6 +48,33 @@ function deleteSelect(e) {
   else window.localStorage.setItem('cart', JSON.stringify(cart));
 
   cartLoad();
+}
+
+function orderSelect(e) {
+  // 기본 액션을 제거합니다.
+  e.preventDefault();
+  e.stopPropagation();
+
+  // 체크된 아이템들만 localStorage 장바구니에 저장합니다.
+  const checkedItemsIdList = checkedItems();
+  let cart = window.localStorage.getItem('cart');
+  cart = cart && JSON.parse(cart);
+
+  if (cart === null) {
+    alert('장바구니가 비어있습니다.');
+    return;
+  }
+
+  if (checkedItemsIdList.length < 1) {
+    alert('선택된 상품이 없습니다.');
+    return;
+  }
+
+  let orderCart = cart.filter((item) => checkedItemsIdList.includes(item.id));
+  window.localStorage.setItem('cart', JSON.stringify(orderCart));
+
+  // 상품 주문 페이지로 이동합니다.
+  location.href = '/src/pages/order/order.html';
 }
 
 /**

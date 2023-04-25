@@ -11,7 +11,9 @@ const orderButtons = document.getElementById('order-buttons');
 // 장바구니 있을때 조정
 const cartList = document.getElementById('cart-list');
 const cartAmount = document.getElementById('cart-amount');
+// 전체 삭제, 전체 상품주문
 const deleteAllButton = document.getElementById('delete-all');
+const orderAllButton = document.getElementById('order-all');
 
 /**
  * _id로 상품의 데이터를 받아오는 API를 통해 리스트와 버튼을 초기화합니다.
@@ -63,8 +65,9 @@ async function cartLoad() {
   // 상품 리스트의 체크박스를 세팅합니다.
   checkBoxSetting();
 
-  // 전체 삭제 버튼을 세팅합니다.
+  // 전체 삭제, 전체 상품 주문을 세팅합니다.
   deleteAllButton.addEventListener('click', deleteAll);
+  orderAllButton.addEventListener('click', orderAll);
 }
 
 function deleteAll(e) {
@@ -77,6 +80,15 @@ function deleteAll(e) {
 
     cartLoad();
   }
+}
+
+function orderAll(e) {
+  // 기본 액션을 제거합니다.
+  e.preventDefault();
+  e.stopPropagation();
+
+  // 상품 주문 페이지로 이동합니다.
+  location.href = '/src/pages/order/order.html';
 }
 
 function listTemplate(id, img_url, name, amount, price) {
