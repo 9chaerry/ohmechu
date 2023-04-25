@@ -36,3 +36,4 @@ function goodsListTemplate(data, amountData) {
   </div>`;
   return goodsList;
 }
+export { goodsListTemplate };
