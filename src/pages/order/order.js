@@ -4,7 +4,9 @@ import { execDaumPostcode } from '/src/modules/orderModules/inputUserAddress.js'
 import { orderListTemplate } from '/src/modules/orderModules/userOrderList.js';
 import { priceSetting } from '/src/modules/orderModules/goodsTotalPrice.js';
 import { sendReceiverProfile } from '/src/modules/orderModules/userShippingInput.js';
+import { blockAccess } from '/src/modules/orderModules/blockAccessOrderPage';
 
+document.addEventListener('DOMContentLoaded', blockAccess);
 document.addEventListener('DOMContentLoaded', createHeader);
 document.addEventListener('DOMContentLoaded', createFooter);
 document.addEventListener('DOMContentLoaded', orderListTemplate);
