@@ -14,7 +14,7 @@ async function getApi(url, params = {}, headers = {}) {
 async function postApi(url, data) {
   try {
     const response = await axios.post(url, data);
-    return response.data;
+    return JSON.parse(response.data);
   } catch (error) {
     console.error(`API POST 요청 실패: ${error}`);
     throw error;
@@ -24,7 +24,7 @@ async function postApi(url, data) {
 async function putApi(url, data) {
   try {
     const response = await axios.put(url, data);
-    return response.data;
+    return JSON.parse(response.data);
   } catch (error) {
     console.error(`API PUT 요청 실패: ${error}`);
     throw error;
@@ -34,7 +34,7 @@ async function putApi(url, data) {
 async function deleteApi(url, params) {
   try {
     const response = await axios.delete(url, { params });
-    return response.data;
+    return JSON.parse(response.data);
   } catch (error) {
     console.error(`API DELETE 요청 실패: ${error}`);
     throw error;
