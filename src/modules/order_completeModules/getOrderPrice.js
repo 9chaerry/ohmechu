@@ -1,3 +1,5 @@
+import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+
 async function getOrderPrice() {
   const orderPrice = {
     purchaseAmount: document.getElementById('purchase-amount'),
@@ -8,7 +10,7 @@ async function getOrderPrice() {
     const order = JSON.parse(window.localStorage.getItem('order'));
     const params = { _id: order.id };
 
-    const response = await getApi('백엔드 get할 경로', params);
+    const response = await getData(order.id);
     const data = response.data;
 
     orderPrice.purchaseAmount.innerText = `${data.purchaseAmount.toLocaleString(

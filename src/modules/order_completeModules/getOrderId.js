@@ -1,7 +1,7 @@
 function getOrderId() {
-  const order = JSON.parse(window.localStorage.getItem('order'));
+  const order = window.localStorage.getItem('order');
   const orderIdContainer = document.getElementById('order-id');
 
-  orderIdContainer.innerText = `${order._id}`;
+  orderIdContainer.innerText = `${order}`;
 }
 export { getOrderId };

@@ -1,4 +1,4 @@
-export function execDaumPostcode() {
+export function execDaumPostcode(e) {
   e.stopPropagation();
   new daum.Postcode({
     oncomplete: function (data) {

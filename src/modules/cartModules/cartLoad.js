@@ -1,4 +1,7 @@
 import { btnsSetting } from './btnsSetting.js';
+import { priceSetting } from './priceSetting.js';
+import { checkBoxSetting } from './checkBoxes.js';
+import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
 
 // 장바구니 없을때 조정
 const emptyCartNotice = document.getElementById('empty-cart-notice');
@@ -8,65 +11,100 @@ const orderButtons = document.getElementById('order-buttons');
 // 장바구니 있을때 조정
 const cartList = document.getElementById('cart-list');
 const cartAmount = document.getElementById('cart-amount');
+// 전체 삭제, 전체 상품주문
+const deleteAllButton = document.getElementById('delete-all');
+const orderAllButton = document.getElementById('order-all');
 
 /**
  * _id로 상품의 데이터를 받아오는 API를 통해 리스트와 버튼을 초기화합니다.
  */
-function cartLoad() {
+async function cartLoad() {
+  // 우선 장바구니 리스트를 비웁니다.
+  cartList.innerHTML = '';
+
   // --- !!! 백엔드 API 연결 필요 !!! ---
-  fetch('/src/dummyProducts.json')
-    .then((res) => res.json())
-    .then((fetchDatas) => {
-      let cart = window.localStorage.getItem('cart');
-      cart = cart && JSON.parse(cart);
+  const getDatas = await getData();
 
-      // 장바구니가 비어있을 경우 알림 표시 후 함수 끝냄
-      if (cart === null) {
-        emptyCartNotice.classList.remove('hidden');
-        deleteAndBill.classList.add('hidden');
-        orderButtons.classList.add('hidden');
-        return;
-      }
+  let cart = window.localStorage.getItem('cart');
+  cart = cart && JSON.parse(cart);
 
-      // 장바구니 수량 입력
-      cartAmount.innerText = cart ? cart.length : 0;
+  // 장바구니 수량 입력
+  cartAmount.innerText = cart ? cart.length : 0;
 
-      // 장바구니의 상품들을 리스트로 출력합니다.
-      // reverse()를 주어서 최근 등록 제품부터 뜨도록 합니다.
-      for (const product of cart.reverse()) {
-        const _id = product._id;
-        const amount = product.amount;
-        let productData = null;
+  // 장바구니가 비어있을 경우 알림 표시 후 함수 끝냄
+  if (cart === null) {
+    emptyCartNotice.classList.remove('hidden');
+    deleteAndBill.classList.add('hidden');
+    orderButtons.classList.add('hidden');
+    return;
+  }
 
-        // --- !!! productData는 백엔드 API로 간단하게 받아올 것. 수정필요 !!! ---
-        for (let data of fetchDatas) if (data._id === _id) productData = data;
+  // 장바구니의 상품들을 리스트로 출력합니다.
+  // reverse()를 주어서 최근 등록 제품부터 뜨도록 합니다.
+  for (let product of cart.reverse()) {
+    const id = product.id;
+    const amount = product.amount;
+    // --- !!! productData는 백엔드 API로 간단하게 받아올 것. 수정필요 !!! ---
+    const productData = getDatas.find((data) => data._id === id);
 
-        cartList.innerHTML += listTemplate(
-          product._id,
-          productData.img_url,
-          productData.name,
-          amount,
-          productData.price
-        );
-      }
-      return;
-    })
-    .then(() => btnsSetting());
+    cartList.innerHTML += listTemplate(
+      productData._id,
+      productData.img_url,
+      productData.name,
+      amount,
+      productData.price
+    );
+  }
+
+  // 상품 가격을 초기화합니다.
+  priceSetting();
+
+  // 상품 리스트의 버튼을 세팅합니다.
+  btnsSetting();
+
+  // 상품 리스트의 체크박스를 세팅합니다.
+  checkBoxSetting();
+
+  // 전체 삭제, 전체 상품 주문을 세팅합니다.
+  deleteAllButton.addEventListener('click', deleteAll);
+  orderAllButton.addEventListener('click', orderAll);
 }
 
-function listTemplate(_id, img_url, name, amount, price) {
+function deleteAll(e) {
+  // 기본 액션을 제거합니다.
+  e.preventDefault();
+  e.stopPropagation();
+
+  if (confirm('장바구니를 전부 비우시겠습니까?')) {
+    window.localStorage.removeItem('cart');
+
+    cartLoad();
+  }
+}
+
+function orderAll(e) {
+  // 기본 액션을 제거합니다.
+  e.preventDefault();
+  e.stopPropagation();
+
+  // 상품 주문 페이지로 이동합니다.
+  location.href = '/src/pages/order/order.html';
+}
+
+function listTemplate(id, img_url, name, amount, price) {
   return `<li
-  data-list-product-id="${_id}"
+  data-list-product-id="${id}"
   class="pb-6 mb-6 border-solid border-b border-gray flex items-center justify-between flex-no-wrap"
 >
   <!-- 상품 좌측 선택 버튼, 이미지, 제품명 -->
   <div class="flex items-center">
     <input
+      data-product-id="${id}"
       type="checkbox"
       name="cartProduct-1"
       id="product-1"
       value="product-1"
-      class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-300 focus:outline-none checked:bg-[#607c5f] inline-block mr-7"
+      class="check-box appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-300 focus:outline-none checked:bg-[#607c5f] inline-block mr-7"
       checked
     />
     <img
@@ -94,7 +132,7 @@ function listTemplate(_id, img_url, name, amount, price) {
       >
         <button
           data-action="decrement"
-          data-product-id="${_id}"
+          data-product-id="${id}"
           class="text-gray-600 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-l cursor-pointer outline-none"
         >
           <span class="text-2xl">&#45;</span>
@@ -107,7 +145,7 @@ function listTemplate(_id, img_url, name, amount, price) {
         />
         <button
           data-action="increment"
-          data-product-id="${_id}"
+          data-product-id="${id}"
           class="text-gray-600 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-r cursor-pointer outline-none"
         >
           <span class="text-xl">&#43;</span>
@@ -120,7 +158,7 @@ function listTemplate(_id, img_url, name, amount, price) {
     <!-- 상품 취소 -->
     <button
       data-action="cancel"
-      data-product-id="${_id}"
+      data-product-id="${id}"
       type="button"
       class="rounded-md p-2 inline-flex items-center justify-center text-color-ter hover:text-[#f7f3eb] hover:bg-[#607c5f] trans focus:outline-none"
     >
