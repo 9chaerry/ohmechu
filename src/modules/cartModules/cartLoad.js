@@ -1,7 +1,7 @@
 import { btnsSetting } from './btnsSetting.js';
 import { priceSetting } from './priceSetting.js';
 import { checkBoxSetting } from './checkBoxes.js';
-import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+import { getApi } from '/src/modules/api_methodModules/Api.js';
 
 // 장바구니 없을때 조정
 const emptyCartNotice = document.getElementById('empty-cart-notice');
@@ -23,7 +23,7 @@ async function cartLoad() {
   cartList.innerHTML = '';
 
   // --- !!! 백엔드 API 연결 필요 !!! ---
-  const getDatas = await getData();
+  const getDatas = await getApi('/src/dummyProducts.json');
 
   let cart = window.localStorage.getItem('cart');
   cart = cart && JSON.parse(cart);

@@ -1,4 +1,4 @@
-import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+import { getApi } from '/src/modules/api_methodModules/Api.js';
 
 const purchasePrice = document.getElementById('purchase-price');
 const deliveryPrice = document.getElementById('delivery-price');
@@ -8,7 +8,7 @@ const DELIVERY_PRICE = 3000;
 
 async function priceSetting() {
   // !!! 임시 API 주소임 !!!
-  const datas = await getData();
+  const datas = await getApi('/src/dummyProducts.json');
 
   let cart = window.localStorage.getItem('cart');
   cart = cart ? JSON.parse(cart) : [];

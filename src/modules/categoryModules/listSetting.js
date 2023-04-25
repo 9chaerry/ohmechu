@@ -1,5 +1,5 @@
 import { cartSetting } from './cartSetting.js';
-import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+import { getApi } from '/src/modules/api_methodModules/Api.js';
 
 const productBox = document.getElementById('product-box');
 const productAmount = document.getElementById('product-amount');
@@ -25,7 +25,7 @@ async function listGeneration(url, category) {
   productBox.innerHTML = '';
 
   // 카테고리에 맞게 데이터를 산출합니다.
-  const datas = await getData();
+  const datas = await getApi(url);
   let selectDatas =
     category === '전체 상품'
       ? datas

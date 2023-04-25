@@ -5,7 +5,7 @@ const newListLeftArrow = document.querySelector('#new-list-left-arrow');
 const newListRightArrow = document.querySelector('#new-list-right-arrow');
 const newListSlides = document.querySelector('#new-list-slides');
 
-import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+import { getApi } from '/src/modules/api_methodModules/Api.js';
 
 const PER_SLIDE_PAGE = 4;
 const WRAP_SIZE = 1100;
@@ -37,7 +37,7 @@ function slideSetting() {
  */
 async function recListGenerator(url) {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
-  const datas = await getData();
+  const datas = await getApi(url);
   for (let data of datas) {
     // 슬라이드 내부 요소
     const li = document.createElement('li');
