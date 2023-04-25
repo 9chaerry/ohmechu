@@ -1,4 +1,5 @@
-import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+import { getDummyOrders } from '/src/modules/api_methodModules/Fetcher_dummy.js';
+import { getOrderedId } from '/src/modules/order_completeModules/getOrderId.js';
 
 async function getOrderPrice() {
   const orderPrice = {
@@ -7,11 +8,12 @@ async function getOrderPrice() {
     totalAmount: document.getElementById('total-amount'),
   };
   try {
-    const order = JSON.parse(window.localStorage.getItem('order'));
-    const params = { _id: order.id };
+    // const order = JSON.parse(window.localStorage.getItem('order'));
+    // const params = { _id: order.id };
 
-    const response = await getData(order.id);
-    const data = response.data;
+    const order = getOrderedId();
+    const response = await getDummyOrders(order);
+    const data = response;
 
     orderPrice.purchaseAmount.innerText = `${data.purchaseAmount.toLocaleString(
       'ko-KR'
@@ -26,6 +28,5 @@ async function getOrderPrice() {
   } catch (error) {
     console.error(`데이터를 가져오는데 실패했습니다.: ${error}`);
   }
-  const order = JSON.parse(window.localStorage.getItem('order'));
 }
 export { getOrderPrice };

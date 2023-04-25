@@ -1,4 +1,5 @@
-import { getApi, getData } from '/src/modules/api_methodModules/Api.js';
+import { getDummyOrders } from '/src/modules/api_methodModules/Fetcher_dummy.js';
+import { getOrderedId } from '/src/modules/order_completeModules/getOrderId.js';
 
 async function getReceiverProfile() {
   //   const receiverName = document.getElementById('receiver-name');
@@ -20,11 +21,11 @@ async function getReceiverProfile() {
   };
 
   try {
-    const order = JSON.parse(window.localStorage.getItem('order'));
-    const params = { _id: order.id };
-
-    const response = await getData(order.id);
-    const data = response.data;
+    // const order = JSON.parse(window.localStorage.getItem('order'));
+    // const params = { _id: order.id };
+    const order = getOrderedId();
+    const response = await getDummyOrders(order);
+    const data = response;
 
     receiver.name.innerText = `${data.userName}`;
     receiver.phoneNumber.innerText = `${data.phoneNumber}`;
