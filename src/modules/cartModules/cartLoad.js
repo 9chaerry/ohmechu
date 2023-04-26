@@ -48,7 +48,7 @@ async function cartLoad() {
 
     cartList.innerHTML += listTemplate(
       productData._id,
-      productData.img_url,
+      productData.img,
       productData.name,
       amount,
       productData.price,
@@ -91,7 +91,7 @@ function orderAll(e) {
   location.href = '/src/pages/order/order.html';
 }
 
-function listTemplate(id, img_url, name, amount, price, description) {
+function listTemplate(id, img, name, amount, price, description) {
   const descriptionOneLine = description.split('.')[0] + '.';
 
   return `<li
@@ -110,7 +110,7 @@ function listTemplate(id, img_url, name, amount, price, description) {
       checked
     />
     <img
-      src="${img_url}"
+      src="${img}"
       class="inline-block w-[150px] h-[150px]"
     />
     <div class="inline-block ml-6">

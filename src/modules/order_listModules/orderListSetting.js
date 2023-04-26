@@ -74,7 +74,7 @@ async function orderListSetting() {
     // 주문 상품 별 리스트 작성
     for (let item of itemsList) {
       orderList.innerHTML += listTemplate(
-        item.img_url,
+        item.img,
         item.name,
         item.amount,
         item.price * item.amount
@@ -135,12 +135,12 @@ function divTemplate(id, orderState) {
   </div>`;
 }
 
-function listTemplate(img_url, name, amount, price) {
+function listTemplate(img, name, amount, price) {
   return `<li class="flex">
     <div class="flex w-4/6 mx-4 py-2 text-neutral-600">
       <img
         class="block w-1/5 mx-16 object-cover object-center"
-        src="${img_url}"
+        src="${img}"
       />
       <div class="flex justify-center items-center">${name}</div>
     </div>

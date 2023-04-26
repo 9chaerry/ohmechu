@@ -30,7 +30,7 @@ async function listGeneration(category) {
   for (let data of datas)
     productBox.innerHTML += listTemplate(
       data._id,
-      data.img_url,
+      data.img,
       data.name,
       data.price,
       data?.sub_description
@@ -48,11 +48,11 @@ async function listGeneration(category) {
  * @param {String[]} subDescription
  * @returns
  */
-function listTemplate(id, imgUrl, name, price, subDescription = '　') {
+function listTemplate(id, img, name, price, subDescription = '　') {
   return `<li class="w-1/4 h-1/4 p-3 my-3">
               <img
                 class="w-full object-cover flex-shrink-0 object-center cursor-pointer"
-                src="${imgUrl}"
+                src="${img}"
               />
               <div class="relative p-1">
                 <div
