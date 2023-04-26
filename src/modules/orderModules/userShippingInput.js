@@ -1,4 +1,4 @@
-import { postDummyProduct } from '/src/modules/api_methodModules/Fetcher_dummy.js';
+import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 async function sendShippingData(e) {
   e.stopPropagation();
@@ -36,16 +36,16 @@ async function sendShippingData(e) {
     deliveryFee: delivery_fee,
   };
   try {
-    const response = await postDummyProduct(data);
+    const response = await Fetcher.postOrder(data);
     console.log('백엔드로 전송 완료', response);
-
-    if (response && response._id) {
-      const orderId = response._id;
+    // console.log(response);
+    // console.log(response._id);
+    if (response) {
+      window.localStorage.removeItem('cart');
+      const orderId = response;
       const newUrl = `/src/pages/order_complete/order_complete.html?order=${orderId}`;
+      console.log(newUrl);
       window.location.href = newUrl;
-    } else {
-      console.error('주문 ID를 가져올 수 없습니다.', response);
-      alert('주문이 취소되었습니다.');
     }
   } catch (error) {
     console.error('백엔드로 전송 실패', error);

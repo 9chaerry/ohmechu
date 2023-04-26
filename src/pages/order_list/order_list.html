@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/main/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="order_list.js"></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
@@ -93,63 +94,12 @@
         >
           <span class="inline-block"
             >총
-            <span id="order-amount" class="inline-block ml-2">__</span>건</span
+            <span id="order-amount" class="inline-block ml-2">0</span>건</span
           >
         </div>
       </article>
       <article id="order-list-box" class="flex flex-col flex-shrink-0">
-        <!-- JS를 통해 div가 구현될 것임 -->
-        <div>
-          <div class="flex justify-start p-4">
-            <span class="flex items-center text-2xl mr-4">주문번호</span>
-            <span class="inline-block flex items-center text-neutral-600"
-              >1q2w3e4r!</span
-            >
-            <div class="flex items-center text-neutral-600 ml-auto">
-              <span class="inline-block flex items-center text-neutral-600 mx-2"
-                >배송준비중</span
-              >
-              <button
-                id="order-number-modify-{orderNumber}"
-                onclick="location.href
-                ='/src/pages/order_edit/order_edit.html';"
-                class="inline-block py-1 px-3 mx-2 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
-              >
-                주문수정
-              </button>
-              <button
-                id="order-number-cancel-{orderNumber}"
-                class="inline-block py-1 px-3 bg-[#607c5f] text-[#f7f3eb] border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none cursor-pointer"
-              >
-                주문취소
-              </button>
-            </div>
-          </div>
-
-          <ul id="order-products" class="my-4">
-            <!-- JS를 통해 li가 구현될 것임 -->
-            <li class="flex">
-              <div class="flex w-4/6 mx-4 py-2 text-neutral-600">
-                <img
-                  class="block w-1/5 mx-16 object-cover object-center"
-                  src="../img/slide_image.jpg"
-                />
-                <div class="flex justify-center items-center">상품명</div>
-              </div>
-              <div
-                class="flex justify-center items-center w-1/6 mx-4 py-2 text-neutral-600"
-              >
-                수량
-              </div>
-              <div
-                class="flex justify-center items-center w-1/6 mx-4 py-2 text-neutral-600"
-              >
-                개당판매가
-              </div>
-            </li>
-          </ul>
-          <div class="mx-4 border-neutral-300 border-t mb-20"></div>
-        </div>
+        <!-- JS를 통해 div및 ul,li가 구현될 것임 -->
       </article>
     </main>
     <script src="https://cdn.tailwindcss.com"></script>

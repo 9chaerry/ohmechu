@@ -1,7 +1,7 @@
 import { btnsSetting } from './btnsSetting.js';
 import { priceSetting } from './priceSetting.js';
 import { checkBoxSetting } from './checkBoxes.js';
-import { getApi } from '/src/modules/api_methodModules/Api.js';
+import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 // 장바구니 없을때 조정
 const emptyCartNotice = document.getElementById('empty-cart-notice');
@@ -22,8 +22,8 @@ async function cartLoad() {
   // 우선 장바구니 리스트를 비웁니다.
   cartList.innerHTML = '';
 
-  // --- !!! 백엔드 API 연결 필요 !!! ---
-  const getDatas = await getApi('/src/dummyProducts.json');
+  // DB에서 모든 상품 정보를 받아옵니다. (따로 받으면 순차적으로 로딩됨)
+  const getDatas = await Fetcher.getAllProducts();
 
   let cart = window.localStorage.getItem('cart');
   cart = cart && JSON.parse(cart);
@@ -44,15 +44,15 @@ async function cartLoad() {
   for (let product of cart.reverse()) {
     const id = product.id;
     const amount = product.amount;
-    // --- !!! productData는 백엔드 API로 간단하게 받아올 것. 수정필요 !!! ---
     const productData = getDatas.find((data) => data._id === id);
 
     cartList.innerHTML += listTemplate(
       productData._id,
-      productData.img_url,
+      productData.img,
       productData.name,
       amount,
-      productData.price
+      productData.price,
+      productData.description
     );
   }
 
@@ -91,7 +91,9 @@ function orderAll(e) {
   location.href = '/src/pages/order/order.html';
 }
 
-function listTemplate(id, img_url, name, amount, price) {
+function listTemplate(id, img, name, amount, price, description) {
+  const descriptionOneLine = description.split('.')[0] + '.';
+
   return `<li
   data-list-product-id="${id}"
   class="pb-6 mb-6 border-solid border-b border-gray flex items-center justify-between flex-no-wrap"
@@ -108,7 +110,7 @@ function listTemplate(id, img_url, name, amount, price) {
       checked
     />
     <img
-      src="${img_url}"
+      src="${img}"
       class="inline-block w-[150px] h-[150px]"
     />
     <div class="inline-block ml-6">
@@ -118,7 +120,7 @@ function listTemplate(id, img_url, name, amount, price) {
         ><span
           span
           class="block text-left text-[13px] text-neutral-500"
-          >임시설명입니다.</span
+          >${descriptionOneLine}</span
         >
       </p>
     </div>

@@ -14,9 +14,10 @@ function categoryClick(e) {
   e.stopPropagation();
 
   // 카테고리에 맞게 리스트를 재 생성합니다.
-  const category = this.innerText;
+  const categoryTitleString = this.innerText;
+  const category = this.dataset.category;
 
-  categoryTitle.innerText = category;
+  categoryTitle.innerText = categoryTitleString;
   listSetting(category);
 }
 

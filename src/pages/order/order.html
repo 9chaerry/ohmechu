@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
     <script defer type="module" src="/src/pages/order/order.js"></script>
   </head>
   <body>
@@ -96,7 +100,7 @@
             <tr>
               <td>
                 <label
-                  for="userPhonenum"
+                  for="user-phone-number"
                   class="inline-block text-lg font-medium text-left mr-10"
                   >연락처</label
                 >
@@ -104,8 +108,8 @@
               <td>
                 <input
                   type="text"
-                  id="userPhonenum"
-                  name="userPhonenum"
+                  id="user-phone-number"
+                  name="user-phone-number"
                   placeholder="010-1234-5678"
                   class="w-full transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
                   required
@@ -204,7 +208,6 @@
     </main>
     <!-- 주문 결제 끝 -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>

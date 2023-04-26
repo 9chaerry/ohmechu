@@ -36,8 +36,8 @@ async function get(endpoint, params = '') {
   return await request({ endpoint, method: 'GET', params });
 }
 
-async function post(endpoint, data) {
-  return await request({ endpoint, method: 'POST', data });
+async function post(endpoint, params = '', data) {
+  return await request({ endpoint, method: 'POST', params, data });
 }
 
 async function put(endpoint, params = '', data) {

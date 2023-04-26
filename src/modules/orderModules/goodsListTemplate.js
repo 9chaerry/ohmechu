@@ -2,14 +2,14 @@ function goodsListTemplate(data, amountData) {
   const goodsList = document.createElement('tr');
   goodsList.classList.add = 'flex justify-between';
   goodsList.innerHTML = `
-  <td class="flex-shrink-0 w-[25%]">
-        <img src="${data.img_url}" class="w-[150px] h-[150px]" />
+  <td class="flex-shrink-0 w-[20%]">
+        <img src="${data.img}" class="w-[150px] h-[150px]" />
       </td>
       <td class="flex-col flex-grow">
-        <span class="block text-left text-[17px] font-medium">${
+        <span class="block w-text-left text-[17px] font-medium">${
           data.name
         }</span>
-        <span class="block text-left text-[13px] text-neutral-500">${data.sub_description.join(
+        <span class="block text-left text-[13px] text-neutral-500">${data.subDescription.join(
           ' / '
         )}</span>
       </td>

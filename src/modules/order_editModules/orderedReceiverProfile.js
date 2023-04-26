@@ -1,7 +1,7 @@
-import { getIdOrder } from '/src/modules/api_methodModules/Fetcher.js';
+import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 import { getOrderedId } from '/src/modules/order_completeModules/getOrderId.js';
 
-async function getReceiverProfile() {
+async function orderedReceiverProfile() {
   const receiver = {
     name: document.getElementById('receiver-name'),
     phoneNumber: document.getElementById('receiver-phone-number'),
@@ -14,18 +14,19 @@ async function getReceiverProfile() {
 
   try {
     const order = getOrderedId();
-    const data = await getIdOrder(order);
-    console.log(data);
-    receiver.name.innerText = `${data.userName}`;
-    receiver.phoneNumber.innerText = `${data.phoneNumber}`;
-    receiver.postcode.innerText = `${data.address.우편번호}`;
-    receiver.roadAddress.innerText = `${data.address.도로명주소}`;
-    receiver.detailAddress.innerText = `${data.address.상세주소}`;
-    receiver.extraAddress.innerText = `${data.address.참고사항}`;
-    receiver.request.innerText = `${data.requirement}`;
+    const response = await Fetcher.getIdOrder(order);
+    const data = response;
+
+    receiver.name.value = `${data.userName}`;
+    receiver.phoneNumber.value = `${data.phoneNumber}`;
+    receiver.postcode.value = `${data.address.우편번호}`;
+    receiver.roadAddress.value = `${data.address.도로명주소}`;
+    receiver.detailAddress.value = `${data.address.상세주소}`;
+    receiver.extraAddress.value = `${data.address.참고사항}`;
+    receiver.request.value = `${data.requirement}`;
   } catch (error) {
     console.error(`데이터를 가져오는데 실패했습니다: ${error}`);
   }
 }
 
-export { getReceiverProfile };
+export { orderedReceiverProfile };
