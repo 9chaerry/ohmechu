@@ -21,7 +21,7 @@ async function orderListSetting() {
 
   if (searchParams) {
     // 비회원일 경우에 SearchParams의 orderId를 받아옵니다.
-    const orderId = searchParams.get('orderId');
+    const orderId = searchParams.get('order');
     orderId && orderIdList.push(orderId);
   } else {
     // !!! --- 로그인 상태 판별 코드 아직 구현 안됨 --- !!!
@@ -168,7 +168,7 @@ function editOrder(e) {
   // SearchParams의 editOrderId에 수정할 주문번호를 명시합니다.
   // 이 editOrderId는 주문수정 페이지에서 활용됩니다.
   const editOrderId = this.dataset.orderId;
-  const newUrl = `/src/pages/order_edit/order_edit.html?editOrderId=${editOrderId}`;
+  const newUrl = `/src/pages/order_edit/order_edit.html?order=${editOrderId}`;
   window.location.href = newUrl;
 }
 
