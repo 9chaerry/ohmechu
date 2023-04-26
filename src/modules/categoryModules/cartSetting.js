@@ -1,4 +1,5 @@
 const cartInButtons = document.getElementsByClassName('cart-in-button');
+console.log(cartInButtons);
 const AMOUNT_INIT = 1;
 
 /**

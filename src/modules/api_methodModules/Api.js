@@ -13,6 +13,8 @@ async function request({ endpoint, method, params = '', data = {} }) {
       response = await axios.post(apiUrl, data, { headers });
     } else if (method === 'PATCH') {
       response = await axios.patch(apiUrl, data, { headers });
+    } else if (method === 'PUT') {
+      response = await axios.put(apiUrl, data, { headers });
     } else if (method === 'DELETE') {
       response = await axios.delete(apiUrl, { headers, data });
     } else {
@@ -38,6 +40,10 @@ async function post(endpoint, data) {
   return await request({ endpoint, method: 'POST', data });
 }
 
+async function put(endpoint, params = '', data) {
+  return await request({ endpoint, method: 'PUT', params, data });
+}
+
 async function patch(endpoint, params = '', data) {
   return await request({ endpoint, method: 'PATCH', params, data });
 }
@@ -46,4 +52,4 @@ async function del(endpoint, params = '', data = {}) {
   return await request({ endpoint, method: 'DELETE', params, data });
 }
 
-export { get, post, patch, del as delete };
+export { get, post, put, patch, del as delete };
