@@ -6,7 +6,7 @@ const checkBoxes = document.getElementsByClassName('check-box');
 const deleteSelectButton = document.getElementById('delete-select');
 const orderSelectButton = document.getElementById('order-select');
 
-function checkBoxSetting() {
+function checkBoxSetup() {
   // 전체 선택 버튼에 대한 세팅을 진행합니다.
   allProductsSelectBox.addEventListener('change', allProductSelect);
   // 선택 삭제, 선택 주문 버튼에 대한 세팅을 진행합니다.
@@ -89,4 +89,4 @@ function checkedItems() {
   return checkedItemsIdList;
 }
 
-export { checkBoxSetting };
+export { checkBoxSetup };

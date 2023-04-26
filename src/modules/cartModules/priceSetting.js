@@ -6,7 +6,7 @@ const totalPrice = document.getElementById('total-price');
 
 const DELIVERY_PRICE = 3000;
 
-async function priceSetting() {
+async function priceSetup() {
   const datas = await Fetcher.getAllProducts();
 
   let cart = window.localStorage.getItem('cart');
@@ -25,4 +25,4 @@ async function priceSetting() {
     Number(purchasePrice.innerText) + Number(deliveryPrice.innerText);
 }
 
-export { priceSetting };
+export { priceSetup };
