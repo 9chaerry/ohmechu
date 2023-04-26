@@ -21,7 +21,7 @@ async function orderListSetting() {
 
   if (searchParams) {
     // 비회원일 경우에 SearchParams의 orderId를 받아옵니다.
-    const orderId = searchParams.get('orderId');
+    const orderId = searchParams.get('order');
     orderId && orderIdList.push(orderId);
   } else {
     // !!! --- 로그인 상태 판별 코드 아직 구현 안됨 --- !!!
