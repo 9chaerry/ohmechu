@@ -1,4 +1,4 @@
-import { getDummyProducts } from '/src/modules/api_methodModules/Fetcher_dummy.js';
+import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 async function priceSetting() {
   // !!! 임시 API 주소임 !!!
@@ -15,7 +15,7 @@ async function priceSetting() {
   let deliveryPriceCount = 3000;
 
   for (let item of cart) {
-    const product = await getDummyProducts(item.id);
+    const product = await Fetcher.getIdProduct(item.id);
     purchasePriceCount += Number(product.price) * item.amount;
   }
 

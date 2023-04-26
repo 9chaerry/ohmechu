@@ -20,7 +20,7 @@ export async function getDummyOrders(productId) {
   try {
     const response = await axios.get(dummyOrders);
     const products = response.data;
-    const filteredOrder = products.find((product) => product._id === productId);
+    const filteredOrder = products.find((product) => product.pid === productId);
     return filteredOrder || null;
   } catch (error) {
     console.error(`API GET 요청 실패: ${error}`);

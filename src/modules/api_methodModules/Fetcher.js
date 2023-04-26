@@ -14,7 +14,7 @@ export async function getAllProducts() {
 
 // id를 통한 하나의 상품 조회
 export async function getIdProduct(productId) {
-  return await Api.get(domain, `products/${productId}`);
+  return await Api.get(`${domain}/products/${productId}`);
 }
 
 // 카테고리별 상품 조회
@@ -57,8 +57,8 @@ export async function getAllOrders() {
 }
 
 // id를 통한 하나의 주문 조회
-export async function getIdOrder(id) {
-  return await Api.get(domain, `orders/${id}`);
+export async function getIdOrder(productId) {
+  return await Api.get(`${domain}/orders/${productId}`);
 }
 
 // 주문 정보 저장
@@ -68,7 +68,7 @@ export async function postOrder(data) {
 
 // 배송지 수정
 export async function putOrder(id, data) {
-  return await Api.delete(domain, `orders/${id}`, data);
+  return await Api.put(domain, `orders/${id}`, data);
 }
 
 // 주문 취소
@@ -86,4 +86,29 @@ export async function patchOrder(id, state) {
 
   // 수정 내용을 response함
   return await Api.put(domain, `orders/${id}`, JSON.stringify(data));
+}
+
+/**
+ * 회원 관련 Fetcher
+ */
+
+// 회원가입
+export async function postJoin(data) {
+  return await Api.post(domain, `users/join`, data);
+}
+
+// 로그인
+export async function postLogin(data) {
+  return await Api.post(domain, `users/login`, data);
+}
+
+// 로그아웃
+export async function postLogout(data) {
+  return await Api.post(domain, `users/logout`, data);
+}
+
+// 회원 탈퇴
+export async function deleteUser(id) {
+  // 제거된 상품을 response함
+  return await Api.delete(domain, `orders/${id}`);
 }
