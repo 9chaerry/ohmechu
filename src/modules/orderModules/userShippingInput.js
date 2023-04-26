@@ -3,7 +3,7 @@ import { postDummyProduct } from '/src/modules/api_methodModules/Fetcher_dummy.j
 async function sendShippingData(e) {
   e.stopPropagation();
   const user_name = document.getElementById('userName').value;
-  const phone_number = document.getElementById('userPhonenum').value;
+  const phone_number = document.getElementById('user-phone-number').value;
   const postcode = document.getElementById('postcode').value;
   const roadAddress = document.getElementById('roadAddress').value;
   const detailAddress = document.getElementById('detailAddress').value;
@@ -42,7 +42,7 @@ async function sendShippingData(e) {
     if (response && response._id) {
       const orderId = response._id;
       const newUrl = `/src/pages/order_complete/order_complete.html?order=${orderId}`;
-      window.location.href = url;
+      window.location.href = newUrl;
     } else {
       console.error('주문 ID를 가져올 수 없습니다.', response);
       alert('주문이 취소되었습니다.');
@@ -53,21 +53,4 @@ async function sendShippingData(e) {
   }
 }
 
-async function completeOrder() {
-  try {
-    const searchParams = new URLSearchParams(window.location.search);
-    const orderId = searchParams.get('order');
-
-    if (orderId) {
-      // orderId가 존재할 경우에만 페이지 이동
-      const newUrl = `/src/pages/order_complete/order_complete.html?order=${orderId}`;
-      window.location.href = newUrl; // 페이지를 새로고침하면서 URL 변경
-    } else {
-      console.error('주문 ID를 가져올 수 없습니다.');
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export { sendShippingData, completeOrder };
+export { sendShippingData };

@@ -3,9 +3,10 @@ import { createFooter } from '/src/default_layout/footer.js';
 import { execDaumPostcode } from '/src/modules/orderModules/inputUserAddress.js';
 import { orderListTemplate } from '/src/modules/orderModules/userOrderList.js';
 import { priceSetting } from '/src/modules/orderModules/goodsTotalPrice.js';
-import { sendReceiverProfile } from '/src/modules/orderModules/userShippingInput.js';
+import { sendShippingData } from '/src/modules/orderModules/userShippingInput.js';
+import { autoHyphen } from '/src/modules/sign_upModules/autoHyphenPhoneNumber.js';
 
-document.addEventListener('DOMContentLoaded', blockAccess);
+// document.addEventListener('DOMContentLoaded', blockAccess);
 document.addEventListener('DOMContentLoaded', createHeader);
 document.addEventListener('DOMContentLoaded', createFooter);
 document.addEventListener('DOMContentLoaded', orderListTemplate);
@@ -16,4 +17,7 @@ document
   .addEventListener('click', execDaumPostcode);
 document
   .getElementById('orderComplete')
-  .addEventListener('click', sendReceiverProfile);
+  .addEventListener('click', sendShippingData);
+document
+  .getElementById('user-phone-number')
+  .addEventListener('input', autoHyphen);
