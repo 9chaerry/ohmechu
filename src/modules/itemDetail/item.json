@@ -1,0 +1,13 @@
+{
+  "_id": "643fc587f98ee4b2ae56566f",
+  "name": "우동 밀키트",
+  "price": 10000,
+  "img_url": "src/image/2",
+  "category": "일식",
+  "description": "일본 현지의 맛이 느껴집니다.",
+  "sub_description": ["2인분", "15분", "고소한맛"],
+  "recommended": 0,
+  "createdAt": "2023-04-19T10:42:15.308Z",
+  "updatedAt": "2023-04-19T10:42:15.308Z",
+  "__v": 0
+}
