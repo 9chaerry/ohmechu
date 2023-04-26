@@ -2,14 +2,6 @@ import { getDummyOrders } from '/src/modules/api_methodModules/Fetcher_dummy.js'
 import { getOrderedId } from '/src/modules/order_completeModules/getOrderId.js';
 
 async function getReceiverProfile() {
-  //   const receiverName = document.getElementById('receiver-name');
-  //   const receiverPhoneNumber = document.getElementById('receiver-phone-number');
-  //   const receiverPostcode = document.getElementById('receiver-postcode');
-  //   const receiverRoadAddress = document.getElementById('receiver-roadAddress');
-  //   const receiverDetailAddress = document.getElementById('receiver-detailAddress');
-  //   const receiverExtraAddress = document.getElementById('receiver-extraAddress');
-  //   const receiverRequest = document.getElementById('receiver-request');
-
   const receiver = {
     name: document.getElementById('receiver-name'),
     phoneNumber: document.getElementById('receiver-phone-number'),
@@ -21,8 +13,6 @@ async function getReceiverProfile() {
   };
 
   try {
-    // const order = JSON.parse(window.localStorage.getItem('order'));
-    // const params = { _id: order.id };
     const order = getOrderedId();
     const response = await getDummyOrders(order);
     const data = response;
