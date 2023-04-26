@@ -1,4 +1,5 @@
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
+import * as Token from '/src/modules/api_methodModules/Token.js';
 
 // 수량을 표시해주는 부분
 const readyOrderAmount = document.getElementById('ready-order-amount');
@@ -18,20 +19,18 @@ async function orderListSetting() {
 
   // SearchParams를 확인하고 없다면 로그인된 유저인지 확인합니다.
   const searchParams = new URLSearchParams(window.location.search);
+  const searchOrderId = searchParams.get('order');
 
-  if (searchParams) {
+  if (searchOrderId) {
     // 비회원일 경우에 SearchParams의 orderId를 받아옵니다.
-    const orderId = searchParams.get('order');
-    orderId && orderIdList.push(orderId);
+    orderIdList.push(searchOrderId);
   } else {
-    // !!! --- 로그인 상태 판별 코드 아직 구현 안됨 --- !!!
     // JWT 토큰이 있는지 확인 후, 해당 토큰에 맞는 users DB 정보를 요청함.
-    if (false) {
-      const user = {
-        orderNumber: ['1', '2', '3'],
-      };
-      orderIdList = user.orderNumber;
-      // !!! --- 디버깅용 --- !!!
+    if (Token.getToken() !== undefined) {
+      const userOrders = await Fetcher.getUser();
+      orderIdList = [...userOrders.orderNumber];
+    } else {
+      orderIdList = [];
     }
   }
 
