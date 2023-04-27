@@ -36,6 +36,7 @@ function removeToken() {
  */
 function handleInvalidToken() {
   removeToken();
+
   if (confirm('로그인이 유효하지 않습니다.\n다시 로그인 해주세요.'))
     window.location.href = '/src/pages/login/login.html';
   else window.location.reload();

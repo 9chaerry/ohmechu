@@ -1,4 +1,5 @@
 import * as Api from './Api.js';
+import * as Token from './Token.js';
 
 const port = '5000';
 const domain = `http://34.64.112.254:${port}/api`;
@@ -89,6 +90,28 @@ export async function patchOrder(id, state) {
 }
 
 /**
+ * 토큰 유효성 검사
+ */
+
+// 토큰을 사용하는 함수는 같이 사용해주시길 바랍니다.
+export async function checkToken(callback) {
+  let data;
+
+  // 정보를 불러오고, 토큰이 유효하지 않으면 에러처리 합니다.
+  try {
+    data = await callback;
+  } catch (err) {
+    if (err.message === '401') Token.handleInvalidToken();
+    else {
+      alert('예기치 않은 에러가 발생했습니다.');
+      throw new Error('예기치 않은 에러');
+    }
+  }
+
+  return data;
+}
+
+/**
  * 회원 관련 Fetcher
  */
 
@@ -104,6 +127,18 @@ export async function loginUser(email, password) {
     password: password,
   };
   return await Api.post(domain, `users/login`, JSON.stringify(data));
+}
+
+// 비밀번호 확인
+export async function checkPassword(password) {
+  const data = {
+    password: password,
+  };
+  return await Api.post(
+    domain,
+    `users/myPage?btn=modify`,
+    JSON.stringify(data)
+  );
 }
 
 // 로그아웃
