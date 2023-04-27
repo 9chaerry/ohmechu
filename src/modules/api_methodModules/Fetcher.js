@@ -170,13 +170,8 @@ export async function deleteUser(password) {
 }
 
 // 회원 정보 수정
-export async function putUser(password, changeField, changeData) {
-  const data = {
-    password: password,
-    changeField: changeField,
-    changeData: changeData,
-  };
-  return await Api.delete(domain, `users/myPage`, JSON.stringify(data));
+export async function putUser(data) {
+  return await Api.put(domain, `users/myPage`, data);
 }
 
 // 주문 내역 조회 (작동 안됨)
