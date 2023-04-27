@@ -1,12 +1,12 @@
 import { cartLoad } from './cartLoad.js';
-import { priceSetting } from './priceSetting.js';
+import { priceSetup } from './priceSetting.js';
 
 /**
  * 버튼에 대한 이벤트를 줍니다.
  * 1. 수량 조절 버튼을 통해 장바구니 LocalStorage를 변경합니다.
  * 2. 오른쪽 X버튼을 눌러 장바구니에서 상품을 삭제합니다.
  */
-function btnsSetting() {
+function btnsSetup() {
   // 버튼 DOM 요소
   const decrementBtns = document.querySelectorAll(
     `button[data-action="decrement"]`
@@ -48,7 +48,7 @@ function decrement(e) {
   updateCart(id, value);
 
   // 가격 표시 변동
-  priceSetting();
+  priceSetup();
 }
 
 function increment(e) {
@@ -68,7 +68,7 @@ function increment(e) {
   updateCart(id, value);
 
   // 가격 표시 변동
-  priceSetting();
+  priceSetup();
 }
 
 /**
@@ -113,7 +113,7 @@ function cancel(e) {
   cartAmount.innerText = cartAmount.innerText - 1;
 
   // 가격 표시 변동
-  priceSetting();
+  priceSetup();
 }
 
 /**
@@ -139,4 +139,4 @@ function updateCart(id, value) {
   window.localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export { btnsSetting };
+export { btnsSetup };

@@ -5,7 +5,7 @@ const newListLeftArrow = document.querySelector('#new-list-left-arrow');
 const newListRightArrow = document.querySelector('#new-list-right-arrow');
 const newListSlides = document.querySelector('#new-list-slides');
 
-import { getApi } from '/src/modules/api_methodModules/Api.js';
+import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 const PER_SLIDE_PAGE = 4;
 const WRAP_SIZE = 1100;
@@ -20,8 +20,8 @@ let newCount = 0;
 function slideSetting() {
   console.log('slideSetting 진입함');
   // !!! 더미 url이 들어가있음! 추후 변경 필요 !!!
-  recListGenerator('/src/dummyProducts.json');
-  newListGenerator('/src/dummyProducts.json');
+  recListGenerator();
+  newListGenerator();
 
   // 슬라이더를 움직일 좌우 버튼에 대한 리스너를 등록합니다.
   recListLeftArrow.addEventListener('click', recListLeftSlide);
@@ -35,9 +35,9 @@ function slideSetting() {
  * GET API를 통해 상품 리스트를 받아와서 슬라이드를 작성합니다.
  * @param {상품 리스트 GET} url
  */
-async function recListGenerator(url) {
+async function recListGenerator() {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
-  const datas = await getApi(url);
+  const datas = await Fetcher.getAllProducts();
   for (let data of datas) {
     // 슬라이드 내부 요소
     const li = document.createElement('li');
@@ -81,7 +81,7 @@ async function recListGenerator(url) {
 
     // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
     // 슬라이드에 데이터 삽입
-    img.src = data.img_url;
+    img.src = data.img;
     a.innerText = data.name;
     a.href = '';
     p.innerText = data.price;
@@ -128,9 +128,9 @@ function recListRightSlide(e) {
  * GET API를 통해 상품 리스트를 받아와서 슬라이드를 작성합니다.
  * @param {상품 리스트 GET} url
  */
-async function newListGenerator(url) {
+async function newListGenerator() {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
-  const datas = await getApi(url);
+  const datas = await Fetcher.getAllProducts();
   for (let data of datas) {
     // 슬라이드 내부 요소
     const li = document.createElement('li');
@@ -174,7 +174,7 @@ async function newListGenerator(url) {
 
     // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
     // 슬라이드에 데이터 삽입
-    img.src = data.img_url;
+    img.src = data.img;
     a.innerText = data.name;
     a.href = '';
     p.innerText = data.price;

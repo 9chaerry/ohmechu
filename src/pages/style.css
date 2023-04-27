@@ -83,8 +83,27 @@ svg {
 }
 
 table,
-tr,
-td {
+tr {
   text-align: left;
   padding: 0.7rem;
+  width: 100%;
+}
+td {
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.slider {
+  display: flex;
+  width: 500%;
+  height: 100%;
+  transition: transform 500ms ease-out;
+}
+
+.slide {
+  width: 20%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transition: transform 500ms ease-out;
 }
