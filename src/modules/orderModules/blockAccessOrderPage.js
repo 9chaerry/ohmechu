@@ -1,5 +1,5 @@
 function blockAccess(e) {
-  const cart = localStorage.getItem('cart');
+  const cartData = localStorage.getItem('cart');
   if (!cartData || cartData.length === 0) {
     e.preventDefault();
     e.returnValue = '';
