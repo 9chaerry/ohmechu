@@ -139,12 +139,17 @@ function isLogin() {
   return token !== undefined;
 }
 
-function logout() {
+async function logout() {
+  // 로그아웃 API를 호출합니다.
+  try {
+    await Fetcher.logoutUser();
+  } catch (err) {
+    console.log(err);
+  }
+
   // token 쿠키를 삭제합니다.
   Token.removeToken();
   window.location.reload();
-
-  // !!! --- 로그아웃 API를 호출합니다. --- !!!
 }
 
 export { createHeader };
