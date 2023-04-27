@@ -11,50 +11,35 @@ import * as Fetcher from '../../modules/api_methodModules/Fetcher.js';
 // const imgTag = document.getElementsByTagName('img')[0];
 
 const productImg = document.getElementsByClassName('product-img');
-// const productName = document.getElementsByClassName('product-name');
-console.log(productImg);
+// console.log(productImg);
 
 export function moveToDetail() {
   for (let list of productImg) {
     list.addEventListener('click', listToDetail);
   }
-  // for (let list of productName) {
-  //   list.addEventListener('click', listToDetail);
-  // }
 }
 
-// dummy 아니라 DB주소로
-// export
 async function listToDetail(e) {
   e.preventDefault();
   e.stopPropagation();
-  // console.log(e);
 
+  // 이미지 Url을 받아옵니다.
   const url = new URL(e.target.src);
   const currentPath = url.href;
-  console.log(url);
 
+  // 모든 상품을 받아와서 이미지 Url이 동일한 상품을 찾습니다.
   const allProducts = await Fetcher.getAllProducts();
-  console.log(allProducts);
-
   const targetProduct = allProducts.filter(
     (product) => product.img === currentPath
   )[0];
 
-  // const response = await getItemId();
-  console.log(targetProduct);
-
+  // 찾은 상품의 id를 productId로 할당하고, 해당 id를 통해 상품을 검색합니다.
   const productId = targetProduct._id;
-  // const newUrl = new URL(window.location.href);
-
   const productInfo = await Fetcher.getIdProduct(productId);
-  // console.log(productInfo);
-  // const productDetail = await Fetcher.getIdProduct(productInfo._id);
 
+  // 이미지 Url과 찾은 상품의 이미지 Url이 같으면 이동합니다.
   if (currentPath === targetProduct.img) {
-    const newUrl = new URL('http://127.0.0.1:5501/src/pages/goods/goods.html');
-    newUrl.searchParams.set('productId', productInfo._id);
-    window.location.href = newUrl;
+    window.location.href = `/src/pages/goods/goods.html?productId=${productInfo._id}`;
   } else {
     alert('해당 상품이 존재하지 않습니다.');
     return;

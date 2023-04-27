@@ -1,8 +1,10 @@
+import * as Token from '/src/modules/api_methodModules/Token.js';
+
 async function request({ endpoint, method, params = '', data = {} }) {
   const apiUrl = params ? `${endpoint}/${params}` : endpoint;
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    Authorization: `Bearer ${Token.getToken()}`,
   };
 
   try {
@@ -24,8 +26,8 @@ async function request({ endpoint, method, params = '', data = {} }) {
     return response.data;
   } catch (error) {
     if (error.response) {
-      const { reason } = error.response.data;
-      throw new Error(reason);
+      const { status } = error.response;
+      throw new Error(status);
     } else {
       throw new Error('Failed to make request');
     }
@@ -36,8 +38,8 @@ async function get(endpoint, params = '') {
   return await request({ endpoint, method: 'GET', params });
 }
 
-async function post(endpoint, data) {
-  return await request({ endpoint, method: 'POST', data });
+async function post(endpoint, params = '', data) {
+  return await request({ endpoint, method: 'POST', params, data });
 }
 
 async function put(endpoint, params = '', data) {

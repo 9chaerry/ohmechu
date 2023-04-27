@@ -82,8 +82,8 @@ function listTemplate(id, img, name, price, subDescription = '　') {
                     <circle cx="12" cy="15" r="2" />
                   </svg>
                 </div>
-                <a href="" class="product-name block mt-2 text-left text-2xl font-semibold"
-                  >${name}</a
+                <p class="product-name block mt-2 text-left text-2xl font-semibold"
+                  >${name}</p
                 >
                 <div class="text-left text-sm font-light">${subDescription}</div>
                 <div class="mt-3 text-left text-lg">${price}</div>
