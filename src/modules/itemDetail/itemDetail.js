@@ -1,5 +1,5 @@
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
-// import { addCart } from '/src/modules/itemDetail/addCart.js';
+import { addCart } from '/src/modules/itemDetail/addCart.js';
 
 /**
  * PROCESS
@@ -7,6 +7,8 @@ import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
  * 해당 id를 DB에서 조회 => Fetcher.getIdProduct
  * 조회한 DB의 키 값 바탕으로 페이지에 띄우기
  */
+
+// const addCartBtn = document.getElementById('order-product');
 
 // URL productId 값 가져오기
 const url = new URL(window.location.href);
@@ -31,13 +33,13 @@ export async function setParams() {
     productInfo.price
   );
 
-  // addCart();
+  addCart();
 }
 
 // productInfo 페이지에 적용
 function setProductInfo(img, name, serving, time, tasty, description, price) {
   return `<div class="inline-block w-1/2 color-sec h-[600px] mr-4">
-  <img src="${img}" class="w-full h-[600px]" />
+  <img src="${img}" class="w-full h-[600px] object-cover object-center" />
 </div>
 <div class="inline-block w-1/2 ml-4">
   <div class="flex flex-col mx-auto justify-center items-center">
