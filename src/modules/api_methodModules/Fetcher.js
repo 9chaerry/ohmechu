@@ -89,26 +89,80 @@ export async function patchOrder(id, state) {
 }
 
 /**
+ * 토큰 유효성 검사
+ */
+
+// 토큰을 사용하는 함수는 같이 사용해주시길 바랍니다.
+export async function checkToken(callback) {
+  let data;
+
+  // 정보를 불러오고, 토큰이 유효하지 않으면 에러처리 합니다.
+  try {
+    data = await callback;
+  } catch (err) {
+    if (err.message === '401') Token.handleInvalidToken();
+    else {
+      alert('예기치 않은 에러가 발생했습니다.');
+      throw new Error('예기치 않은 에러');
+    }
+  }
+
+  return data;
+}
+
+/**
  * 회원 관련 Fetcher
  */
 
 // 회원가입
-export async function postJoin(data) {
+export async function joinUser(data) {
   return await Api.post(domain, `users/join`, data);
 }
 
 // 로그인
-export async function postLogin(data) {
-  return await Api.post(domain, `users/login`, data);
+export async function loginUser(email, password) {
+  const data = {
+    email: email,
+    password: password,
+  };
+  return await Api.post(domain, `users/login`, JSON.stringify(data));
 }
 
 // 로그아웃
-export async function postLogout(data) {
-  return await Api.post(domain, `users/logout`, data);
+// 백엔드에서 구현안됨
+
+// 유저에 주문 정보 저장
+export async function putUserOrder(userId, orderId) {
+  const data = {
+    orderNumber: orderId,
+  };
+  return await Api.delete(domain, `users/${userId}`, JSON.stringify(data));
 }
 
-// 회원 탈퇴
-export async function deleteUser(id) {
-  // 제거된 상품을 response함
-  return await Api.delete(domain, `orders/${id}`);
+/**
+ * 유저 정보 관련 Fetcher
+ */
+
+// 사용자 정보 조회
+export async function getUser() {
+  return await Api.get(domain, 'users/myPage');
 }
+
+// 사용자 정보 삭제 (탈퇴)
+export async function deleteUser() {
+  return await Api.delete(domain, 'users/myPage');
+}
+
+// 회원 정보 수정
+export async function putUser(data) {
+  return await Api.put(domain, `users/myPage`, data);
+}
+
+// 주문 내역 조회 (작동 안됨)
+export async function getUserOrders() {
+  return await Api.get(domain, 'myPage/orders');
+}
+
+// 배송지 수정 (변경)
+
+// 주문 취소 (삭제)

@@ -1,7 +1,8 @@
-import { btnsSetting } from './btnsSetting.js';
-import { priceSetting } from './priceSetting.js';
-import { checkBoxSetting } from './checkBoxes.js';
+import { btnsSetup } from './btnsSetting.js';
+import { priceSetup } from './priceSetting.js';
+import { checkBoxSetup } from './checkBoxes.js';
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
+import * as Token from '/src/modules/api_methodModules/Token.js';
 
 // 장바구니 없을때 조정
 const emptyCartNotice = document.getElementById('empty-cart-notice');
@@ -11,6 +12,7 @@ const orderButtons = document.getElementById('order-buttons');
 // 장바구니 있을때 조정
 const cartList = document.getElementById('cart-list');
 const cartAmount = document.getElementById('cart-amount');
+
 // 전체 삭제, 전체 상품주문
 const deleteAllButton = document.getElementById('delete-all');
 const orderAllButton = document.getElementById('order-all');
@@ -57,13 +59,13 @@ async function cartLoad() {
   }
 
   // 상품 가격을 초기화합니다.
-  priceSetting();
+  priceSetup();
 
   // 상품 리스트의 버튼을 세팅합니다.
-  btnsSetting();
+  btnsSetup();
 
   // 상품 리스트의 체크박스를 세팅합니다.
-  checkBoxSetting();
+  checkBoxSetup();
 
   // 전체 삭제, 전체 상품 주문을 세팅합니다.
   deleteAllButton.addEventListener('click', deleteAll);
@@ -80,6 +82,11 @@ function deleteAll(e) {
 
     cartLoad();
   }
+}
+
+function loginBoxSetup() {
+  const loginBox = document.getElementById('login-box');
+  if (Token.getToken !== undefined) loginBox.classList.add('hidden');
 }
 
 function orderAll(e) {

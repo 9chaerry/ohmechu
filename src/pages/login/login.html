@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/main/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="login.js"></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
@@ -22,7 +23,7 @@
           >
             <input
               type="email"
-              id="userId"
+              id="user-id"
               name="userId"
               placeholder="아이디를 입력해주세요.(ohmechu@example.com)"
               class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
@@ -35,6 +36,7 @@
           >
             <input
               type="password"
+              id="user-password"
               name="password"
               placeholder="비밀번호를 입력해주세요."
               class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
@@ -46,7 +48,7 @@
           <input
             type="submit"
             value="로그인"
-            id="login"
+            id="login-button"
             class="inline-block py-4 px-14 my-4 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
           />
 
@@ -71,16 +73,17 @@
           >
             <input
               type="text"
+              id="order-id"
               name="user_id"
               placeholder="주문 번호를 입력해주세요."
               class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
             />
           </div>
           <input
-            type="submit"
+            type="button"
             value="주문조회"
-            id="login"
-            class="inline-block py-4 px-14 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none"
+            id="order-id-button"
+            class="inline-block py-4 px-14 my-4 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
           />
         </form>
       </div>

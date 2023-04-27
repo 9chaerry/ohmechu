@@ -1,8 +1,8 @@
-import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
+import { joinUser } from '/src/modules/api_methodModules/Fetcher.js';
 
-// 기존 회원 DB에 이미 등록된 ID, 핸드폰 번호라면 어떻게 처리할지 논의
 async function postUserSignup(e) {
   e.stopPropagation();
+  e.preventDefault();
   const signUpId = document.getElementById('userId').value;
   const signUpPassword = document.getElementById('user-PasswordCheck').value;
   const signUpName = document.getElementById('userName').value;
@@ -31,14 +31,15 @@ async function postUserSignup(e) {
     address: user_address,
   };
   try {
-    const response = await Fetcher.postJoin(data);
-    console.log('회원가입이 완료되었습니다.', response);
-
-    // if (response && response._id) {
-    //   const orderId = response._id;
-    //   const newUrl = `/src/pages/order_complete/order_complete.html?order=${orderId}`;
-    //   window.location.href = newUrl;
-    // }
+    const response = await joinUser(data);
+    console.log(response);
+    if (response === 409) {
+      alert('이미 등록된 회원입니다.');
+    } else if (response && response._id) {
+      // const orderId = response._id;
+      // const newUrl = `/src/pages/main/index.html`;
+      window.location.href = '/src/pages/main/index.html';
+    }
   } catch (error) {
     console.error('백엔드로 전송 실패', error);
     alert('회원가입이 실패했습니다.');

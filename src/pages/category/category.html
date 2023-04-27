@@ -24,23 +24,32 @@
           />
         </div>
       </div>
-      <div class="inline-block w-2/3 mx-auto h-[1500px]">
+      <div class="inline-block w-2/3 mx-auto">
         <article>
           <div class="flex flex-col mt-24 justify-center">
             <div class="h-8 mb-6 flex justify-start items-center">
               <span
+                data-category="latest"
                 class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
                 >전체 상품</span
               >
               <span
+                data-category="korean"
                 class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
                 >한식</span
               >
               <span
+                data-category="chinese"
                 class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
-                >아시안</span
+                >중식</span
               >
               <span
+                data-category="japanese"
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >일식</span
+              >
+              <span
+                data-category="western"
                 class="category-button inline-block px-3 transform border-b-2 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
                 >양식</span
               >
@@ -60,40 +69,6 @@
           </div>
           <ul id="product-box" class="flex flex-wrap flex-shrink-0">
             <!-- JS를 통해 li가 구현될 것임 -->
-            <li class="w-1/4 h-1/4 p-3 my-3">
-              <img
-                class="w-full object-cover flex-shrink-0 object-center cursor-pointer"
-                src="/src/img/slide_image.jpg"
-              />
-              <div class="relative p-1">
-                <div
-                  class="absolute left-[98%] top-3/4 -translate-x-full -translate-y-2/4 z-10 cursor-pointer"
-                >
-                  <svg
-                    class="w-12 h-12 stroke-[#607c5f]"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.2"
-                    stroke="currentColor"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <polyline points="7 10 12 4 17 10" />
-                    <path
-                      d="M21 10l-2 8a2 2.5 0 0 1 -2 2h-10a2 2.5 0 0 1 -2 -2l-2 -8z"
-                    />
-                    <circle cx="12" cy="15" r="2" />
-                  </svg>
-                </div>
-                <a href="" class="block mt-2 text-left text-2xl font-semibold"
-                  >상품명</a
-                >
-                <div class="text-left text-sm font-light">간단한 설명</div>
-                <div class="mt-3 text-left text-lg">금액 (원)</div>
-              </div>
-            </li>
           </ul>
         </article>
       </div>

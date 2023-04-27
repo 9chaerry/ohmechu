@@ -6,64 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/main/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="admin_main.js"></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
     <main role="main" class="w-3/5 mx-auto mt-1" id="main-page">
-      <h2 class="text-4xl font-medium mb-10 tracking-tight pt-14">
-        마이페이지
+      <h2 class="text-4xl font-medium mb-10 tracking-tight pt-14 mb-10">
+        주문관리
       </h2>
       <!-- 여기서부터 회원정보 -->
       <div
         class="p-2 text-[18pt] font-medium text-left border-b-2 border-color-ter"
       >
-        <span>회원정보</span>
+        <span>회원 주문 조회</span>
       </div>
-      <div class="relative mt-4">
+      <div>
         <table class="text-lg font-medium text-left">
-          <tr>
-            <td class="w-[110px]"><span class="text-left">이름</span></td>
+          <tr class="flex justify-between items-center">
+            <td>이름</td>
+            <td>ID</td>
+            <td>비회원</td>
+            <td>등록일</td>
+            <td>배송상태</td>
             <td>
-              <span id="mypageName">앨리수</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="text-left">이메일</span></td>
-            <td>
-              <span id="mypageId" class="">ohmechu@example.com</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="text-left">패스워드</span></td>
-            <td>
-              <input
-                type="password"
-                id="userPassword"
-                name="userPassword"
-                placeholder="비밀번호 입력 후 회원 정보 수정이 가능합니다."
-                class="w-[500px] transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
-                minlength="6"
-                maxlength="20"
-                required
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><span class="text-left">연락처</span></td>
-            <td>
-              <span id="mypagePhone">010-1234-5678</span>
+              <button
+                type="button"
+                class="right-0 inline-block py-2 px-4 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-sm font-medium focus:outline-none cursor-pointer"
+              >
+                조회하기
+              </button>
             </td>
           </tr>
         </table>
-        <button
-          type="button"
-          onclick="location.href
-            ='/src/pages/user_profile/user_profile.html';"
-          class="absolute right-0 inline-block py-3 px-8 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
-        >
-          회원정보 수정
-        </button>
       </div>
       <!-- 회원정보란 끝 -->
       <div
@@ -146,13 +121,14 @@
         <button
           type="button"
           onclick="location.href
-            ='/src/pages/order_list/order_list.html';"
+              ='/src/pages/order_list/order_list.html';"
           class="absolute right-0 inline-block py-3 px-8 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
         >
           조회하러 가기
         </button>
       </div>
     </main>
+
     <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>

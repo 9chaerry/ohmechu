@@ -10,13 +10,18 @@ function createHeader() {
         id="login-page-button"
         class="inline-block font-normal text-xs pr-3 border-r border-color-sec align-middle"
       >
-      <a href="/src/pages/login/login.html">로그인</a>
+      <a href="/src/pages/login/login.html">안녕하세요, 관리자님!</a>
       </li>
       <li
         id="sign-up-page-button"
-        class="inline-block font-normal text-xs px-3 align-middle"
+        class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
       ><a href="/src/pages/sign_up/sign_up.html">
-        회원가입</a>
+        회원관리</a>
+      </li>
+      <li
+        class="inline-block font-normal text-xs px-3 align-middle"
+      >
+      <a href="/src/pages/order_list/order_list.html">상품관리</a>
       </li>
     </ul>
   </div>
@@ -65,37 +70,32 @@ function createHeader() {
     </li>
   </ul>
   <div class="w-[13%] flex justify-between pr-[6%]">
-    <a href="/src/pages/mypage/mypage.html" class="mr-[5%]"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.3"
-        stroke="currentColor"
-        class="w-8 h-8 inline-block"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-      </svg>
+    <a href="/src/pages/mypage/mypage.html" class="mr-[3%]">
+    <svg
+        xmlns="http://www.w3.org/2000/svg" 
+        class="icon icon-tabler icon-tabler-tool w-8 h-8 inline-block" width="100" height="100" viewBox="0 0 24 24" 
+        stroke-width="1.3" stroke="currentColor" 
+        fill="none" stroke-linecap="round" 
+        stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" />
+    </svg>
     </a>
-    <a href="/src/pages/cart/cart.html" class=""
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.3"
-        stroke="currentColor"
-        class="w-8 h-8 inline-block"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-        />
-      </svg>
+    <a href="/src/pages/cart/cart.html"
+      ><svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        class="icon icon-tabler icon-tabler-package w-8 h-8 inline-block" 
+        width="100" height="100" viewBox="0 0 24 24" 
+        stroke-width="1.3" 
+        stroke="currentColor" 
+        fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+        <line x1="12" y1="12" x2="20" y2="7.5" />
+        <line x1="12" y1="12" x2="12" y2="21" />
+        <line x1="12" y1="12" x2="4" y2="7.5" />
+         <line x1="16" y1="5.25" x2="8" y2="9.75" />
+    </svg>
     </a>
   </div>
 </nav>
@@ -123,7 +123,7 @@ function createHeader() {
       마이페이지</a>
     </li>
     <li
-      class="inline-block font-normal text-xs px-3 align-middle"
+      class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
     >
     <a href="/src/pages/order_list/order_list.html">주문조회</a>
     </li>` + pageButtonList.innerHTML;
