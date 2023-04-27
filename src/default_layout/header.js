@@ -1,31 +1,22 @@
+import * as Token from '/src/modules/api_methodModules/Token.js';
+
 function createHeader() {
   const header = document.createElement('header');
   header.className = `w-full`;
   header.innerHTML = `<div class="mx-auto px-4 w-3/4" id="closed">
   <div class="w-full h-9 flex items-center hidden sm:flex justify-end">
-    <ul class="text-center text-color-sec">
+    <ul id="page-button-list" class="text-center text-color-sec">
       <li
+        id="login-page-button"
         class="inline-block font-normal text-xs pr-3 border-r border-color-sec align-middle"
       >
       <a href="/src/pages/login/login.html">로그인</a>
       </li>
       <li
-        class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
+        id="sign-up-page-button"
+        class="inline-block font-normal text-xs px-3 border-color-sec align-middle"
       ><a href="/src/pages/sign_up/sign_up.html">
         회원가입</a>
-      </li>
-      <li
-        class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
-      ><a href="/src/pages/mypage/mypage.html">
-        마이페이지</a>
-      </li>
-      <li
-        class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
-      >
-      <a href="/src/pages/order_list/order_list.html">주문조회</a>
-      </li>
-      <li class="inline-block font-normal text-xs pl-3 align-middle">
-        고객센터
       </li>
     </ul>
   </div>
@@ -110,5 +101,50 @@ function createHeader() {
 </nav>
    `;
   document.body.prepend(header);
+
+  // 로그인 상태일시 로그인, 회원가입 버튼을 숨기고, 로그아웃, 마이페이지, 주문조회 버튼을 만듭니다.
+  const loginPageButton = document.getElementById('login-page-button');
+  const signUpPageButton = document.getElementById('sign-up-page-button');
+  const pageButtonList = document.getElementById('page-button-list');
+
+  if (isLogin()) {
+    loginPageButton.classList.add('hidden');
+    signUpPageButton.classList.add('hidden');
+    pageButtonList.innerHTML =
+      `
+    <li
+    class="inline-block font-normal text-xs pr-3 border-r border-color-sec align-middle"
+    >
+    <span class="cursor-pointer" id="logout-button" href="">로그아웃</a>
+    </li>
+    <li
+      class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
+    ><a href="/src/pages/mypage/mypage.html">
+      마이페이지</a>
+    </li>
+    <li
+      class="inline-block font-normal text-xs px-3 border-color-sec align-middle"
+    >
+    <a href="/src/pages/order_list/order_list.html">주문조회</a>
+    </li>` + pageButtonList.innerHTML;
+
+    // 로그아웃 버튼에 이벤트를 할당합니다.
+    document.getElementById('logout-button').addEventListener('click', logout);
+  }
 }
+
+function isLogin() {
+  const token = Token.getToken();
+
+  return token !== undefined;
+}
+
+function logout() {
+  // token 쿠키를 삭제합니다.
+  Token.removeToken();
+  window.location.reload();
+
+  // !!! --- 로그아웃 API를 호출합니다. --- !!!
+}
+
 export { createHeader };

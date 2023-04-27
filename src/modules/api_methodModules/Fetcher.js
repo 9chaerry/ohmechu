@@ -87,3 +87,68 @@ export async function patchOrder(id, state) {
   // 수정 내용을 response함
   return await Api.put(domain, `orders/${id}`, JSON.stringify(data));
 }
+
+/**
+ * 회원 관련 Fetcher
+ */
+
+// 회원가입
+export async function joinUser(data) {
+  return await Api.post(domain, `users/join`, data);
+}
+
+// 로그인
+export async function loginUser(email, password) {
+  const data = {
+    email: email,
+    password: password,
+  };
+  return await Api.post(domain, `users/login`, JSON.stringify(data));
+}
+
+// 로그아웃
+// 백엔드에서 구현안됨
+
+// 유저에 주문 정보 저장
+export async function putUserOrder(userId, orderId) {
+  const data = {
+    orderNumber: orderId,
+  };
+  return await Api.delete(domain, `users/${userId}`, JSON.stringify(data));
+}
+
+/**
+ * 유저 정보 관련 Fetcher
+ */
+
+// 사용자 정보 조회
+export async function getUser() {
+  return await Api.get(domain, 'users/myPage');
+}
+
+// 사용자 정보 삭제 (탈퇴)
+export async function deleteUser(password) {
+  const data = {
+    password: password,
+  };
+  return await Api.delete(domain, 'users/myPage', JSON.stringify(data));
+}
+
+// 회원 정보 수정
+export async function putUser(password, changeField, changeData) {
+  const data = {
+    password: password,
+    changeField: changeField,
+    changeData: changeData,
+  };
+  return await Api.delete(domain, `users/myPage`, JSON.stringify(data));
+}
+
+// 주문 내역 조회 (작동 안됨)
+export async function getUserOrders() {
+  return await Api.get(domain, 'myPage/orders');
+}
+
+// 배송지 수정 (변경)
+
+// 주문 취소 (삭제)
