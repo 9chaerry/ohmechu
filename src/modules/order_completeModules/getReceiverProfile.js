@@ -15,7 +15,6 @@ async function getReceiverProfile() {
   try {
     const order = getOrderedId();
     const data = await getIdOrder(order);
-    console.log(data);
     receiver.name.innerText = `${data.userName}`;
     receiver.phoneNumber.innerText = `${data.phoneNumber}`;
     receiver.postcode.innerText = `${data.address.우편번호}`;
