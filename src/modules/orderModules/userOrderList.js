@@ -23,8 +23,8 @@ async function orderListTemplate(id) {
       }
     }
     orderList.innerHTML = ''; // 초기화!!!
-    for (const listItem of list) {
-      orderList.appendChild(listItem);
+    for (const orderItem of list) {
+      orderList.appendChild(orderItem);
     }
   }
 }

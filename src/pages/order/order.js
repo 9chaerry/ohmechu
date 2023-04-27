@@ -5,10 +5,11 @@ import { orderListTemplate } from '/src/modules/orderModules/userOrderList.js';
 import { priceSetting } from '/src/modules/orderModules/goodsTotalPrice.js';
 import { sendShippingData } from '/src/modules/orderModules/userShippingInput.js';
 import { autoHyphen } from '/src/modules/sign_upModules/autoHyphenPhoneNumber.js';
+import { blockAccess } from '/src/modules/orderModules/blockAccessOrderPage.js';
 
-// document.addEventListener('DOMContentLoaded', blockAccess);
 document.addEventListener('DOMContentLoaded', createHeader);
 document.addEventListener('DOMContentLoaded', createFooter);
+document.addEventListener('DOMContentLoaded', blockAccess);
 document.addEventListener('DOMContentLoaded', orderListTemplate);
 document.addEventListener('DOMContentLoaded', priceSetting);
 
