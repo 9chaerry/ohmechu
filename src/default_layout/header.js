@@ -14,12 +14,9 @@ function createHeader() {
       </li>
       <li
         id="sign-up-page-button"
-        class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
+        class="inline-block font-normal text-xs px-3 border-color-sec align-middle"
       ><a href="/src/pages/sign_up/sign_up.html">
         회원가입</a>
-      </li>
-      <li class="inline-block font-normal text-xs pl-3 align-middle">
-        고객센터
       </li>
     </ul>
   </div>
@@ -126,7 +123,7 @@ function createHeader() {
       마이페이지</a>
     </li>
     <li
-      class="inline-block font-normal text-xs px-3 border-r border-color-sec align-middle"
+      class="inline-block font-normal text-xs px-3 border-color-sec align-middle"
     >
     <a href="/src/pages/order_list/order_list.html">주문조회</a>
     </li>` + pageButtonList.innerHTML;

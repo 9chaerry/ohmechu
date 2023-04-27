@@ -26,8 +26,8 @@ async function request({ endpoint, method, params = '', data = {} }) {
     return response.data;
   } catch (error) {
     if (error.response) {
-      const { reason } = error.response.data;
-      throw new Error(reason);
+      const { status } = error.response;
+      throw new Error(status);
     } else {
       throw new Error('Failed to make request');
     }
