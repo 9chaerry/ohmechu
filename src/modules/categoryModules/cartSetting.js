@@ -1,4 +1,5 @@
 const cartInButtons = document.getElementsByClassName('cart-in-button');
+console.log(cartInButtons);
 const AMOUNT_INIT = 1;
 
 /**
@@ -23,26 +24,24 @@ function cartIn(e) {
   cartInConfirm(this);
 
   // 버튼에서 id를 받아옵니다.
-  const _id = this.dataset.id;
+  const id = this.dataset.id;
   const product = {
-    _id: _id,
+    id: id,
     amount: AMOUNT_INIT,
   };
-  // 이미 존재하는 LocalStorage의 값을 받아와서 세팅합니다.
-  const originCartArray = window.localStorage.getItem('cart');
-  const originCart = originCartArray && JSON.parse(originCartArray);
 
-  if (originCart !== null)
-    for (let i = 0; i < originCart.length; i++) {
-      const cartProductId = originCart[i]._id;
-      if (cartProductId === product._id) {
-        product.amount = originCart[i].amount + 1;
-        originCart.splice(i, 1);
+  // 이미 존재하는 LocalStorage의 값을 받아와서 세팅합니다.
+  // 원래 장바구니 값이 없었을 때, 배열 []로 초기화합니다.
+  let cart = window.localStorage.getItem('cart');
+  cart = cart ? JSON.parse(cart) : [];
+
+  if (cart.length > 0)
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === product.id) {
+        product.amount = cart[i].amount + 1;
+        cart.splice(i, 1);
       }
     }
-
-  // 원래 cart의 값이 없었을 때, 배열 []로 초기화합니다.
-  const cart = originCart ?? [];
   cart.push(product);
 
   // JSON 형태로 localStorage에 넘겨줍니다.

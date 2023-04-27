@@ -73,7 +73,7 @@ function createHeader() {
       <span><a href="">이벤트</a></span>
     </li>
   </ul>
-  <div class="w-[13%] flex justify-between pr-[6%]">
+  <div class="w-[13%] flex justify-evenly pr-[6%]">
     <a href="/src/pages/mypage/mypage.html" class="mr-[5%]"
       ><svg
         xmlns="http://www.w3.org/2000/svg"

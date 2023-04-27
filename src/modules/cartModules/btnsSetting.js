@@ -1,12 +1,12 @@
 import { cartLoad } from './cartLoad.js';
+import { priceSetting } from './priceSetting.js';
+
 /**
  * 버튼에 대한 이벤트를 줍니다.
  * 1. 수량 조절 버튼을 통해 장바구니 LocalStorage를 변경합니다.
  * 2. 오른쪽 X버튼을 눌러 장바구니에서 상품을 삭제합니다.
  */
 function btnsSetting() {
-  // 페이지 상태관리를 위한 변수
-
   // 버튼 DOM 요소
   const decrementBtns = document.querySelectorAll(
     `button[data-action="decrement"]`
@@ -44,8 +44,11 @@ function decrement(e) {
   }
 
   // LocalStorage와 연동
-  const _id = btn.dataset.productId;
-  updateCart(_id, value);
+  const id = btn.dataset.productId;
+  updateCart(id, value);
+
+  // 가격 표시 변동
+  priceSetting();
 }
 
 function increment(e) {
@@ -61,8 +64,11 @@ function increment(e) {
   }
 
   // LocalStorage와 연동
-  const _id = btn.dataset.productId;
-  updateCart(_id, value);
+  const id = btn.dataset.productId;
+  updateCart(id, value);
+
+  // 가격 표시 변동
+  priceSetting();
 }
 
 /**
@@ -73,7 +79,7 @@ function increment(e) {
 function cancel(e) {
   // LocalStorage에서 상품을 삭제합니다.
   const cartAmount = document.getElementById('cart-amount');
-  const _id = this.dataset.productId;
+  const id = this.dataset.productId;
   let cart = window.localStorage.getItem('cart');
   cart = cart && JSON.parse(cart);
 
@@ -83,8 +89,8 @@ function cancel(e) {
   }
 
   for (let i = 0; i < cart.length; i++) {
-    const cartProductId = cart[i]._id;
-    if (cartProductId === _id) cart.splice(i, 1);
+    const cartProductId = cart[i].id;
+    if (cartProductId === id) cart.splice(i, 1);
   }
 
   if (cart.length < 1) {
@@ -102,18 +108,21 @@ function cancel(e) {
   window.localStorage.setItem('cart', JSON.stringify(cart));
 
   // 레이아웃을 수정합니다.
-  const cartItem = document.querySelector(`li[data-list-product-id="${_id}"]`);
+  const cartItem = document.querySelector(`li[data-list-product-id="${id}"]`);
   cartItem.remove();
   cartAmount.innerText = cartAmount.innerText - 1;
+
+  // 가격 표시 변동
+  priceSetting();
 }
 
 /**
  * 상품의 아이디와 수량을 받아서 LocalStorage를 수정합니다.
- * @param {String} _id
+ * @param {String} id
  * @param {Number} value
  * @returns
  */
-function updateCart(_id, value) {
+function updateCart(id, value) {
   let cart = window.localStorage.getItem('cart');
   cart = cart && JSON.parse(cart);
 
@@ -123,8 +132,8 @@ function updateCart(_id, value) {
   }
 
   for (let i = 0; i < cart.length; i++) {
-    const cartProductId = cart[i]._id;
-    if (cartProductId === _id) cart[i].amount = value;
+    const cartProductId = cart[i].id;
+    if (cartProductId === id) cart[i].amount = value;
   }
 
   window.localStorage.setItem('cart', JSON.stringify(cart));

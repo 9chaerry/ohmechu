@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/main/index.js"></script>
-    <!-- 현재 해당 스크립트 작동 안됩니다!! header&footer import해서 그런 것 같은데... 확인 부탁드려요! -->
-    <!-- <script defer type="module" src="category.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="/src/pages/category/category.js"></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
-    <main role="main" class="w-3/4 mx-auto mt-1 flex" id="main-page">
+    <main
+      role="main"
+      class="w-3/4 mx-auto mt-1 flex justify-around"
+      id="main-page"
+    >
       <div class="relative mt-20 pr-10">
         <div class="sticky top-0">
-          <h2 class="text-4xl mb-4 text-right">전체 상품</h2>
+          <h2 id="category-title" class="text-4xl mb-4 text-right">
+            전체 상품
+          </h2>
           <img
-            src="/src/img/food-6.jpg"
+            src="https://ohmechu.s3.ap-northeast-2.amazonaws.com/chadolDoenjangjjigae.jpg"
             class="h-[900px] object-cover"
             alt="오메추 전체상품"
+          />
           />
         </div>
       </div>
@@ -27,25 +33,21 @@
         <article>
           <div class="flex flex-col mt-24 justify-center">
             <div class="h-8 mb-6 flex justify-start items-center">
-              <a
-                href=""
-                class="inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap"
-                >전체 상품</a
+              <span
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >전체 상품</span
               >
-              <a
-                href=""
-                class="inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap"
-                >한식</a
+              <span
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >한식</span
               >
-              <a
-                href=""
-                class="inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap"
-                >아시안</a
+              <span
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >아시안</span
               >
-              <a
-                href=""
-                class="inline-block px-3 transform border-b-2 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap"
-                >양식</a
+              <span
+                class="category-button inline-block px-3 transform border-b-2 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >양식</span
               >
               <!-- 카테고리 클릭 이벤트 - 각 a태그에서 클릭된 것 밑줄 유지하도록 classList.add 화면 이동 막기 위해 preventDefault()를 잊지 맙시당. -->
             </div>
@@ -57,7 +59,7 @@
           >
             <span class="inline-block"
               >총
-              <span id="product-amount" class="inline-block ml-2">__</span
+              <span id="product-amount" class="inline-block ml-2">0</span
               >건</span
             >
           </div>
@@ -73,7 +75,7 @@
                   class="absolute left-[98%] top-3/4 -translate-x-full -translate-y-2/4 z-10 cursor-pointer"
                 >
                   <svg
-                    class="w-12 h-12 stroke-[#607c5f] hover:stroke-[#22392a] transform ease-in duration-300"
+                    class="w-12 h-12 stroke-[#607c5f]"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     stroke-width="1.2"
