@@ -11,20 +11,14 @@ import * as Fetcher from '../../modules/api_methodModules/Fetcher.js';
 // const imgTag = document.getElementsByTagName('img')[0];
 
 const productImg = document.getElementsByClassName('product-img');
-// const productName = document.getElementsByClassName('product-name');
-console.log(productImg);
+// console.log(productImg);
 
 export function moveToDetail() {
   for (let list of productImg) {
     list.addEventListener('click', listToDetail);
   }
-  // for (let list of productName) {
-  //   list.addEventListener('click', listToDetail);
-  // }
 }
 
-// dummy 아니라 DB주소로
-// export
 async function listToDetail(e) {
   e.preventDefault();
   e.stopPropagation();
