@@ -15,7 +15,7 @@ export async function getAllProducts() {
 
 // id를 통한 하나의 상품 조회
 export async function getIdProduct(productId) {
-  return await Api.get(domain, `products/${productId}`);
+  return await Api.get(`${domain}/products/${productId}`);
 }
 
 // 카테고리별 상품 조회
@@ -58,8 +58,8 @@ export async function getAllOrders() {
 }
 
 // id를 통한 하나의 주문 조회
-export async function getIdOrder(id) {
-  return await Api.get(domain, `orders/${id}`);
+export async function getIdOrder(productId) {
+  return await Api.get(`${domain}/orders/${productId}`);
 }
 
 // 주문 정보 저장
@@ -69,7 +69,7 @@ export async function postOrder(data) {
 
 // 배송지 수정
 export async function putOrder(id, data) {
-  return await Api.delete(domain, `orders/${id}`, data);
+  return await Api.put(domain, `orders/${id}`, data);
 }
 
 // 주문 취소
@@ -164,11 +164,8 @@ export async function getUser() {
 }
 
 // 사용자 정보 삭제 (탈퇴)
-export async function deleteUser(password) {
-  const data = {
-    password: password,
-  };
-  return await Api.delete(domain, 'users/myPage', JSON.stringify(data));
+export async function deleteUser() {
+  return await Api.delete(domain, 'users/myPage');
 }
 
 // 회원 정보 수정

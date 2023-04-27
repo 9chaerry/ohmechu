@@ -13,47 +13,29 @@
     <!-- 메인 페이지 -->
     <main role="main" class="mt-1" id="main-page">
       <!-- 메인 이벤트 슬라이더 -->
-      <div class="w-full h-[500px] color-ter mb-12" id="main-slider-container">
-        <ul
-          class="slider flex transition-transform duration-500 ease-in-out"
-          id="main-silder"
-        >
-          <li class="slider-item flex-none w-full">
-            <img
-              src="/src/img/food-1.jpg"
-              class="w-full h-[500px] object-cover"
-              alt="오메추 비빔밥"
-            />
-          </li>
-          <li class="slider-item flex-none w-full">
-            <img
-              src="/src/img/food-2.jpg"
-              class="w-full h-[500px] object-cover"
-              alt="오메추 쌀국수"
-            />
-          </li>
-          <li class="slider-item flex-none w-full">
-            <img
-              src="/src/img/food-3.jpg"
-              class="w-full h-[500px] object-cover"
-              alt="오메추 라자냐"
-            />
-          </li>
-          <li class="slider-item flex-none w-full">
-            <img
-              src="/img/food-4.jpg"
-              class="w-full h-[500px] object-cover"
-              alt="암튼 고기요리"
-            />
-          </li>
-          <li class="slider-item flex-none w-full">
-            <img
-              class="w-full h-[500px] object-cover"
-              src="/src/img/food.jpg"
-              alt="오메추 볶음 요리"
-            />
-          </li>
-        </ul>
+      <div class="slider-container w-full h-[500px] overflow-hidden bg-center">
+        <div class="slider">
+          <div
+            class="slide"
+            style="background-image: url(/src/img/food-1.jpg)"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url(/src/img/food-3.jpg)"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url(/src/img/food.jpg)"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url(/src/img/food-4.jpg)"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url(/src/img/food-2.jpg)"
+          ></div>
+        </div>
       </div>
       <!-- 추천 상품 리스트 -->
       <article id="recommended-list-slider" class="h-[600px] overflow-hidden">

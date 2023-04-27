@@ -11,6 +11,7 @@ async function listSetting(category = 'latest') {
   await listGeneration(category);
   // 리스트 세팅이 다되었다면, 리스트에 있는 장바구니 버튼 세팅을 진행한다.
   cartSetting();
+  moveToDetail();
 }
 
 /**
@@ -51,7 +52,7 @@ async function listGeneration(category) {
 function listTemplate(id, img, name, price, subDescription = '　') {
   return `<li class="w-1/4 h-1/4 p-3 my-3">
               <img
-                class="w-full object-cover flex-shrink-0 object-center cursor-pointer"
+                class="product-img w-full object-cover flex-shrink-0 object-center cursor-pointer"
                 src="${img}"
               />
               <div class="relative p-1">
@@ -77,8 +78,8 @@ function listTemplate(id, img, name, price, subDescription = '　') {
                     <circle cx="12" cy="15" r="2" />
                   </svg>
                 </div>
-                <a href="" class="block mt-2 text-left text-2xl font-semibold"
-                  >${name}</a
+                <p class="product-name block mt-2 text-left text-2xl font-semibold"
+                  >${name}</p
                 >
                 <div class="text-left text-sm font-light">${subDescription}</div>
                 <div class="mt-3 text-left text-lg">${price}</div>
