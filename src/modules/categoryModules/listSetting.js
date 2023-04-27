@@ -1,5 +1,4 @@
 import { cartSetting } from './cartSetting.js';
-import { moveToDetail } from './listToDetail.js';
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 const productBox = document.getElementById('product-box');
@@ -40,9 +39,6 @@ async function listGeneration(category) {
 
   // 총 0건 텍스트의 값을 올바르게 변경합니다.
   productAmount.innerText = datas.length;
-
-  // img 파일 불러오기
-  // moveToDetail();
 }
 
 /**

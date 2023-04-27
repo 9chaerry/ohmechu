@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/main/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script
+      defer
+      type="module"
+      src="/src/pages/order_complete/order_complete.js"
+    ></script>
   </head>
   <body>
     <!-- 주문 완료 페이지 -->
@@ -80,47 +88,55 @@
 
         <div class="text-2xl font-bold">
           <span class="font-medium mr-3">고객님의 주문번호는</span
-          ><span>12341234</span><span class="font-medium ml-3">입니다.</span>
+          ><span id="order-id"></span
+          ><span class="font-medium ml-3">입니다.</span>
         </div>
 
         <div
           class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
         >
-          주문자 정보
+          배송지 정보
         </div>
         <div class="w-full py-4 w-3/5">
           <div class="w-max my-5">
             <p class="inline-block text-lg font-medium text-left mr-6">
               받는사람
             </p>
-            <p class="inline-block text-lg text-left">앨리수</p>
+            <p class="inline-block text-lg text-left" id="receiver-name"></p>
           </div>
           <div class="w-max mb-5">
             <p class="inline-block text-lg font-medium text-left mr-10">
               연락처
             </p>
-            <p class="inline-block text-lg text-left">010-1234-5678</p>
+            <p
+              class="inline-block text-lg text-left"
+              id="receiver-phone-number"
+            ></p>
           </div>
           <div class="w-3/5 flex flex-col mb-5">
             <div class="w-[37px]">
               <p class="inline-block text-lg font-medium text-left mr-[56px]">
                 주소
               </p>
-              <p class="inline-block text-lg text-left">12341</p>
+              <p
+                class="inline-block text-lg text-left"
+                id="receiver-postcode"
+              ></p>
             </div>
-            <p class="ml-[92px]">
-              <span class="text-lg text-left">서울 성동구 고산자로 313</span>
-              <span class="text-lg text-left">서울 성동구 고산자로 313</span>
-              <span class="text-lg text-left"
-                >오른쪽으로 꺾어서 앞으로 전진</span
-              >
+            <p class="ml-[92px] flex flex-start">
+              <span class="text-lg text-left" id="receiver-roadAddress"></span>
+              <span
+                class="text-lg text-left"
+                id="receiver-detailAddress"
+              ></span>
+              <span class="text-lg text-left" id="receiver-extraAddress"></span>
             </p>
           </div>
           <div class="w-max">
             <p class="inline-block text-lg font-medium text-left mr-6">
               요청사항
             </p>
-            <p class="inline-block text-lg text-left">문 앞에 놓아주세용.</p>
+            <p class="inline-block text-lg text-left" id="receiver-request"></p>
           </div>
         </div>
 
@@ -131,20 +147,20 @@
         </div>
         <div class="name flex my-6 items-center">
           <p class="w-1/6 text-lg font-medium text-left">구매 금액</p>
-          <p class="text-lg font-medium text-left">66,000원</p>
+          <p class="text-lg font-medium text-left" id="purchase-amount">원</p>
         </div>
         <div class="phone flex my-6 items-center">
           <p class="w-1/6 text-lg font-medium text-left">배송비</p>
-          <p class="text-lg font-medium text-left">3,000원</p>
+          <p class="text-lg font-medium text-left" id="delivery-fee">원</p>
         </div>
         <div class="address flex my-6 items-center">
           <p class="w-1/6 text-lg font-medium text-left">합계</p>
-          <p class="text-lg font-semibold text-left">69,000원</p>
+          <p class="text-lg font-semibold text-left" id="total-amount"></p>
         </div>
         <div class="mt-16">
           <button
             type="button"
-            onclick="location.href='/src/pages/order_list/order_list.html'"
+            id="check-order"
             class="inline-block py-4 px-14 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none"
           >
             주문확인
