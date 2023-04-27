@@ -2,7 +2,6 @@ import { btnsSetup } from './btnsSetting.js';
 import { priceSetup } from './priceSetting.js';
 import { checkBoxSetup } from './checkBoxes.js';
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
-import * as Token from '/src/modules/api_methodModules/Token.js';
 
 // 장바구니 없을때 조정
 const emptyCartNotice = document.getElementById('empty-cart-notice');
@@ -82,11 +81,6 @@ function deleteAll(e) {
 
     cartLoad();
   }
-}
-
-function loginBoxSetup() {
-  const loginBox = document.getElementById('login-box');
-  if (Token.getToken !== undefined) loginBox.classList.add('hidden');
 }
 
 function orderAll(e) {

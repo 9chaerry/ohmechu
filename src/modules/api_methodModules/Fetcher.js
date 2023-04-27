@@ -1,4 +1,5 @@
 import * as Api from './Api.js';
+import * as Token from './Token.js';
 
 const port = '5000';
 const domain = `http://34.64.112.254:${port}/api`;
@@ -128,8 +129,22 @@ export async function loginUser(email, password) {
   return await Api.post(domain, `users/login`, JSON.stringify(data));
 }
 
+// 비밀번호 확인
+export async function checkPassword(password) {
+  const data = {
+    password: password,
+  };
+  return await Api.post(
+    domain,
+    `users/myPage?btn=modify`,
+    JSON.stringify(data)
+  );
+}
+
 // 로그아웃
-// 백엔드에서 구현안됨
+export async function logoutUser() {
+  return await Api.post(domain, `users/logout`, {});
+}
 
 // 유저에 주문 정보 저장
 export async function putUserOrder(userId, orderId) {

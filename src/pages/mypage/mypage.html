@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OHMECHU :: 오늘의 메뉴 추천</title>
     <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
-    <script defer type="module" src="/src/pages/main/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="mypage.js"></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
@@ -25,13 +26,13 @@
           <tr>
             <td class="w-[110px]"><span class="text-left">이름</span></td>
             <td>
-              <span id="mypageName">앨리수</span>
+              <span id="mypage-name" class=""></span>
             </td>
           </tr>
           <tr>
             <td><span class="text-left">이메일</span></td>
             <td>
-              <span id="mypageId" class="">ohmechu@example.com</span>
+              <span id="mypage-email" class=""></span>
             </td>
           </tr>
           <tr>
@@ -39,8 +40,8 @@
             <td>
               <input
                 type="password"
-                id="userPassword"
-                name="userPassword"
+                id="user-password"
+                name="user-password"
                 placeholder="비밀번호 입력 후 회원 정보 수정이 가능합니다."
                 class="w-[500px] transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
                 minlength="6"
@@ -52,14 +53,13 @@
           <tr>
             <td><span class="text-left">연락처</span></td>
             <td>
-              <span id="mypagePhone">010-1234-5678</span>
+              <span id="mypage-phone-number"></span>
             </td>
           </tr>
         </table>
         <button
           type="button"
-          onclick="location.href
-            ='/src/pages/user_profile/user_profile.html';"
+          id="user-information-edit-page-button"
           class="absolute right-0 inline-block py-3 px-8 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
         >
           회원정보 수정

@@ -25,7 +25,13 @@ async function login(e) {
   try {
     token = await Fetcher.loginUser(userId, userPassword);
   } catch (err) {
-    alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
+    if (err.message === '500') {
+      alert('입력이 올바르지 않습니다.');
+    } else if (err.message === '401') {
+      alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
+    } else {
+      alert('예기치 않은 오류가 발생했습니다.');
+    }
     return;
   }
 
