@@ -1,3 +1,5 @@
+import * as Token from '/src/modules/api_methodModules/Token.js';
+
 async function request({ endpoint, method, params = '', data = {} }) {
   const apiUrl = params ? `${endpoint}/${params}` : endpoint;
   const headers = {
