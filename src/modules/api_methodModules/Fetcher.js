@@ -142,7 +142,9 @@ export async function checkPassword(password) {
 }
 
 // 로그아웃
-// 백엔드에서 구현안됨
+export async function logoutUser() {
+  return await Api.post(domain, `users/logout`, {});
+}
 
 // 유저에 주문 정보 저장
 export async function putUserOrder(userId, orderId) {
