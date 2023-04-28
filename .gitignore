@@ -1,7 +1,3 @@
 node_modules/
-<<<<<<< HEAD
 .vscode
 package-lock.json
-=======
-.DS_Store
->>>>>>> 81a497d (Chore: gitignore 수정)
