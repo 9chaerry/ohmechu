@@ -34,7 +34,7 @@ async function sendShippingData(e) {
     const response = await Fetcher.putOrder(orderedId, data);
     if (response.modifiedCount) {
       alert('주문 수정이 완료되었습니다.');
-      window.location.href = '/src/pages/order_list/order_list.html';
+      window.location.href = `/src/pages/order_list/order_list.html?order=${orderedId}`;
     } else {
       console.error('주문했던 ID를 가져올 수 없습니다.', response);
       alert('주문 수정이 취소되었습니다.');
