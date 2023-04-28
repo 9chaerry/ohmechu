@@ -52,7 +52,7 @@ async function cartLoad() {
       productData.img,
       productData.name,
       amount,
-      productData.price,
+      Number(productData.price).toLocaleString(),
       productData.description
     );
   }
@@ -112,7 +112,7 @@ function listTemplate(id, img, name, amount, price, description) {
     />
     <img
       src="${img}"
-      class="inline-block w-[150px] h-[150px]"
+      class="object-cover inline-block w-[150px] h-[150px]"
     />
     <div class="inline-block ml-6">
       <p class="flex-col">
