@@ -37,6 +37,13 @@ async function cartLoad() {
     emptyCartNotice.classList.remove('hidden');
     deleteAndBill.classList.add('hidden');
     orderButtons.classList.add('hidden');
+
+    // 알림 창 버튼 이벤트 등록
+    document
+      .getElementById('category-move-button')
+      .addEventListener('click', () => {
+        window.location.href = '/src/pages/category/category.html';
+      });
     return;
   }
 
