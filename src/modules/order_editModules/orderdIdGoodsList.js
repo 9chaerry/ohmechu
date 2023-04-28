@@ -1,8 +1,8 @@
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
-import { orderedListTemplate } from '/src/modules/order_editModules/orderedListTemplate.js';
+import { listTemplate } from '/src/modules/order_listModules/orderListTemplate.js';
 import { getOrderedId } from '/src/modules/order_completeModules/getOrderId.js';
 
-async function orderdIedGoodsList(id) {
+async function orderdIdGoodsList(id) {
   const orderList = document.getElementById('order-list');
   const orderedId = getOrderedId();
   const orderedData = await Fetcher.getIdOrder(orderedId);
@@ -14,7 +14,7 @@ async function orderdIedGoodsList(id) {
       const amountData = orderedGoodsData.find((data) => data.id === item.id);
       try {
         const data = await Fetcher.getIdProduct(item.id);
-        let listItem = orderedListTemplate(data, amountData);
+        let listItem = listTemplate(data, amountData);
         list.push(listItem);
       } catch (error) {
         console.error(`상품을 받아오는데 실패하였습니다: ${error}`);
@@ -28,4 +28,4 @@ async function orderdIedGoodsList(id) {
   }
 }
 
-export { orderdIedGoodsList };
+export { orderdIdGoodsList };

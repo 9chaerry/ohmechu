@@ -49,7 +49,7 @@ async function sendShippingData(e) {
     }
   } catch (error) {
     console.error('백엔드로 전송 실패', error);
-    alert('주문이 취소되었습니다.');
+    alert('배송지 정보를 모두 작성해주세요.');
   }
 }
 

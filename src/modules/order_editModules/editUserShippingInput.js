@@ -7,17 +7,13 @@ async function sendShippingData(e) {
   const edit_receiver_phone_number = document.getElementById(
     'receiver-phone-number'
   ).value;
-  const edit_receiver_postcode =
-    document.getElementById('receiver-postcode').value;
-  const edit_receiver_roadAddress = document.getElementById(
-    'receiver-roadAddress'
-  ).value;
-  const edit_receiver_detailAddress = document.getElementById(
-    'receiver-detailAddress'
-  ).value;
-  const edit_receiver_extraAddress = document.getElementById(
-    'receiver-extraAddress'
-  ).value;
+  const edit_receiver_postcode = document.getElementById('postcode').value;
+  const edit_receiver_roadAddress =
+    document.getElementById('roadAddress').value;
+  const edit_receiver_detailAddress =
+    document.getElementById('detailAddress').value;
+  const edit_receiver_extraAddress =
+    document.getElementById('extraAddress').value;
   const edit_receiver_requirement =
     document.getElementById('receiver-request').value;
 
