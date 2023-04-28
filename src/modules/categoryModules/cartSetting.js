@@ -4,7 +4,7 @@ const AMOUNT_INIT = 1;
 /**
  * 장바구니 버튼에 대한 이벤트를 추가합니다.
  */
-function cartSetting() {
+function cartSetup() {
   for (let cart of cartInButtons) {
     cart.addEventListener('click', cartIn);
   }
@@ -57,4 +57,4 @@ function cartInConfirm(svg) {
   );
 }
 
-export { cartSetting };
+export { cartSetup };

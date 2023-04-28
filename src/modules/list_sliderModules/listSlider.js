@@ -91,7 +91,7 @@ async function recListGenerator() {
     });
     a.innerText = product.name;
     a.href = productDetailPageUrl;
-    p.innerText = Number(product.price).toLocaleString() + '원';
+    p.innerText = Number(product.price).toLocaleString() + ' 원';
 
     // 각 요소 합치기
     textDiv.appendChild(a);
@@ -222,7 +222,7 @@ async function newListGenerator() {
     });
     a.innerText = product.name;
     a.href = productDetailPageUrl;
-    p.innerText = Number(product.price).toLocaleString() + '원';
+    p.innerText = Number(product.price).toLocaleString() + ' 원';
 
     // 각 요소 합치기
     textDiv.appendChild(a);
