@@ -8,10 +8,7 @@ import * as Fetcher from '../../modules/api_methodModules/Fetcher.js';
  * 해당 상품 정보 가져오기
  */
 
-// const imgTag = document.getElementsByTagName('img')[0];
-
 const productImg = document.getElementsByClassName('product-img');
-// console.log(productImg);
 
 export function moveToDetail() {
   for (let list of productImg) {
