@@ -3,42 +3,32 @@ import { getOrderedId } from '/src/modules/order_completeModules/getOrderId.js';
 
 async function sendShippingData(e) {
   e.stopPropagation();
-  const edit_receiver_name = document.getElementById('receiver-name').value;
-  const edit_receiver_phone_number = document.getElementById(
+  console.log('버튼 확인 콘솔');
+  const editReceiverName = document.getElementById('receiver-name').value;
+  const editReceiverPhoneNumber = document.getElementById(
     'receiver-phone-number'
   ).value;
-  const edit_receiver_postcode = document.getElementById('postcode').value;
-  const edit_receiver_roadAddress =
-    document.getElementById('roadAddress').value;
-  const edit_receiver_detailAddress =
+  const editReceiverPostcode = document.getElementById('postcode').value;
+  const editReceiverRoadAddress = document.getElementById('roadAddress').value;
+  const editReceiverDetailAddress =
     document.getElementById('detailAddress').value;
-  const edit_receiver_extraAddress =
+  const editReceiverExtraAddress =
     document.getElementById('extraAddress').value;
-  const edit_receiver_requirement =
+  const editReceiverRequirement =
     document.getElementById('receiver-request').value;
 
   const orderedId = getOrderedId();
-  //   const orderedData = await Fetcher.getIdOrder(orderedId);
-  //   //response를 작성해야하나?
-  //   const orderedGoodsData = orderedData.orderDetail;
-
-  //   const order_detail = orderedGoodsData.map((item) => ({
-  //     id: item.id,
-  //     amount: item.amount,
-  //   }));
-
-  const edit_receiver_address = {
-    우편번호: edit_receiver_postcode,
-    도로명주소: edit_receiver_roadAddress,
-    상세주소: edit_receiver_detailAddress,
-    참고사항: edit_receiver_extraAddress,
+  const editReceiverAddress = {
+    우편번호: editReceiverPostcode,
+    도로명주소: editReceiverRoadAddress,
+    상세주소: editReceiverDetailAddress,
+    참고사항: editReceiverExtraAddress,
   };
   const data = {
-    // orderDetail: order_detail,
-    userName: edit_receiver_name,
-    phoneNumber: edit_receiver_phone_number,
-    address: edit_receiver_address,
-    requirement: edit_receiver_requirement,
+    userName: editReceiverName,
+    phoneNumber: editReceiverPhoneNumber,
+    address: editReceiverAddress,
+    requirement: editReceiverRequirement,
   };
   try {
     const response = await Fetcher.putOrder(orderedId, data);

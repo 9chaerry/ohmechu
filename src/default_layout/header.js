@@ -60,19 +60,16 @@ function createHeader() {
     <li class="inline-block mr-[4%]">
       <span><a href="">인기상품</a></span>
     </li>
-    <li class="inline-block">
-      <span><a href="">이벤트</a></span>
-    </li>
   </ul>
   <div class="w-[13%] flex justify-evenly pr-[6%]">
-    <a href="" class="mr-[5%]"
+    <a href="" class="mr-[8%]"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.3"
         stroke="currentColor"
-        class="mypage-button w-8 h-8 inline-block"
+        class="mypage-button w-8 h-8 inline-block mr-[8%]"
       >
         <path
           stroke-linecap="round"

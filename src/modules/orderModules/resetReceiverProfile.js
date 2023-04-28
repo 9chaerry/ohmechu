@@ -1,17 +1,17 @@
 export function resetReceiverProfile() {
   const receiver = {
-    name: document.getElementById('receiver-name').value,
-    phoneNumber: document.getElementById('receiver-phone-number').value,
-    postcode: document.getElementById('postcode').value,
-    roadAddress: document.getElementById('roadAddress').value,
-    detailAddress: document.getElementById('detailAddress').value,
-    extraAddress: document.getElementById('extraAddress').value,
-    request: document.getElementById('userRequest').value,
+    name: document.getElementById('receiver-name'),
+    phoneNumber: document.getElementById('receiver-phone-number'),
+    postcode: document.getElementById('postcode'),
+    roadAddress: document.getElementById('roadAddress'),
+    detailAddress: document.getElementById('detailAddress'),
+    extraAddress: document.getElementById('extraAddress'),
+    request: document.getElementById('userRequest'),
   };
-  receiver.name = '';
-  receiver.phoneNumber = '';
-  receiver.postcode = '';
-  receiver.roadAddress = '';
-  receiver.detailAddress = '';
-  receiver.extraAddress = '';
+  receiver.name.value = '';
+  receiver.phoneNumber.value = '';
+  receiver.postcode.value = '';
+  receiver.roadAddress.value = '';
+  receiver.detailAddress.value = '';
+  receiver.extraAddress.value = '';
 }

@@ -7,6 +7,7 @@ import { showOrderId } from '/src/modules/order_completeModules/getOrderId.js';
 import { orderedReceiverProfile } from '/src/modules/order_editModules/orderedReceiverProfile.js';
 import { getOrderPrice } from '/src/modules/order_completeModules/getOrderPrice.js';
 import { deleteAllOrder } from '/src/modules/order_editModules/deleteAllOrder.js';
+import { sendShippingData } from '/src/modules/order_editModules/editUserShippingInput.js';
 
 document.addEventListener('DOMContentLoaded', createHeader);
 document.addEventListener('DOMContentLoaded', createFooter);
@@ -23,3 +24,11 @@ document
   .addEventListener('input', autoHyphen);
 
 document.getElementById('delete-all').addEventListener('click', deleteAllOrder);
+document
+  .getElementById('edit-submit')
+  .addEventListener('click', sendShippingData);
+
+document.getElementById('back-topage').addEventListener('click', () => {
+  console.log('돌아가기!!!!!!');
+  history.go(-1);
+});

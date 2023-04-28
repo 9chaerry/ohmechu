@@ -2,8 +2,8 @@ import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 async function sendShippingData(e) {
   e.stopPropagation();
-  const userName = document.getElementById('userName').value;
-  const phoneNumber = document.getElementById('user-phone-number').value;
+  const userName = document.getElementById('receiver-name').value;
+  const phoneNumber = document.getElementById('receiver-phone-number').value;
   const postcode = document.getElementById('postcode').value;
   const roadAddress = document.getElementById('roadAddress').value;
   const detailAddress = document.getElementById('detailAddress').value;

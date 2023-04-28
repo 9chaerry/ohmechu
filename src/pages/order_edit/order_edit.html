@@ -10,7 +10,11 @@
       src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
       defer
     ></script>
-    <script defer type="module" src="./order_edit.js"></script>
+    <script
+      defer
+      type="module"
+      src="/src/pages/order_edit/order_edit.js"
+    ></script>
   </head>
   <body>
     <!-- 메인 페이지 -->
@@ -45,13 +49,7 @@
       >
         주문자 정보 수정
       </div>
-      <form
-        action="백엔드 주문자 정보 경로"
-        id="userSignUp"
-        id="userOrderInput"
-        method="post"
-        class="w-full"
-      >
+      <form class="w-full">
         <table class="my-3">
           <tr>
             <td>
@@ -171,12 +169,14 @@
       <div class="mt-20 mb-32">
         <button
           type="button"
+          id="back-topage"
           class="inline-block py-4 px-14 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
         >
           돌아가기
         </button>
         <button
           type="button"
+          id="edit-submit"
           class="inline-block py-4 px-14 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
         >
           수정하기
