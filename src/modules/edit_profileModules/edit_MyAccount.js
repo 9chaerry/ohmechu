@@ -3,7 +3,7 @@ import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 async function editMyAccount(e) {
   e.preventDefault();
   e.stopPropagation();
-  const editPassword = document.getElementById('user-PasswordCheck').value;
+  const editPassword = document.getElementById('user-Password').value;
   const editPasswordCheck = document.getElementById('user-PasswordCheck').value;
   const userPhoneNumber = document.getElementById('user-phone-number').value;
   const postcode = document.getElementById('postcode').value;
