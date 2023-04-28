@@ -106,6 +106,7 @@ function createHeader() {
   const loginPageButton = document.getElementById('login-page-button');
   const signUpPageButton = document.getElementById('sign-up-page-button');
   const pageButtonList = document.getElementById('page-button-list');
+  const myPageBtn = document.querySelector('.mypage-button');
 
   if (isLogin()) {
     loginPageButton.classList.add('hidden');
@@ -130,23 +131,19 @@ function createHeader() {
 
     // 로그아웃 버튼에 이벤트를 할당합니다.
     document.getElementById('logout-button').addEventListener('click', logout);
+    myPageBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '/src/pages/mypage/mypage.html';
+    });
   }
 
-  // 비회원일 때 마이페이지 누르면 로그인 페이지로 이동 alert
+  // 비회원일 때 마이페이지 누르면 로그인 페이지로 이동 confirm
   else {
     const myPageBtn = document.querySelector('.mypage-button');
 
     myPageBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (
-        confirm(
-          '로그인 페이지로 이동하시겠습니까? 비회원이신 경우, 주문내역 조회가 가능합니다.'
-        )
-      ) {
-        window.location.href = '/src/pages/login/login.html';
-      } else {
-        return;
-      }
+      window.location.href = '/src/pages/login/login.html';
     });
   }
 }
