@@ -4,6 +4,7 @@ async function editMyAccount(e) {
   e.preventDefault();
   e.stopPropagation();
   const editPassword = document.getElementById('user-PasswordCheck').value;
+  const editPasswordCheck = document.getElementById('user-PasswordCheck').value;
   const userPhoneNumber = document.getElementById('user-phone-number').value;
   const postcode = document.getElementById('postcode').value;
   const roadAddress = document.getElementById('roadAddress').value;
@@ -22,10 +23,12 @@ async function editMyAccount(e) {
   };
 
   try {
-    const response = await Fetcher.putUser(data);
-    if (response.acknowledged) {
-      alert('회원 정보가 수정되었습니다.');
-      window.location.href = '/src/pages/mypage/mypage.html';
+    if (editPassword === editPasswordCheck) {
+      const response = await Fetcher.putUser(data);
+      if (response.acknowledged) {
+        alert('회원 정보가 수정되었습니다.');
+        window.location.href = '/src/pages/mypage/mypage.html';
+      }
     }
   } catch (error) {
     console.error(`회원 정보 수정 실패: ${error}`);

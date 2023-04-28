@@ -4,7 +4,9 @@ async function postUserSignup(e) {
   e.stopPropagation();
   e.preventDefault();
   const signUpId = document.getElementById('userId').value;
-  const signUpPassword = document.getElementById('user-PasswordCheck').value;
+  const signUpPassword = document.getElementById('user-Password').value;
+  const signUpPasswordCheck =
+    document.getElementById('user-PasswordCheck').value;
   const signUpName = document.getElementById('userName').value;
   const signUpGender = document.getElementById('userGender').value;
   const signUpPhoneNumber = document.getElementById('user-phone-number').value;
@@ -31,8 +33,10 @@ async function postUserSignup(e) {
     address: user_address,
   };
   try {
-    const response = await joinUser(data);
-    window.location.href = '/src/pages/main/index.html';
+    if (signUpPassword === signUpPasswordCheck) {
+      const response = await joinUser(data);
+      window.location.href = '/src/pages/main/index.html';
+    }
   } catch (error) {
     if (error.message === '409') {
       alert('이미 등록된 ID이거나 등록된 연락처입니다.');
