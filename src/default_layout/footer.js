@@ -34,11 +34,11 @@ function createFooter() {
     <hr class="my-4 border-pri sm:mx-auto lg:my-5" />
     <span class="block text-sm text-color-pri text-left">OHMECHU</span
     ><span class="block text-sm text-color-pri text-left">운영시간 : 평일 10:00 ~ 18:00(점심시간 12:00 ~ 13:00)</span>
-    <span class="block text-sm text-color-pri text-right"> <p class="block text-sm text-color-pri text-right">조정현 alskdjfak@elice.io</p>
-      <p class="block text-sm text-color-pri text-right">이주영 alskdjfak@elice.io</p>
-      <p class="block text-sm text-color-pri text-right">이채연 alskdjfak@elice.io</p>
-      <p class="block text-sm text-color-pri text-right">이정은 alskdjfak@elice.io</p>
-      <p class="block text-sm text-color-pri text-right">장준희 alskdjfak@elice.io</p></span>
+    <span class="block text-sm text-color-pri text-right"> <p class="block text-sm text-color-pri text-right">조정현 wjstkwhwjdgus@gmail.com</p>
+      <p class="block text-sm text-color-pri text-right">이주영 1004ljy980@gmail.com</p>
+      <p class="block text-sm text-color-pri text-right">이채연 9v.veu.v@gmail.com</p>
+      <p class="block text-sm text-color-pri text-right">이정은 leeju1009@gmail.com</p>
+      <p class="block text-sm text-color-pri text-right">장준희 junhuijang00@gmail.com</p></span>
   </div>
      `;
   document.body.append(footer);

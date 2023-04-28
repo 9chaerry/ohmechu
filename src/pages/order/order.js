@@ -6,11 +6,14 @@ import { priceSetting } from '/src/modules/orderModules/goodsTotalPrice.js';
 import { sendShippingData } from '/src/modules/orderModules/userShippingInput.js';
 import { autoHyphen } from '/src/modules/sign_upModules/autoHyphenPhoneNumber.js';
 import { blockAccess } from '/src/modules/orderModules/blockAccessOrderPage.js';
+import { orderedReceiverProfile } from '/src/modules/orderModules/loginUserProfileInput.js';
+import { resetReceiverProfile } from '/src/modules/orderModules/resetReceiverProfile.js';
 
 document.addEventListener('DOMContentLoaded', createHeader);
 document.addEventListener('DOMContentLoaded', createFooter);
 document.addEventListener('DOMContentLoaded', blockAccess);
 document.addEventListener('DOMContentLoaded', orderListTemplate);
+document.addEventListener('DOMContentLoaded', orderedReceiverProfile);
 document.addEventListener('DOMContentLoaded', priceSetting);
 
 document
@@ -20,5 +23,8 @@ document
   .getElementById('orderComplete')
   .addEventListener('click', sendShippingData);
 document
-  .getElementById('user-phone-number')
+  .getElementById('receiver-phone-number')
   .addEventListener('input', autoHyphen);
+document
+  .getElementById('reset-receiver')
+  .addEventListener('click', resetReceiverProfile);

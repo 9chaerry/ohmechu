@@ -32,17 +32,16 @@ async function postUserSignup(e) {
   };
   try {
     const response = await joinUser(data);
-    console.log(response);
-    if (response === 409) {
-      alert('이미 등록된 회원입니다.');
-    } else if (response && response._id) {
-      // const orderId = response._id;
-      // const newUrl = `/src/pages/main/index.html`;
-      window.location.href = '/src/pages/main/index.html';
-    }
+    window.location.href = '/src/pages/main/index.html';
   } catch (error) {
+    if (error.message === '409') {
+      alert('이미 등록된 ID이거나 등록된 연락처입니다.');
+      throw new Error();
+    } else if (error.message === '500') {
+      alert('회원가입 양식을 전부 작성해주세요.');
+      throw new Error();
+    }
     console.error('백엔드로 전송 실패', error);
-    alert('회원가입이 실패했습니다.');
   }
 }
 
