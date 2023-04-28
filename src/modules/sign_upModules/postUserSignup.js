@@ -33,7 +33,8 @@ async function postUserSignup(e) {
     address: user_address,
   };
   try {
-    if (signUpPassword === signUpPasswordCheck) {
+    const previousErrMsg = document.querySelector('p.text-red-500');
+    if (signUpPassword === signUpPasswordCheck && !previousErrMsg) {
       const response = await joinUser(data);
       window.location.href = '/src/pages/main/index.html';
     }
