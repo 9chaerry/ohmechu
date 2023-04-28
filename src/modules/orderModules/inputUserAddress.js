@@ -1,12 +1,4 @@
 export function execDaumPostcode(e) {
-  const postcode = document.getElementById('postcode');
-  const roadAddress = document.getElementById('roadAddress');
-  const detailAddress = document.getElementById('detailAddress');
-  const extraAddress = document.getElementById('extraAddress');
-  postcode.value = '';
-  roadAddress.value = '';
-  detailAddress.value = '';
-  extraAddress.value = '';
   e.stopPropagation();
   new daum.Postcode({
     oncomplete: function (data) {
