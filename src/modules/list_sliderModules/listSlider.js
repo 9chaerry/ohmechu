@@ -17,7 +17,7 @@ let newCount = 0;
 /**
  * 서버에서 상품 정보를 받아오고, 슬라이드를 초기화합니다.
  */
-function slideSetting() {
+function slideSetup() {
   // console.log('slideSetting 진입함');
   // !!! 더미 url이 들어가있음! 추후 변경 필요 !!!
   recListGenerator();

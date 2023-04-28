@@ -1,7 +1,6 @@
 import { cartSetup } from './cartSetting.js';
 import { moveToDetail } from './listToDetail.js';
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
-import { moveToDetail } from './listToDetail.js';
 
 const productBox = document.getElementById('product-box');
 const productAmount = document.getElementById('product-amount');
