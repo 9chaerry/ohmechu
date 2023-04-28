@@ -20,5 +20,8 @@
     "@babel/node": "^7.20.7",
     "@babel/plugin-transform-runtime": "^7.21.4",
     "@babel/preset-env": "^7.21.4"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
