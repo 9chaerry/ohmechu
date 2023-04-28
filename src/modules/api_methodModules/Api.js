@@ -4,7 +4,7 @@ async function request({ endpoint, method, params = '', data = {} }) {
   const apiUrl = params ? `${endpoint}/${params}` : endpoint;
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${Token.getToken()}`,
+    Authorization: Token.getToken() ? `Bearer ${Token.getToken()}` : null,
   };
 
   try {
