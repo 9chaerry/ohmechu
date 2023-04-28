@@ -65,14 +65,14 @@ function createHeader() {
     </li>
   </ul>
   <div class="w-[13%] flex justify-evenly pr-[6%]">
-    <a href="/src/pages/mypage/mypage.html" class="mr-[5%]"
+    <a href="" class="mr-[5%]"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         stroke-width="1.3"
         stroke="currentColor"
-        class="w-8 h-8 inline-block"
+        class="mypage-button w-8 h-8 inline-block"
       >
         <path
           stroke-linecap="round"
@@ -130,6 +130,24 @@ function createHeader() {
 
     // 로그아웃 버튼에 이벤트를 할당합니다.
     document.getElementById('logout-button').addEventListener('click', logout);
+  }
+
+  // 비회원일 때 마이페이지 누르면 로그인 페이지로 이동 alert
+  else {
+    const myPageBtn = document.querySelector('.mypage-button');
+
+    myPageBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (
+        confirm(
+          '로그인 페이지로 이동하시겠습니까? 비회원이신 경우, 주문내역 조회가 가능합니다.'
+        )
+      ) {
+        window.location.href = '/src/pages/login/login.html';
+      } else {
+        return;
+      }
+    });
   }
 }
 

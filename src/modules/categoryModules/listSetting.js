@@ -1,5 +1,6 @@
 import { cartSetting } from './cartSetting.js';
 import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
+import { moveToDetail } from './listToDetail.js';
 
 const productBox = document.getElementById('product-box');
 const productAmount = document.getElementById('product-amount');
@@ -52,7 +53,7 @@ async function listGeneration(category) {
 function listTemplate(id, img, name, price, subDescription = '　') {
   return `<li class="w-1/4 h-1/4 p-3 my-3">
               <img
-                class="product-img w-full object-cover flex-shrink-0 object-center cursor-pointer"
+                class="product-img w-full object-cover flex-shrink-0 object-center object-cover cursor-pointer"
                 src="${img}"
               />
               <div class="relative p-1">
