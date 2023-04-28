@@ -21,7 +21,7 @@ async function categoryClick(e) {
 
   // 카테고리 타이틀과 이미지를 변경합니다.
   categoryTitle.innerText = categoryTitleString;
-  if (category === 'latest') {
+  if (category === 'ascName') {
     categoryImage.src = '/src/img/food-6.jpg';
   } else {
     const categoryDatas = await Fetcher.getCategoryProducts(category);

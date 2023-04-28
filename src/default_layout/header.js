@@ -55,10 +55,10 @@ function createHeader() {
       <a href="/src/pages/category/category.html" class="inline-block align-bottom">전체상품</a>
     </li>
     <li class="inline-block mr-[4%]">
-      <span><a href="" class="">신상품</a></span>
-    </li>
+    <span><a href="/src/pages/category/category.html?sort=recommended">추천상품</a></span>
+  </li>
     <li class="inline-block mr-[4%]">
-      <span><a href="">인기상품</a></span>
+      <span><a href="/src/pages/category/category.html?sort=latest" class="">새로운 상품</a></span>
     </li>
   </ul>
   <div class="w-[13%] flex justify-evenly pr-[6%]">

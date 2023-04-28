@@ -4,11 +4,19 @@ import * as Fetcher from '/src/modules/api_methodModules/Fetcher.js';
 
 const productBox = document.getElementById('product-box');
 const productAmount = document.getElementById('product-amount');
+const categoryTitle = document.getElementById('category-title');
 
 /**
  * list의 아이템들의 전반적인 세팅을 담당합니다.
  */
-async function listSetup(category = 'latest') {
+async function listSetup(category = 'ascName') {
+  const searchParams = new URL(document.location).searchParams;
+  if (searchParams.get('sort')) {
+    category = searchParams.get('sort');
+    if (category === 'latest') categoryTitle.innerText = '신상품순';
+    if (category === 'recommended') categoryTitle.innerText = '추천상품순';
+  }
+
   await listGeneration(category);
   // 리스트 세팅이 다되었다면, 리스트에 있는 장바구니 버튼 세팅을 진행한다.
   cartSetup();
