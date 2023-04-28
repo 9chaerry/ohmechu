@@ -296,4 +296,4 @@ function newListRightSlide(e) {
   }
 }
 
-export { slideSetting };
+export { slideSetup };
