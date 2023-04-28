@@ -84,7 +84,9 @@ function listTemplate(id, img, name, price, subDescription = '　') {
                 href="/src/pages/goods/goods.html?productId=${id}"
                   >${name}</a
                 >
-                <div class="text-left text-sm font-light">${subDescription}</div>
+                <div class="text-left text-sm font-light">${subDescription.join(
+                  '\u00a0\u00a0|\u00a0\u00a0'
+                )}</div>
                 <div class="mt-3 text-left text-lg">${price}</div>
               </div>
             </li>`;
