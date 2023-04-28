@@ -19,10 +19,9 @@ async function priceSetup() {
     purchasePriceCount += Number(product.price) * item.amount;
   }
 
-  purchasePrice.innerText = purchasePriceCount;
-  deliveryPrice.innerText = DELIVERY_PRICE;
-  totalPrice.innerText =
-    Number(purchasePrice.innerText) + Number(deliveryPrice.innerText);
+  purchasePrice.innerText = purchasePriceCount.toLocaleString();
+  deliveryPrice.innerText = DELIVERY_PRICE.toLocaleString();
+  totalPrice.innerText = (purchasePriceCount + DELIVERY_PRICE).toLocaleString();
 }
 
 export { priceSetup };

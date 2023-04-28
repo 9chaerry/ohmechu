@@ -13,7 +13,7 @@ const orderListBox = document.getElementById('order-list-box');
 /**
  * 주문번호 리스트를 받아오고, 해당 주문번호들을 통해 리스트를 작성합니다.
  */
-async function orderListSetting() {
+async function orderListSetup() {
   // 주문 리스트를 작성하기 위해 주문번호 리스트를 정의합니다.
   let orderIdList = [];
 
@@ -76,7 +76,7 @@ async function orderListSetting() {
         item.img,
         item.name,
         item.amount,
-        item.price * item.amount
+        (item.price * item.amount).toLocaleString()
       );
     }
 
@@ -138,7 +138,7 @@ function listTemplate(img, name, amount, price) {
   return `<li class="flex">
     <div class="flex w-4/6 mx-4 py-2 text-neutral-600">
       <img
-        class="block w-1/5 mx-16 object-cover object-center"
+        class="block w-1/5 h-[150px] mx-16 object-cover object-center"
         src="${img}"
       />
       <div class="flex justify-center items-center">${name}</div>
@@ -171,4 +171,4 @@ function editOrder(e) {
   window.location.href = newUrl;
 }
 
-export { orderListSetting };
+export { orderListSetup };

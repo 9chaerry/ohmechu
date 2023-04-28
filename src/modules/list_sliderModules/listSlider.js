@@ -38,7 +38,11 @@ function slideSetting() {
 async function recListGenerator() {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
   const datas = await Fetcher.getAllProducts();
-  for (let data of datas) {
+  const recommendedProducts = datas.filter(
+    (data) => Number(data.recommended) > 0
+  );
+
+  for (let product of recommendedProducts) {
     // 슬라이드 내부 요소
     const li = document.createElement('li');
     const imgDiv = document.createElement('div');
@@ -66,7 +70,7 @@ async function recListGenerator() {
     img.classList.add(
       'w-[255px]',
       'h-[255px]',
-      'bg-cover',
+      'object-cover',
       'scale-105',
       'transition-transform',
       'duration-300',
@@ -79,12 +83,15 @@ async function recListGenerator() {
     a.classList.add('no-underline', 'text-xl', 'font-semibold');
     p.classList.add('text-base', 'font-normal');
 
-    // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
     // 슬라이드에 데이터 삽입
-    img.src = data.img;
-    a.innerText = data.name;
-    a.href = '';
-    p.innerText = data.price;
+    const productDetailPageUrl = `/src/pages/goods/goods.html?productId=${product._id}`;
+    img.src = product.img;
+    img.addEventListener('click', () => {
+      window.location.href = productDetailPageUrl;
+    });
+    a.innerText = product.name;
+    a.href = productDetailPageUrl;
+    p.innerText = Number(product.price).toLocaleString() + ' 원';
 
     // 각 요소 합치기
     textDiv.appendChild(a);
@@ -107,9 +114,26 @@ function recListLeftSlide(e) {
 
   const marginLeftValue = parseInt(recListSlides.style.marginLeft);
 
-  if (marginLeftValue < 0)
+  if (marginLeftValue < 0) {
+    let from = parseInt(recListSlides.style.marginLeft);
+    let to = parseInt(recListSlides.style.marginLeft) + WRAP_SIZE;
+
+    recListSlides.animate(
+      {
+        marginLeft: [from + 'px', to + 'px'],
+      },
+      {
+        duration: 500,
+        easing: 'ease',
+        iterations: 1,
+        fill: 'both',
+      }
+    );
+
+    // 애니메이션은 실제로 값이 바뀌지 않기 때문에, 실제 값을 추가로 넣어줘야함
     recListSlides.style.marginLeft =
       parseInt(recListSlides.style.marginLeft) + WRAP_SIZE + 'px';
+  }
 }
 
 function recListRightSlide(e) {
@@ -119,9 +143,26 @@ function recListRightSlide(e) {
   const marginLeftValue = parseInt(recListSlides.style.marginLeft);
   const totalPage = Math.ceil(recCount / PER_SLIDE_PAGE);
 
-  if (marginLeftValue > (totalPage - 1) * WRAP_SIZE * -1)
+  if (marginLeftValue > (totalPage - 1) * WRAP_SIZE * -1) {
+    let from = parseInt(recListSlides.style.marginLeft);
+    let to = parseInt(recListSlides.style.marginLeft) - WRAP_SIZE;
+
+    recListSlides.animate(
+      {
+        marginLeft: [from + 'px', to + 'px'],
+      },
+      {
+        duration: 500,
+        easing: 'ease',
+        iterations: 1,
+        fill: 'both',
+      }
+    );
+
+    // 애니메이션은 실제로 값이 바뀌지 않기 때문에, 실제 값을 추가로 넣어줘야함
     recListSlides.style.marginLeft =
       parseInt(recListSlides.style.marginLeft) - WRAP_SIZE + 'px';
+  }
 }
 
 /**
@@ -130,8 +171,9 @@ function recListRightSlide(e) {
  */
 async function newListGenerator() {
   // 서버에서 JSON 형식의 데이터를 받아옵니다.
-  const datas = await Fetcher.getAllProducts();
-  for (let data of datas) {
+  const latestProducts = await Fetcher.getCategoryProducts('latest');
+
+  for (let product of latestProducts) {
     // 슬라이드 내부 요소
     const li = document.createElement('li');
     const imgDiv = document.createElement('div');
@@ -159,7 +201,7 @@ async function newListGenerator() {
     img.classList.add(
       'w-[255px]',
       'h-[255px]',
-      'bg-cover',
+      'object-cover',
       'scale-105',
       'transition-transform',
       'duration-300',
@@ -172,12 +214,15 @@ async function newListGenerator() {
     a.classList.add('no-underline', 'text-xl', 'font-semibold');
     p.classList.add('text-base', 'font-normal');
 
-    // !!! 더미 데이터 속성이 들어가있음. 추후 변경 필요 !!!
     // 슬라이드에 데이터 삽입
-    img.src = data.img;
-    a.innerText = data.name;
-    a.href = '';
-    p.innerText = data.price;
+    const productDetailPageUrl = `/src/pages/goods/goods.html?productId=${product._id}`;
+    img.src = product.img;
+    img.addEventListener('click', () => {
+      window.location.href = productDetailPageUrl;
+    });
+    a.innerText = product.name;
+    a.href = productDetailPageUrl;
+    p.innerText = Number(product.price).toLocaleString() + ' 원';
 
     // 각 요소 합치기
     textDiv.appendChild(a);
@@ -200,9 +245,26 @@ function newListLeftSlide(e) {
 
   const marginLeftValue = parseInt(newListSlides.style.marginLeft);
 
-  if (marginLeftValue < 0)
+  if (marginLeftValue < 0) {
+    let from = parseInt(newListSlides.style.marginLeft);
+    let to = parseInt(newListSlides.style.marginLeft) + WRAP_SIZE;
+
+    newListSlides.animate(
+      {
+        marginLeft: [from + 'px', to + 'px'],
+      },
+      {
+        duration: 500,
+        easing: 'ease',
+        iterations: 1,
+        fill: 'both',
+      }
+    );
+
+    // 애니메이션은 실제로 값이 바뀌지 않기 때문에, 실제 값을 추가로 넣어줘야함
     newListSlides.style.marginLeft =
       parseInt(newListSlides.style.marginLeft) + WRAP_SIZE + 'px';
+  }
 }
 
 function newListRightSlide(e) {
@@ -212,9 +274,26 @@ function newListRightSlide(e) {
   const marginLeftValue = parseInt(newListSlides.style.marginLeft);
   const totalPage = Math.ceil(newCount / PER_SLIDE_PAGE);
 
-  if (marginLeftValue > (totalPage - 1) * WRAP_SIZE * -1)
+  if (marginLeftValue > (totalPage - 1) * WRAP_SIZE * -1) {
+    let from = parseInt(newListSlides.style.marginLeft);
+    let to = parseInt(newListSlides.style.marginLeft) - WRAP_SIZE;
+
+    newListSlides.animate(
+      {
+        marginLeft: [from + 'px', to + 'px'],
+      },
+      {
+        duration: 500,
+        easing: 'ease',
+        iterations: 1,
+        fill: 'both',
+      }
+    );
+
+    // 애니메이션은 실제로 값이 바뀌지 않기 때문에, 실제 값을 추가로 넣어줘야함
     newListSlides.style.marginLeft =
       parseInt(newListSlides.style.marginLeft) - WRAP_SIZE + 'px';
+  }
 }
 
-export { slideSetting };
+export { slideSetup };

@@ -1,5 +1,5 @@
-import { listSetting } from '/src/modules/categoryModules/listSetting.js';
-import { categorySetting } from '/src/modules/categoryModules/categorySetting.js';
+import { listSetup } from '/src/modules/categoryModules/listSetting.js';
+import { categorySetup } from '/src/modules/categoryModules/categorySetting.js';
 import { createHeader } from '/src/default_layout/header.js';
 import { createFooter } from '/src/default_layout/footer.js';
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   createHeader();
   createFooter();
   // 리스트 세팅
-  listSetting();
+  listSetup();
   // 카테고리 버튼 세팅
-  categorySetting();
+  categorySetup();
 });
