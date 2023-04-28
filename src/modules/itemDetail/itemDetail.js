@@ -8,8 +8,6 @@ import { addCart } from '/src/modules/itemDetail/addCart.js';
  * 조회한 DB의 키 값 바탕으로 페이지에 띄우기
  */
 
-// const addCartBtn = document.getElementById('order-product');
-
 // URL productId 값 가져오기
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
@@ -21,7 +19,6 @@ export async function setParams() {
   mainPage.innerHTML = '';
 
   const productInfo = await Fetcher.getIdProduct(productId);
-  // console.log(productInfo);
 
   mainPage.innerHTML += setProductInfo(
     productInfo.img,
@@ -30,7 +27,7 @@ export async function setParams() {
     productInfo.subDescription[1],
     productInfo.subDescription[2],
     productInfo.description,
-    productInfo.price
+    productInfo.price.toLocaleString('ko-kr')
   );
 
   addCart();
