@@ -4,7 +4,8 @@
   "description": "1차 프로젝트",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,8 +21,5 @@
     "@babel/node": "^7.20.7",
     "@babel/plugin-transform-runtime": "^7.21.4",
     "@babel/preset-env": "^7.21.4"
-  },
-  "scripts": {
-    "start": "node app.js"
   }
 }
