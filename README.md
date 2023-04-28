@@ -2,4 +2,5 @@
 
 1차 프로젝트
 
-master branch
+# ID : 1234@naver.com
+# PW : qwer1234
