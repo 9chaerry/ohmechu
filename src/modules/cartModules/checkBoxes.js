@@ -1,4 +1,6 @@
 import { cartLoad } from './cartLoad.js';
+import { priceSetup } from './priceSetting.js';
+
 // 체크 박스들
 const allProductsSelectBox = document.getElementById('all-products-select');
 const checkBoxes = document.getElementsByClassName('check-box');
@@ -41,13 +43,17 @@ function deleteSelect(e) {
 
   for (let checkedItemId of checkedItemsIdList) {
     const index = cart.findIndex((product) => product.id === checkedItemId);
+    document
+      .querySelector(`li[data-list-product-id="${checkedItemId}"]`)
+      .remove();
     cart.splice(index, 1);
   }
 
   if (cart.length < 1) window.localStorage.removeItem('cart');
   else window.localStorage.setItem('cart', JSON.stringify(cart));
 
-  cartLoad();
+  priceSetup();
+  // cartLoad();
 }
 
 function orderSelect(e) {

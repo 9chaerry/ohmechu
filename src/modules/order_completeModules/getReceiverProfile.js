@@ -28,3 +28,8 @@ async function getReceiverProfile() {
 }
 
 export { getReceiverProfile };
+
+const postcode = document.getElementById('postcode').value;
+const roadAddress = document.getElementById('roadAddress').value;
+const detailAddress = document.getElementById('detailAddress').value;
+const extraAddress = document.getElementById('extraAddress').value;
